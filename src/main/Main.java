@@ -8,5 +8,4 @@ public class Main {
 		Object obj = new Object();
 		System.out.println(obj);
 	}
-
 }
