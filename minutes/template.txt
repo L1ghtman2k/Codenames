@@ -1,18 +1,19 @@
-Meeting Minutes for _add meeting date________:
+Meeting Minutes for _add meeting date 2/20/2018:
 
 Meeting Attendance: (list all students who were present) [1 minute]
 	Put an 'M' next to the name of the student taking minutes
 	
-	
+		Aibek Zhylkaidarov M.
+		Shenghang 
+		Kartik.
+		Cole
+		Hrishikesh	
 	
 Tasks completed since last meeting [1-2 minutes]
-	* (Replace with tasks that were completed in the last week)
-	  (Some weeks, including the first week your group meets, this will be blank)
+	First meeting
 
 Tasks worked upon but not completed since last meeting [2-4 minutes]
-	* (Replace with tasks that are still being worked upon)
-	   - (Also document any significant discussions of ideas or actions to make progress on these item)
-	(Some weeks, including the first week your group meets, this will be blank)
+	None
 
 Goals for the next meeting [20+ minutes]
 	* (List tasks that will be worked upon in the coming week)
