@@ -40,10 +40,30 @@ public class Board {
 	}
 
 	public void assignLocationToGrid(){
-
+		
 	}
 
-
+	public boolean checkIfClueIsLegal(String clue){
+		
+		return false;
+	}
+	
+	public boolean StatusUpdater(String codename, Team team) {
+		
+		return false;
+	}
+	
+	
+	public boolean isBoardInWinningState() {
+		
+		return false;
+	}
+	
+	public Team TeamThatWon() {
+		
+		return null;
+	}
+	
 	
 	public Location[][] getGrid() {
 		return grid;	
