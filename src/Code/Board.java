@@ -13,8 +13,6 @@ public class Board {
 	private Team Blue;
 	private GameLogic gameLogic;
 	
-	
-	
 	public Board() {
 		grid = new Location[5][5];
 		allCodenames = new String[25];
@@ -79,35 +77,64 @@ public class Board {
 		gameLogic.RedTeamMove();
 	}
 	
-	
-	public boolean checkIfClueIsLegal(String clue){
+	/**
+	 * This method checks weather or not the clue is legal or illegal
+	 * @param clue String that will be checked 
+	 * @return true if clue is not equal Codename unless it is revealed, false otherwise
+	 */
+	public boolean isClueIsLegal(String clue){
 		
 		return false;
 	}
 	
+	/**
+	 * This method decrements the count of guesses, 
+	 * updates Location Revealed Status,
+	 * returns if the Location Contained Team's agent.
+	 * @param codename String that reveals content of Location, if associated
+	 * @param team Team that chose the codename
+	 * @return true if Location contained Team's agent, false otherwise
+	 */
 	public boolean LocationStatusUpdater(String codename, Team team) {
 		
 		return false;
 	}
 	
-	
+	/**
+	 * This method returns weather or not one of the teams is at winning state
+	 * @return true if one of the teams won, false otherwise
+	 */
 	public boolean isBoardInWinningState() {
 		
 		return false;
 	}
-	
+	/**
+	 * This method returns a team that won when assassin was revealed
+	 * @return A team that did not select the assassin.
+	 */
 	public Team TeamThatWonWhenAssassinRevealed() {
 		
 		return null;
 	}
 	
-	
+	/**
+	 * 
+	 * @return the Location[][] also known as grid
+	 */
 	public Location[][] getGrid() {
 		return grid;	
 	}
+	/**
+	 * 
+	 * @return Returns arrayList containing all words from text File 
+	 */
 	public ArrayList<String> getAllNames() {
 		return allNames;	
 	}
+	/**
+	 * 
+	 * @return Returns String array containing all codenames
+	 */
 	public String[] getAllCodenames() {
 		return allCodenames;	
 	}

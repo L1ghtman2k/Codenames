@@ -5,7 +5,7 @@ public class Team {
 	private int count;
 	
 	public Team(String TeamName) {
-		this.TeamName = TeamName;
+		this.setTeamName(TeamName);
 	}
 	
 	public void decrementCount() {
@@ -18,6 +18,14 @@ public class Team {
 
 	public void setCount(int count) {
 		this.count = count;
+	}
+
+	public String getTeamName() {
+		return TeamName;
+	}
+
+	public void setTeamName(String teamName) {
+		TeamName = teamName;
 	}
 	
 	
