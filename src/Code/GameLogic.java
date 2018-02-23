@@ -12,7 +12,7 @@ public class GameLogic {
 	}
 	
 	public void RedTeamMove() {
-		
+	
 	}
 	
 	public void BlueTeamMove() {
