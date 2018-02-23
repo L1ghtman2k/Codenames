@@ -1,8 +1,12 @@
 package Code;
 
 public class Team {
-	private String Team;
+	private String TeamName;
 	private int count;
+	
+	public Team(String TeamName) {
+		this.TeamName = TeamName;
+	}
 	
 	public void decrementCount() {
 		setCount(getCount() - 1);

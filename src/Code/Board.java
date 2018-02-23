@@ -6,10 +6,16 @@ public class Board {
 	private Location[][] grid;
 	private ArrayList<String> allNames;
 	private String[] allCodenames;
-
+	private Team Red;
+	private Team Blue;
+	private GameLogic gameLogic;
+	
 	public Board() {
 		grid = new Location[5][5];
 		allCodenames = new String[25];
+		Red = new Team("Red");
+		Blue = new Team("Blue");
+		gameLogic = new GameLogic(Red, Blue, this);
 	}
 
 	private ArrayList<String> allRoles = new ArrayList<String>() {{
@@ -39,16 +45,23 @@ public class Board {
 		return null;
 	}
 
-	public void assignLocationToGrid(){
+	public void RandomizeRoles(){
 		
 	}
 
+	
+	public void LocationAssignerAndRedMove() {
+		
+		gameLogic.RedTeamMove();
+	}
+	
+	
 	public boolean checkIfClueIsLegal(String clue){
 		
 		return false;
 	}
 	
-	public boolean StatusUpdater(String codename, Team team) {
+	public boolean LocationStatusUpdater(String codename, Team team) {
 		
 		return false;
 	}
@@ -59,7 +72,7 @@ public class Board {
 		return false;
 	}
 	
-	public Team TeamThatWon() {
+	public Team TeamThatWonWhenAssassinRevealed() {
 		
 		return null;
 	}

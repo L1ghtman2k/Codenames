@@ -12,6 +12,7 @@ public class Launcher {
 	}
 	
 	public void StartTheGame() {
+		board = new Board();	
 		
 	}
 }
