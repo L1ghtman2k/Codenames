@@ -2,9 +2,6 @@ package Code;
 
 import java.util.ArrayList;
 
-import org.hamcrest.core.Is;
-import org.junit.experimental.theories.Theories;
-
 public class Board {
 	private Location[][] grid;
 	private ArrayList<String> allNames;
