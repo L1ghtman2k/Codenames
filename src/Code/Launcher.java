@@ -21,17 +21,9 @@ public class Launcher {
 		board = new BoardCostume(grid, Reds, Blues, Assassins, RedName, BlueName);	
 		return board;
 		
-	}
-	
+	}	
 	public Board StartTheGame(String RedName, String BlueName) {
-		int n=5;
-		Location[][] grid = new Location[n][n];
-		for(int i = 0; i < n; i++) {
-			for(int j = 0; j < n; j++) {
-				grid[i][j] = new Location();
-			}
-		}
-		board = new BoardDefault(grid, RedName, BlueName);	
+		board = StartTheGame(5, 9, 8, 1, RedName, BlueName);;	
 		return board;
 	}
 }
