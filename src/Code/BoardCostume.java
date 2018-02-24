@@ -1,5 +1,6 @@
 package Code;
 import java.util.List;
+import java.util.Random;
 
 public class BoardCostume implements Board {
 	private Location[][] grid;
@@ -33,7 +34,10 @@ public class BoardCostume implements Board {
 	
 	public List<String> retRandomCodenames(List<String> wordStrorage){
 		
-		return null;
+		Random r = new Random();
+		r.nextInt(wordStrorage.size());
+		List<String> newList = wordStrorage;
+		return newList;
 	}
 	
 	
