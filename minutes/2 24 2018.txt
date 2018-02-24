@@ -1,0 +1,43 @@
+Meeting Minutes for _add meeting date 2/20/2018:
+
+Meeting Attendance: (list all students who were present) [1 minute]
+	Put an 'M' next to the name of the student taking minutes
+Aibek Zhylkaidarov M.
+Kartik Rayavarapu
+Hrishikesh Kautik Ahire
+
+		
+	
+Tasks completed since last meeting [1-2 minutes]
+	Added Methods That will satisfy the requirements
+
+Tasks worked upon but not completed since last meeting [2-4 minutes]
+	None.
+
+Goals for the next meeting [20+ minutes]
+	Kar. 
+	Board Costume(retRandomCodenames)
+	-JUnits (CHANGE JAVA DOCS)
+	-JavaDocs
+	-Implementation
+Har.	
+	Board Costume(RandomizeRoles)
+	-JUnits (CHANGE JAVA DOCS)
+	-JavaDocs
+	-Implementation
+
+TODO: LocationAssignerAndRedMove in Board Costume.
+
+Aib. 
+	BoardExtension(all methods)
+	-JUnit
+	-JavaDocs
+	-Implementation
+Col.
+	TBD
+Shen
+TBD.
+	
+
+Schedule for the next week's set of pair programming meetings [3-4 minutes]
+	Either on 25th, or Monday during rec.
