@@ -13,9 +13,18 @@ public class GameLogic {
 	
 	public void RedTeamMove() {
 	
+		
 	}
 	
 	public void BlueTeamMove() {
+		
+	}
+	
+	public void RedSpyMasterMove() {
+		
+	}
+	
+	public void BlueSpyMasterMove() {
 		
 	}
 }
