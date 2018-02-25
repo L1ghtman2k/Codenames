@@ -5,7 +5,7 @@ import java.util.Random;
 public class BoardCostume implements Board {
 	private Location[][] grid;
 	private List<String> allNames;
-	private String[] allCodenames;
+	private List<String> allCodenames;
 	private Team Red;
 	private Team Blue;
 	private GameLogic gameLogic;
@@ -20,7 +20,6 @@ public class BoardCostume implements Board {
 		this.Reds = Reds;
 		this.Blues = Blues;
 		this.Assassins = Assassins;
-	
 	}
 	
 
@@ -52,7 +51,7 @@ public class BoardCostume implements Board {
 	 */
 	public void LocationAssignerAndRedMove() {
 
-		gameLogic.RedTeamMove();
+		gameLogic.RedSpyMasterMove();
 	}
 	/**
 	 * @return the Location[][] also known as grid
@@ -70,7 +69,7 @@ public class BoardCostume implements Board {
 	/**
 	 * @return Returns String array containing all codenames
 	 */
-	public String[] getAllCodenames() {
+	public List<String> getAllCodenames() {
 		return allCodenames;	
 	}
 }
