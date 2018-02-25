@@ -162,11 +162,6 @@ public class Board {
 		}
 		return null;
 	}
-
-
-
-
-
 	//	GETTER AND SETTERS
 
 	/**
