@@ -35,15 +35,17 @@ public class Board {
 	 */
 	
 	public List<String> retRandomCodenames(List<String> wordStrorage){
+		
 		Random r = new Random();
 		r.nextInt(wordStrorage.size());
 		List<String> newList = wordStrorage;
+		// USE Collections.shuffle(); grid.length * grid.length
 		return newList;
 	}
 
 	
 	public List<Person> RandomizeRoles(){
-		
+		//USE Collections.shuffle(); USE REDS BLUES ASSASSINS and grid.length*grid.length
 		return null;
 	}
 	
@@ -55,8 +57,6 @@ public class Board {
 		
 		List<String> RandomCodenames = retRandomCodenames(extension.retAllCodenames(PATH));
 		List<Person> RandomRoles = RandomizeRoles();
-		Collections.shuffle(RandomCodenames);
-		Collections.shuffle(RandomRoles);
 		
 		for(int i = 0; i < grid.length; i++)
 		{
@@ -67,6 +67,7 @@ public class Board {
 				grid[i][j].setRevealed(false);
 			}
 		}
+		
 		gameLogic.RedSpyMasterMove();
 	}
 
@@ -76,7 +77,7 @@ public class Board {
 	 * @param clue String that will be checked 
 	 * @return true if clue is not equal Codename unless it is revealed, false otherwise
 	 */
-	public boolean isClueIsLegal(String clue){
+	public boolean isClueLegal(String clue){
 		if(clue.isEmpty() || clue==null ) {
 			return false;
 		}
@@ -103,6 +104,7 @@ public class Board {
 	 * @return true if Location contained Team's agent, false otherwise
 	 */
 	public boolean LocationStatusUpdater(String codename, Team team) {
+	
 		for(int i = 0; i < grid.length; i++)
 		{
 			for(int j = 0; j < grid.length; j++) {

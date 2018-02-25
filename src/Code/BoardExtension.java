@@ -25,11 +25,4 @@ public class BoardExtension implements Extension{
 		}
 		return  list;
 	}
-	
-	
-	
-	
-	
-	
-	
 }
