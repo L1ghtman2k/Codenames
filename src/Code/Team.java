@@ -3,9 +3,12 @@ package Code;
 public class Team {
 	private String TeamName;
 	private int count;
+	private boolean RevealedAssassin;
+	private Roles agents;
 	
-	public Team(String TeamName) {
+	public Team(String TeamName, Roles agents) {
 		this.setTeamName(TeamName);
+		this.setAgents(agents);
 	}
 	
 	public void decrementCount() {
@@ -26,6 +29,22 @@ public class Team {
 
 	public void setTeamName(String teamName) {
 		TeamName = teamName;
+	}
+
+	public boolean isRevealedAssassin() {
+		return RevealedAssassin;
+	}
+
+	public void setRevealedAssassin(boolean revealedAssassin) {
+		RevealedAssassin = revealedAssassin;
+	}
+
+	public Roles getAgents() {
+		return agents;
+	}
+
+	public void setAgents(Roles agents) {
+		this.agents = agents;
 	}
 	
 	

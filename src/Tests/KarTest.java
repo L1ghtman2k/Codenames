@@ -1,10 +1,9 @@
 package Tests;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-import Code.BoardCostume;
+import Code.Board;
+import Code.BoardExtension;
 import Code.Location;
 
 public class KarTest {
@@ -18,7 +17,7 @@ public class KarTest {
 		int Assasins = 1;
 		String redName = "Red";
 		String blueName = "Blue";
-		BoardCostume boardTest = new BoardCostume(grid, Reds, Blues, Assasins, redName, blueName);
+		Board boardTest = new Board(grid, Reds, Blues, Assasins, redName, blueName, new BoardExtension());
 		
 //		assertNotNull(boardTest.retRandomCodenames(wordStrorage))
 		

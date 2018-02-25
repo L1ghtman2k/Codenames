@@ -1,9 +1,20 @@
 package Code;
 
+
+
 public class Person {
-	String Role;
 	
-	public Person(String Role) {
-		this.Role = Role;
+	private Roles Role;
+	
+	public Person(Roles Role) {
+		this.setRole(Role);
+	}
+
+	public Roles getRole() {
+		return Role;
+	}
+
+	public void setRole(Roles role) {
+		Role = role;
 	}
 }

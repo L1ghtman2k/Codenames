@@ -6,8 +6,6 @@ public class Location {
 	private Person person;
 	
 	
-	
-	
 	public String getCodename() {
 		return codename;
 	}
