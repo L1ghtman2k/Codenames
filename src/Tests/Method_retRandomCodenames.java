@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Code.Board;
-import Code.BoardExtensionFromLocal;
+import Code.LocalFileExtension;
 import Code.Launcher;
 
 public class Method_retRandomCodenames {
@@ -20,13 +20,13 @@ public class Method_retRandomCodenames {
 	@Before
 	  public void setUp() {
 		launcher = new Launcher();
-		board = launcher.StartTheGame("Blue", "Red", new BoardExtensionFromLocal());
+		board = launcher.StartTheGame("Blue", "Red");
 	}
 	
 	@Test
 	public void WordStorageIsLessThanTotalLocations_returnNull() {
 		List<String> mylist = Arrays.asList("A1", "Buffalo", "Knuckles");
-		List<String> assertedList = board.retRandomCodenames(mylist);
+		List<String> assertedList = board.getRandomizer().retRandomCodenames(mylist);
 		assertNull(assertedList);
 	}
 	

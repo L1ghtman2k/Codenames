@@ -8,7 +8,7 @@ public class Board {
 	private Team Blue;
 	private GameLogic gameLogic;
 	private IExtension extension;
-	private IRandomizer myrandomizer;
+	private IRandomizer randomizer;
 	private int Reds, Blues, Assassins;
 	private final int totalLocations;
 
@@ -22,7 +22,7 @@ public class Board {
 		this.Blues = Blues;
 		this.Assassins = Assassins;
 		this.extension = extension;
-		this.myrandomizer = myrandomizer;
+		this.randomizer = myrandomizer;
 		totalLocations = grid.length * grid.length;
 	}
 
@@ -32,8 +32,8 @@ public class Board {
 	 */
 	public void LocationAssignerAndRedMove(String PATH) {
 
-		List<String> RandomCodenames = myrandomizer.retRandomCodenames(extension.retAllCodenames(PATH));
-		List<Person> RandomRoles = myrandomizer.retRandomizeRoles();
+		List<String> RandomCodenames = randomizer.retRandomCodenames(extension.retAllCodenames(PATH));
+		List<Person> RandomRoles = randomizer.retRandomizeRoles();
 
 		for(int i = 0; i < grid.length; i++)
 		{
@@ -163,6 +163,10 @@ public class Board {
 
 	public int getTotalLocations() {
 		return totalLocations;
+	}
+
+	public IRandomizer getRandomizer() {
+		return randomizer;
 	}
 
 }

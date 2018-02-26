@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.Before; 
 
 import Code.Board;
-import Code.BoardExtensionFromLocal;
+import Code.LocalFileExtension;
 import Code.Launcher;
 
 public class Method_TestTeamThatWonWhenAssassinRevealed {
@@ -16,7 +16,7 @@ public class Method_TestTeamThatWonWhenAssassinRevealed {
 	@Before
 	  public void setUp() {
 		launcher = new Launcher();
-		board = launcher.StartTheGame("Blue", "Red", new BoardExtensionFromLocal());
+		board = launcher.StartTheGame("Blue", "Red");
 	}
 		
 	@Test

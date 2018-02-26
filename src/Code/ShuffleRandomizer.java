@@ -22,7 +22,7 @@ public class ShuffleRandomizer implements IRandomizer{
 	
 	public List<String> retRandomCodenames(List<String> wordStrage){
 		
-		if (wordStrage.size() < board.getTotalLocations() || wordStrage == null) {
+		if (wordStrage == null || wordStrage.size() < board.getTotalLocations()) {
 			return null;
 		}
 		List<String> newList = null;
