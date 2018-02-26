@@ -1,13 +1,10 @@
 package Code;
 
-import java.awt.Frame;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.List;
-
-import javax.swing.JOptionPane;
 
 public class LocalFileExtension implements IExtension{
 	

@@ -1,7 +1,4 @@
 package main;
-
-import static org.junit.Assert.assertNull;
-
 import java.util.Arrays;
 import java.util.List;
 

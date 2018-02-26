@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.Before; 
 
 import Code.Board;
-import Code.LocalFileExtension;
 import Code.Launcher;
 
 public class Method_TestTeamThatWonWhenAssassinRevealed {
