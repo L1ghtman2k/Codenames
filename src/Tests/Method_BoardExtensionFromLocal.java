@@ -10,21 +10,21 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import Code.BoardExtensionFromLocal;
-import Code.Extension;
+import Code.IExtension;
 
 public class Method_BoardExtensionFromLocal {
 	@Rule
 	  public final ExpectedException exception = ExpectedException.none();
 	
-	Extension extension;
+	IExtension iExtension;
 	@Before
 	  public void setUp() {
-		extension = new BoardExtensionFromLocal();
+		iExtension = new BoardExtensionFromLocal();
 	} 
 	
 	@Test
 	public void ListIsEmpty_returnsNull() {
-		assertNull(extension.retAllCodenames("dsa"));
+		assertNull(iExtension.retAllCodenames("dsa"));
 	}
 
 }

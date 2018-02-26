@@ -8,6 +8,7 @@ import org.junit.Test;
 import Code.Board;
 import Code.BoardExtensionFromLocal;
 import Code.Launcher;
+import Code.ShuffleRandomizer;
 
 public class Method_isBoardInWinningState {
 	
@@ -16,7 +17,7 @@ public class Method_isBoardInWinningState {
 	@Before
 	  public void setUp() {
 		lounch = new Launcher();
-		board = lounch.StartTheGame("Blue", "Red", new BoardExtensionFromLocal());
+		board = lounch.StartTheGame("Blue", "Red", new BoardExtensionFromLocal(), new ShuffleRandomizer());
 	}
 	
 	@Test

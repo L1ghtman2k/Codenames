@@ -11,20 +11,20 @@ public class Launcher {
 		this.board = board;
 	}
 	
-	public Board StartTheGame(int n, int Reds, int Blues, int Assassins, String RedName, String BlueName, Extension extension) {
+	public Board StartTheGame(int n, int Reds, int Blues, int Assassins, String RedName, String BlueName, IExtension iExtension, IRandomizer randomizer) {
 		Location[][] grid = new Location[n][n];
 		for(int i = 0; i < n; i++) {
 			for(int j = 0; j < n; j++) {
 				grid[i][j] = new Location();
 			}
 		}
-		board = new Board(grid, Reds, Blues, Assassins, RedName, BlueName, extension);	
+		board = new Board(grid, Reds, Blues, Assassins, RedName, BlueName, iExtension, randomizer);	
 		return board;
 		
 	}	
 	
-	public Board StartTheGame(String RedName, String BlueName, Extension extension) {
-		board = StartTheGame(5, 9, 8, 1, RedName, BlueName, extension);	
+	public Board StartTheGame(String RedName, String BlueName, IExtension iExtension, IRandomizer randomizer) {
+		board = StartTheGame(5, 9, 8, 1, RedName, BlueName, iExtension, randomizer);	
 		return board;
 	}
 }

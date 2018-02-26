@@ -9,7 +9,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-public class BoardExtensionFromLocal implements Extension{
+public class BoardExtensionFromLocal implements IExtension{
 	
 	/**
 	 * This method returns List of String 

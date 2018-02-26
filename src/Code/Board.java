@@ -7,12 +7,13 @@ public class Board {
 	private Team Red;
 	private Team Blue;
 	private GameLogic gameLogic;
-	private Extension extension;
+	private IExtension extension;
+	private IRandomizer myrandomizer;
 	private int Reds, Blues, Assassins;
 	private final int totalLocations;
 
 
-	public Board(Location[][] grid, int Reds, int Blues, int Assassins, String RedName, String BlueName, Extension extension) {
+	public Board(Location[][] grid, int Reds, int Blues, int Assassins, String RedName, String BlueName, IExtension iExtension, IRandomizer myrandomizer) {
 		this.grid=grid;
 		this.Red = new Team(RedName);
 		this.Blue = new Team(BlueName);
@@ -21,37 +22,8 @@ public class Board {
 		this.Blues = Blues;
 		this.Assassins = Assassins;
 		this.extension = extension;
+		this.myrandomizer = myrandomizer;
 		totalLocations = grid.length * grid.length;
-	}
-
-
-
-
-	/**
-	 * This method returns appropriate amount of random words from ArrayList of String 
-	 * wordStorage and stores them in ArrayList of String
-	 * 
-	 * @param wordStrorage the ArrayList of String which will provide all words to a method
-	 * @return the ArrayList of string containing  random words
-	 */
-
-	public List<String> retRandomCodenames(List<String> wordStrage){
-		
-		if (wordStrage.size() < totalLocations || wordStrage == null) {
-			return null;
-		}
-		List<String> newList = null;
-		Collections.shuffle(wordStrage);
-		for (int i = 0; i < totalLocations; i++) {
-			newList.add(wordStrage.get(i));
-		}
-		return newList;
-	}
-
-
-	public List<Person> RandomizeRoles(){
-		//USE Collections.shuffle(); USE REDS BLUES ASSASSINS and grid.length*grid.length
-		return null;
 	}
 
 	/**
@@ -60,8 +32,8 @@ public class Board {
 	 */
 	public void LocationAssignerAndRedMove(String PATH) {
 
-		List<String> RandomCodenames = retRandomCodenames(extension.retAllCodenames(PATH));
-		List<Person> RandomRoles = RandomizeRoles();
+		List<String> RandomCodenames = myrandomizer.retRandomCodenames(extension.retAllCodenames(PATH));
+		List<Person> RandomRoles = myrandomizer.retRandomizeRoles();
 
 		for(int i = 0; i < grid.length; i++)
 		{
@@ -187,6 +159,10 @@ public class Board {
 
 	public Team getBlueTeam() {
 		return Blue;
+	}
+
+	public int getTotalLocations() {
+		return totalLocations;
 	}
 
 }

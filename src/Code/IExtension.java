@@ -2,7 +2,7 @@ package Code;
 
 import java.util.List;
 
-public interface Extension {
+public interface IExtension {
 
 	public List<String> retAllCodenames(String PATH);
 
