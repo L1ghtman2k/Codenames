@@ -11,7 +11,7 @@ import org.junit.Test;
 import Code.Board;
 import Code.Launcher;
 
-public class Method_retRandomCodenames {
+public class Class_ShuffleRandomizer_Method_retRandomCodenames {
 	
 	Launcher launcher;
 	Board board;

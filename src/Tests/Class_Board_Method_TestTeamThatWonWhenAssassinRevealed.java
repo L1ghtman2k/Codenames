@@ -8,7 +8,7 @@ import org.junit.Before;
 import Code.Board;
 import Code.Launcher;
 
-public class Method_TestTeamThatWonWhenAssassinRevealed {
+public class Class_Board_Method_TestTeamThatWonWhenAssassinRevealed {
 	Launcher launcher;
 	Board board;
 	

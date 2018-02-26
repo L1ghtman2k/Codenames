@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class HerTest {
+public class Class_ShuffleRandomizer_Method_retRandomizeRoles {
 
 	@Test
 	public void test() {

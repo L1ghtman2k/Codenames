@@ -6,7 +6,7 @@ import org.junit.Test;
 import Code.Board;
 import Code.Launcher;
 
-public class Method_isBoardInWinningState {
+public class Class_Board_Method_isBoardInWinningState {
 	
 	Launcher lounch;
 	Board board;
