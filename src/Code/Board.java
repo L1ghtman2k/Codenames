@@ -10,6 +10,7 @@ public class Board {
 	private GameLogic gameLogic;
 	private Extension extension;
 	private int Reds, Blues, Assassins;
+	private final int totalLocations;
 
 
 	public Board(Location[][] grid, int Reds, int Blues, int Assassins, String RedName, String BlueName, Extension extension) {
@@ -21,11 +22,12 @@ public class Board {
 		this.Blues = Blues;
 		this.Assassins = Assassins;
 		this.extension = extension;
+		totalLocations = grid.length * grid.length;
 	}
 
 
-	
-	
+
+
 	/**
 	 * This method returns appropriate amount of random words from ArrayList of String 
 	 * wordStorage and stores them in ArrayList of String
@@ -33,31 +35,36 @@ public class Board {
 	 * @param wordStrorage the ArrayList of String which will provide all words to a method
 	 * @return the ArrayList of string containing  random words
 	 */
-	
+
 	public List<String> retRandomCodenames(List<String> wordStrorage){
-		
-		Random r = new Random();
-		r.nextInt(wordStrorage.size());
-		List<String> newList = wordStrorage;
-		// USE Collections.shuffle(); grid.length * grid.length
+		List<String> newList = null;
+		if (wordStrorage.size() < totalLocations || wordStrorage == null) {
+			return newList;
+		}
+
+		Collections.shuffle(wordStrorage);
+		for (int i = 0; i < totalLocations; i++) {
+			newList.add(wordStrorage.get(i));
+		}
+
 		return newList;
 	}
 
-	
+
 	public List<Person> RandomizeRoles(){
 		//USE Collections.shuffle(); USE REDS BLUES ASSASSINS and grid.length*grid.length
 		return null;
 	}
-	
+
 	/**
 	 * This methods assigns Codenames and Roles to Locations, and sets them as Not Revealed.
 	 * After that it let's Red Team to move.
 	 */
 	public void LocationAssignerAndRedMove(String PATH) {
-		
+
 		List<String> RandomCodenames = retRandomCodenames(extension.retAllCodenames(PATH));
 		List<Person> RandomRoles = RandomizeRoles();
-		
+
 		for(int i = 0; i < grid.length; i++)
 		{
 			for(int j = 0; j < grid.length; j++)
@@ -67,11 +74,11 @@ public class Board {
 				grid[i][j].setRevealed(false);
 			}
 		}
-		
+
 		gameLogic.RedSpyMasterMove();
 	}
 
-	
+
 	/**
 	 * This method checks weather or not the clue is legal or illegal
 	 * @param clue String that will be checked 
@@ -104,12 +111,12 @@ public class Board {
 	 * @return true if Location contained Team's agent, false otherwise
 	 */
 	public boolean LocationStatusUpdater(String codename, Team team) {
-	
+
 		for(int i = 0; i < grid.length; i++)
 		{
 			for(int j = 0; j < grid.length; j++) {
 				if(grid[i][j].getCodename().equals(codename)) {				
-					
+
 					if(grid[i][j].getPerson().getRole().equals(team.getAgents())) {
 						team.decrementCount();
 						grid[i][j].setRevealed(true);
@@ -173,15 +180,15 @@ public class Board {
 		return grid;	
 	}
 	public void setGrid(Location[][] grid) {
-			this.grid = grid;
+		this.grid = grid;
 	}
-	
+
 	public Team getRedTeam() {
 		return Red;
 	}
-	
+
 	public Team getBlueTeam() {
 		return Blue;
 	}
-	
+
 }
