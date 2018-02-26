@@ -1,5 +1,4 @@
 package Code;
-import java.util.Collections;
 import java.util.List;
 
 public class Board {
@@ -13,7 +12,7 @@ public class Board {
 	private final int totalLocations;
 
 
-	public Board(Location[][] grid, int Reds, int Blues, int Assassins, String RedName, String BlueName, IExtension iExtension, IRandomizer myrandomizer) {
+	public Board(Location[][] grid, int Reds, int Blues, int Assassins, String RedName, String BlueName) {
 		this.grid=grid;
 		this.Red = new Team(RedName);
 		this.Blue = new Team(BlueName);
@@ -21,8 +20,7 @@ public class Board {
 		this.Reds = Reds;
 		this.Blues = Blues;
 		this.Assassins = Assassins;
-		this.extension = extension;
-		this.randomizer = myrandomizer;
+
 		totalLocations = grid.length * grid.length;
 	}
 
@@ -168,5 +166,15 @@ public class Board {
 	public IRandomizer getRandomizer() {
 		return randomizer;
 	}
-
+	public void setRandomizer(IRandomizer randomizer) {
+		this.randomizer = randomizer;
+	}
+	
+	public IExtension getExtension() {
+		return extension;
+	}
+	public void setExtension(IExtension extension) {
+		this.extension = extension;
+	}
+	
 }

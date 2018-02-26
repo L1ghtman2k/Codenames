@@ -4,13 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class ShuffleRandomizer implements IRandomizer{
-	
-	
-	
 	Board board;
-	public ShuffleRandomizer(Board board) {
-		this.board = board;
-	}
 	
 	/**
 	 * This method returns appropriate amount of random words from ArrayList of String 
@@ -19,10 +13,14 @@ public class ShuffleRandomizer implements IRandomizer{
 	 * @param wordStrorage the ArrayList of String which will provide all words to a method
 	 * @return the ArrayList of string containing  random words
 	 */
-	
+	public ShuffleRandomizer(Board board) {
+		this.board = board;
+	}
 	public List<String> retRandomCodenames(List<String> wordStrage){
-		
-		if (wordStrage == null || wordStrage.size() < board.getTotalLocations()) {
+		System.out.println(board.getTotalLocations());
+		if (wordStrage == null || 
+				wordStrage.size() < 
+					board.getTotalLocations()) {
 			return null;
 		}
 		List<String> newList = null;

@@ -18,7 +18,9 @@ public class Launcher {
 				grid[i][j] = new Location();
 			}
 		}
-		board = new Board(grid, Reds, Blues, Assassins, RedName, BlueName, new LocalFileExtension(), new ShuffleRandomizer(board));	
+		board = new Board(grid, Reds, Blues, Assassins, RedName, BlueName);	
+		board.setExtension(new LocalFileExtension());
+		board.setRandomizer(new ShuffleRandomizer(board));
 		return board;
 		
 	}	
