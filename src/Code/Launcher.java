@@ -22,6 +22,7 @@ public class Launcher {
 		return board;
 		
 	}	
+	
 	public Board StartTheGame(String RedName, String BlueName, Extension extension) {
 		board = StartTheGame(5, 9, 8, 1, RedName, BlueName, extension);	
 		return board;

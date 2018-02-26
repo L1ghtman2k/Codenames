@@ -3,7 +3,7 @@ package Tests;
 import org.junit.Test;
 
 import Code.Board;
-import Code.BoardExtension;
+import Code.BoardExtensionFromLocal;
 import Code.Location;
 
 public class KarTest {
@@ -17,7 +17,7 @@ public class KarTest {
 		int Assasins = 1;
 		String redName = "Red";
 		String blueName = "Blue";
-		Board boardTest = new Board(grid, Reds, Blues, Assasins, redName, blueName, new BoardExtension());
+		Board boardTest = new Board(grid, Reds, Blues, Assasins, redName, blueName, new BoardExtensionFromLocal());
 		
 //		assertNotNull(boardTest.retRandomCodenames(wordStrorage))
 		

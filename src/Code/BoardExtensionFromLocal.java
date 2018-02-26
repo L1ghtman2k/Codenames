@@ -6,7 +6,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.List;
 
-public class BoardExtension implements Extension{
+public class BoardExtensionFromLocal implements Extension{
 	
 	/**
 	 * This method returns List of String 
