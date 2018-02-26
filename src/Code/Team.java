@@ -4,11 +4,11 @@ public class Team {
 	private String TeamName;
 	private int count;
 	private boolean RevealedAssassin;
-	private Roles agents;
+	private Roles agents = Roles.Red;
 	
-	public Team(String TeamName, Roles agents) {
+	public Team(String TeamName) {
 		this.setTeamName(TeamName);
-		this.setAgents(agents);
+		RevealedAssassin = false;
 	}
 	
 	public void decrementCount() {

@@ -14,8 +14,8 @@ public class Board {
 
 	public Board(Location[][] grid, int Reds, int Blues, int Assassins, String RedName, String BlueName, Extension extension) {
 		this.grid=grid;
-		this.Red = new Team(RedName, Roles.Red);
-		this.Blue = new Team(BlueName, Roles.Blue);
+		this.Red = new Team(RedName);
+		this.Blue = new Team(BlueName);
 		this.gameLogic = new GameLogic(Red, Blue, this);
 		this.Reds = Reds;
 		this.Blues = Blues;
@@ -172,4 +172,16 @@ public class Board {
 	public Location[][] getGrid() {
 		return grid;	
 	}
+	public void setGrid(Location[][] grid) {
+			this.grid = grid;
+	}
+	
+	public Team getRedTeam() {
+		return Red;
+	}
+	
+	public Team getBlueTeam() {
+		return Blue;
+	}
+	
 }
