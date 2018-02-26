@@ -1,7 +1,6 @@
 package Code;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class Board {
 	private Location[][] grid;
@@ -36,17 +35,16 @@ public class Board {
 	 * @return the ArrayList of string containing  random words
 	 */
 
-	public List<String> retRandomCodenames(List<String> wordStrorage){
+	public List<String> retRandomCodenames(List<String> wordStrage){
+		
+		if (wordStrage.size() < totalLocations || wordStrage == null) {
+			return null;
+		}
 		List<String> newList = null;
-		if (wordStrorage.size() < totalLocations || wordStrorage == null) {
-			return newList;
-		}
-
-		Collections.shuffle(wordStrorage);
+		Collections.shuffle(wordStrage);
 		for (int i = 0; i < totalLocations; i++) {
-			newList.add(wordStrorage.get(i));
+			newList.add(wordStrage.get(i));
 		}
-
 		return newList;
 	}
 

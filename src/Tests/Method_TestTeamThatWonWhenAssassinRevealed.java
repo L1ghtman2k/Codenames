@@ -10,12 +10,13 @@ import Code.BoardExtensionFromLocal;
 import Code.Launcher;
 
 public class Method_TestTeamThatWonWhenAssassinRevealed {
-	Launcher lounch;
+	Launcher launcher;
 	Board board;
+	
 	@Before
 	  public void setUp() {
-		lounch = new Launcher();
-		board = lounch.StartTheGame("Blue", "Red", new BoardExtensionFromLocal());
+		launcher = new Launcher();
+		board = launcher.StartTheGame("Blue", "Red", new BoardExtensionFromLocal());
 	}
 		
 	@Test
@@ -26,7 +27,6 @@ public class Method_TestTeamThatWonWhenAssassinRevealed {
 	
 	@Test
 	public void RedTeamRevealedAssassin_returnBlue() {
-		
 		board.getRedTeam().setRevealedAssassin(true);
 		assertEquals(board.TeamThatWonWhenAssassinRevealed(), board.getBlueTeam());
 	}

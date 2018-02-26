@@ -8,7 +8,6 @@ import org.junit.Test;
 import Code.Board;
 import Code.BoardExtensionFromLocal;
 import Code.Launcher;
-import Code.Location;
 
 public class Method_isBoardInWinningState {
 	
