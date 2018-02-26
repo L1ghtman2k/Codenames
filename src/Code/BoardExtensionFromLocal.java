@@ -1,10 +1,13 @@
 package Code;
 
+import java.awt.Frame;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 public class BoardExtensionFromLocal implements Extension{
 	
@@ -21,8 +24,9 @@ public class BoardExtensionFromLocal implements Extension{
 			list = Files.readAllLines(new File(filename).toPath(), 
 					Charset.defaultCharset() );
 		} catch (IOException e) {
-			e.printStackTrace();
+//			JOptionPane.showMessageDialog(new Frame(), "Wrong file selected, please try again");
+			return null;
 		}
-		return  list;
+		return list;
 	}
 }
