@@ -36,12 +36,11 @@ public class Board {
 		{
 			for(int j = 0; j < grid.length; j++)
 			{
-				grid[i][j].setCodename(RandomCodenames.get(i+j*grid.length));
-				grid[i][j].setPerson(RandomRoles.get(i+j*grid.length));
+				grid[i][j].setCodename(RandomCodenames.get(i*grid.length+j));
+				grid[i][j].setPerson(RandomRoles.get(i*grid.length+j));
 				grid[i][j].setRevealed(false);
 			}
 		}
-
 		gameLogic.RedSpyMasterMove();
 	}
 
@@ -58,7 +57,7 @@ public class Board {
 		for(int i = 0; i < grid.length; i++)
 		{
 			for(int j = 0; j < grid.length; j++) {
-				if(grid[i][j].getCodename().equals(clue)) {
+				if(grid[i][j].getCodename().toLowerCase().equals(clue.toLowerCase())) {
 					if(grid[i][j].isRevealed()==true) {
 						return true;
 					}
@@ -89,6 +88,7 @@ public class Board {
 						grid[i][j].setRevealed(true);
 						return true;
 					}
+					
 					grid[i][j].setRevealed(true);
 					return false;
 				}

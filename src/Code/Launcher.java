@@ -3,13 +3,7 @@ package Code;
 public class Launcher {
 	private Board board;
 
-	public Board getBoard() {
-		return board;
-	}
-
-	public void setBoard(Board board) {
-		this.board = board;
-	}
+	
 	
 	/**
 	 * This method returns Costume version of Board that contains n x n grid, with selected amount of Reds
@@ -47,5 +41,13 @@ public class Launcher {
 	public Board StartTheGame(String RedName, String BlueName) {
 		board = StartTheGame(5, 9, 8, 1, RedName, BlueName);	
 		return board;
+	}
+	
+	public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
 	}
 }
