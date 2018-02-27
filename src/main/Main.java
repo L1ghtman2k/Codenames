@@ -11,8 +11,8 @@ public class Main {
 		
 		Launcher launcher = new Launcher();
 		Board board = launcher.StartTheGame("Blue", "Red");
-		List<String> mylist = Arrays.asList("A1", "Buffalo", "Knuckles");
-		List<String> assertedList = board.getRandomizer().retRandomCodenames(mylist);
-		System.out.println(assertedList);
-	}
+		List<String> newList = board.getRandomizer().retRandomCodenames
+				(board.getExtension().retAllCodenames("src/GameWords1.txt"));
+		System.out.println(newList);
+		}
 }

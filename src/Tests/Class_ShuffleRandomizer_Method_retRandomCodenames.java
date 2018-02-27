@@ -14,6 +14,7 @@ import org.junit.Test;
 import Code.Board;
 import Code.Launcher;
 import Code.LocalFileExtension;
+import Code.ShuffleRandomizer;
 
 public class Class_ShuffleRandomizer_Method_retRandomCodenames {
 	
@@ -34,11 +35,11 @@ public class Class_ShuffleRandomizer_Method_retRandomCodenames {
 	}
 	
 	@Test
-	public void WordStorageIsMoreThanTotalLocations_returnListOfString() {
-		LocalFileExtension lf = new LocalFileExtension();
-		List<String> newList = lf.retAllCodenames("src//GameWords1.txt");
+	public void ProperWordStorage_returnListOfString() {
+		
+		List<String> newList = board.getRandomizer().retRandomCodenames(board.getExtension().retAllCodenames("src/GameWords1.txt"));
 		assertNotNull(newList);
-		assertTrue(newList.size() > 25);
+		assertTrue(newList.size() == 25);
 		
 	}
 	

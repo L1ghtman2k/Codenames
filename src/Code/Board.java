@@ -9,7 +9,7 @@ public class Board {
 	private IExtension extension;
 	private IRandomizer randomizer;
 	private int Reds, Blues, Assassins;
-	private final int totalLocations;
+	private int totalLocations;
 
 
 	public Board(Location[][] grid, int Reds, int Blues, int Assassins, String RedName, String BlueName) {

@@ -1,5 +1,6 @@
 package Code;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,13 +20,10 @@ public class ShuffleRandomizer implements IRandomizer{
 		this.board = board;
 	}
 	public List<String> retRandomCodenames(List<String> wordStrage){
-		System.out.println(board.getTotalLocations());
-		if (wordStrage == null || 
-				wordStrage.size() < 
-					board.getTotalLocations()) {
+		if (wordStrage == null || wordStrage.size() < 	board.getTotalLocations()) {
 			return null;
 		}
-		List<String> newList = null;
+		List<String> newList = new ArrayList<String>();
 		Collections.shuffle(wordStrage);
 		for (int i = 0; i < board.getTotalLocations(); i++) {
 			newList.add(wordStrage.get(i));
@@ -36,7 +34,7 @@ public class ShuffleRandomizer implements IRandomizer{
 
 	public List<Person> retRandomizeRoles(){
 		//USE Collections.shuffle(); USE REDS BLUES ASSASSINS and grid.length*grid.length
-		List<Person> rolesList=null;
+		List<Person> rolesList = new ArrayList<Person>();
 		int l=board.getGrid().length;
 		int reds=board.getRedTeam().getCount();
 		int blues=board.getBlueTeam().getCount();
