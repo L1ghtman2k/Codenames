@@ -176,4 +176,8 @@ public class Board {
 		this.extension = extension;
 	}
 	
+	public int getAssassins() {
+		return Assassins;
+	}
+	
 }
