@@ -20,7 +20,6 @@ public class Board {
 		this.Reds = Reds;
 		this.Blues = Blues;
 		this.Assassins = Assassins;
-
 		totalLocations = grid.length * grid.length;
 	}
 

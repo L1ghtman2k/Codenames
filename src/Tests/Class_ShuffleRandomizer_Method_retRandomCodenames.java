@@ -14,7 +14,6 @@ import org.junit.Test;
 import Code.Board;
 import Code.Launcher;
 import Code.LocalFileExtension;
-import Code.ShuffleRandomizer;
 
 public class Class_ShuffleRandomizer_Method_retRandomCodenames {
 	
