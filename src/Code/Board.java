@@ -180,4 +180,8 @@ public class Board {
 		return Assassins;
 	}
 	
+	public int getBystanders() {
+		return (getGrid().length*getGrid().length)-(Reds+Blues+Assassins);
+	}
+	
 }

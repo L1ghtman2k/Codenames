@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.management.relation.Role;
 
 public class ShuffleRandomizer implements IRandomizer{
 	Board board;
@@ -40,6 +39,7 @@ public class ShuffleRandomizer implements IRandomizer{
 		int blues=board.getBlueTeam().getCount();
 		int assassins=board.getAssassins();
 		int bystanders=l*l-(reds+blues+assassins);
+		if(l*l>=(reds+blues+assassins)) {
 		for(int i=0;i<reds;i++) {	
 			Person b=new Person(Roles.Red);
 			rolesList.add(b);
@@ -55,7 +55,7 @@ public class ShuffleRandomizer implements IRandomizer{
 		for(int i=0;i<bystanders;i++) {
 			Person b=new Person(Roles.Bystander);
 			rolesList.add(b);
-		}
+		}}
 		Collections.shuffle(rolesList);
 		return rolesList;
 	}
