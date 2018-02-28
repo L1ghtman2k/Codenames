@@ -32,14 +32,15 @@ public class ShuffleRandomizer implements IRandomizer{
 
 
 	public List<Person> retRandomizeRoles(){
-		//USE Collections.shuffle(); USE REDS BLUES ASSASSINS and grid.length*grid.length
+		
 		List<Person> rolesList = new ArrayList<Person>();
-		int l=board.getGrid().length;
+		int GridLength=board.getGrid().length;
 		int reds=board.getRedTeam().getCount();
 		int blues=board.getBlueTeam().getCount();
 		int assassins=board.getAssassins();
-		int bystanders=l*l-(reds+blues+assassins);
-		if(l*l>=(reds+blues+assassins)) {
+		
+		int bystanders=GridLength*GridLength-(reds+blues+assassins);
+		if(GridLength*GridLength>=(reds+blues+assassins)) {
 		for(int i=0;i<reds;i++) {	
 			Person b=new Person(Roles.Red);
 			rolesList.add(b);

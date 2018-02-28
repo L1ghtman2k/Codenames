@@ -18,6 +18,10 @@ public class Launcher {
 	 * @return Returns a customized board
 	 */
 	public Board StartTheGame(int n, int Reds, int Blues, int Assassins, String RedName, String BlueName) {
+		if(n <= 0 ) {
+			return null;
+		}
+		
 		Location[][] grid = new Location[n][n];
 		for(int i = 0; i < n; i++) {
 			for(int j = 0; j < n; j++) {
