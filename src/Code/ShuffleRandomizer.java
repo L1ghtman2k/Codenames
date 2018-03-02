@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ShuffleRandomizer implements IRandomizer{
 	Board board;
-	
+
 	/**
 	 * This method returns appropriate amount of random words from ArrayList of String 
 	 * wordStorage and stores them in ArrayList of String
@@ -32,15 +32,12 @@ public class ShuffleRandomizer implements IRandomizer{
 
 
 	public List<Person> retRandomizeRoles(){
-		
 		List<Person> rolesList = new ArrayList<Person>();
-		int GridLength=board.getGrid().length;
-		int reds=board.getRedTeam().getCount();
-		int blues=board.getBlueTeam().getCount();
+		int reds=board.getRedsCount();
+		int blues=board.getBluesCount();
 		int assassins=board.getAssassins();
+		int bystanders=board.getBystanders();		
 		
-		int bystanders=GridLength*GridLength-(reds+blues+assassins);
-		if(GridLength*GridLength>=(reds+blues+assassins)) {
 		for(int i=0;i<reds;i++) {	
 			Person b=new Person(Roles.Red);
 			rolesList.add(b);
@@ -56,8 +53,9 @@ public class ShuffleRandomizer implements IRandomizer{
 		for(int i=0;i<bystanders;i++) {
 			Person b=new Person(Roles.Bystander);
 			rolesList.add(b);
-		}}
+		}
 		Collections.shuffle(rolesList);
 		return rolesList;
+
 	}
 }

@@ -1,4 +1,4 @@
-11package Code;
+package Code;
 
 public class Launcher {
 	private Board board;

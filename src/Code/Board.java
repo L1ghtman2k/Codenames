@@ -106,17 +106,15 @@ public class Board {
 
 		for(int i = 0; i < grid.length; i++)
 		{
-			for(int j = 0; j < grid.length; j++) {
-
-				if(grid[i][j].isRevealed() && grid[i][j].getPerson().getRole().equals(Roles.Assassin)) {
+			for(int j = 0; j < grid.length; j++) {	
+				if(grid[i][j].isRevealed() && grid[i][j].getPerson().getRole().equals(Roles.Assassin)) 
 					return true;
-				}
-				if(grid[i][j].isRevealed() && grid[i][j].getPerson().getRole().equals(Roles.Blue)) {
+				
+				if(grid[i][j].isRevealed() && grid[i][j].getPerson().getRole().equals(Roles.Blue)) 
 					bluesum++;
-				}
-				if(grid[i][j].isRevealed() && grid[i][j].getPerson().getRole().equals(Roles.Red)) {
+				
+				if(grid[i][j].isRevealed() && grid[i][j].getPerson().getRole().equals(Roles.Red)) 
 					redsum++;
-				}
 			}
 		}
 		if(bluesum == Blues || redsum == Reds)
@@ -177,6 +175,18 @@ public class Board {
 	}
 	
 	public int getAssassins() {
+		return Assassins;
+	}
+	
+	public int getRedsCount() {
+		return Reds;
+	}
+	
+	public int getBluesCount() {
+		return Blues;
+	}
+	
+	public int getAssassinsCount() {
 		return Assassins;
 	}
 	
