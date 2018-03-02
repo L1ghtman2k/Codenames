@@ -1,5 +1,7 @@
 package Tests;
 
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,6 +20,16 @@ public class Class_Board_Method_isBoardInWinningState {
 	
 	@Test
 	public void TeamBlueRevealedAllAgents_returnsTrue() {
+		board.getBlueTeam().getCount();
+		assertTrue(board.isBoardInWinningState());
 		
 	}
+	@Test
+	public void TeamRedRevealedAllAgents_returnsTrue() {
+		board.getRedTeam().getCount();
+		assertTrue(board.isBoardInWinningState());
+		
+	}
+
+	
 }

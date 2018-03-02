@@ -1,9 +1,15 @@
-package Code;
+11package Code;
 
 public class Launcher {
 	private Board board;
 
-	
+	public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
+	}
 	
 	/**
 	 * This method returns Costume version of Board that contains n x n grid, with selected amount of Reds
@@ -18,10 +24,6 @@ public class Launcher {
 	 * @return Returns a customized board
 	 */
 	public Board StartTheGame(int n, int Reds, int Blues, int Assassins, String RedName, String BlueName) {
-		if(n <= 0 ) {
-			return null;
-		}
-		
 		Location[][] grid = new Location[n][n];
 		for(int i = 0; i < n; i++) {
 			for(int j = 0; j < n; j++) {
@@ -45,13 +47,5 @@ public class Launcher {
 	public Board StartTheGame(String RedName, String BlueName) {
 		board = StartTheGame(5, 9, 8, 1, RedName, BlueName);	
 		return board;
-	}
-	
-	public Board getBoard() {
-		return board;
-	}
-
-	public void setBoard(Board board) {
-		this.board = board;
 	}
 }
