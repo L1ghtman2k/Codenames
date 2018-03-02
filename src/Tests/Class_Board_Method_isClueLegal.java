@@ -22,16 +22,35 @@ public class Class_Board_Method_isClueLegal {
 	
 	
 	@Test
-	public void ClueLegal_returnsTrue(){
+	public void ClueIsLegal_returnsTrue(){
 		String clue = "SDAdsajfsadiopfjapsodi";
 		assertTrue(board.isClueLegal(clue));
 	}
 	
 	
 	@Test
-	public void ClueIllegal_returnsFalse(){
+	public void ClueIsCodename_returnsFalse(){
 		String clue = grid[0][0].getCodename();
 		assertFalse(board.isClueLegal(clue));
 	}
+	
+	@Test
+	public void ClueIsWhiteSpaceString_returnsFalse(){
+		String clue = "                       ";
+		assertFalse(board.isClueLegal(clue));
+	}
+	
+	@Test
+	public void ClueIsEmptyString_returnsFalse(){
+		String clue = "";
+		assertFalse(board.isClueLegal(clue));
+	}
+
+	@Test
+	public void ClueisNull_returnsFalse(){
+		String clue = null;
+		assertFalse(board.isClueLegal(clue));
+	}
+
 
 }

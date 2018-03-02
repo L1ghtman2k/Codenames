@@ -51,7 +51,7 @@ public class Board {
 	 * @return true if clue is not equal Codename unless it is revealed, false otherwise
 	 */
 	public boolean isClueLegal(String clue){
-		if(clue.isEmpty() || clue==null ) {
+		if(clue==null || clue.isEmpty() || clue.trim().length() == 0) {
 			return false;
 		}
 		for(int i = 0; i < grid.length; i++)

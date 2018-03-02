@@ -40,6 +40,11 @@ public class Class_Launcher_Method_StartTheGame {
 		assertEquals(board.getBlueTeam().getTeamName(), "Knuckles");
 	}
 	
+	/**
+	 * This method Counts how many locations in grid are null
+	 * @param grid is an object which contains elements to be counterr
+	 * @return amount of nulls in grid
+	 */
 	public int LocationCounter(Location [][] grid){
 		int LocationNullCounter = 0;
 		for(int i = 0; i < grid.length; i++) {
