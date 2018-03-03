@@ -98,7 +98,8 @@ public class Board {
 	}
 
 	/**
-	 * This method returns whether or not one of the teams is at winning state
+	 * This method returns true if all of the team's members are revealed, or if at least one assassin is revealed.
+	 * Returns False otherwise
 	 * @return true if one of the teams won, false otherwise
 	 */
 	public boolean isBoardInWinningState() {
