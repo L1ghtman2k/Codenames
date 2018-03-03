@@ -1,0 +1,42 @@
+Meeting Minutes for _add meeting date 2/20/2018:
+
+Meeting Attendance: (list all students who were present) [1 minute]
+	Put an 'M' next to the name of the student taking minutes
+Aibek Zhylkaidarov M.
+Kartik Rayavarapu
+Hrishikesh Kautik Ahire
+Shengheng
+Cole
+
+	
+Tasks completed since last meeting [1-2 minutes]
+	Kar. 
+	ShuffleRandomizer(retRandomCodenames)
+	-JUnits 
+	Board(LocationAssignerAndRedMove)
+	-Junits 
+Har.	
+	ShuffleRandomizer(RandomizeRoles)
+	-JUnits 
+	-JavaDocs
+	Board(LocationStatusUpdater)
+	-JUnits
+	-JavaDocs(Check)
+Aib.
+	Help and check everyone's work
+		
+Col.
+	JavaDocs and tests.txt
+Shen
+	Board(isBoardInWinningState)
+	Board(isClueLegal)
+	
+
+Tasks worked upon but not completed since last meeting [2-4 minutes]
+	None.
+
+Goals for the next meeting [20+ minutes]
+	Prepare to defend the project
+
+Schedule for the next week's set of pair programming meetings [3-4 minutes]
+	Wait for Phase 2 instructions
