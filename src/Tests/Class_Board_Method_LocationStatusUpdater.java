@@ -25,7 +25,7 @@ public class Class_Board_Method_LocationStatusUpdater {
 	@Test
 	public void CodeNameMatchesTeamMember_DecrementsTheCountSetsRevealedTrueReturnsTrue() {
 		board.LocationAssignerAndRedMove("src/GameWords1.txt");	
-		
+
 		for(int i = 0; i < grid.length; i++)
 			for(int j = 0; j < grid.length; j++) {
 				if(grid[i][j].getPerson().getRole() == board.getRedTeam().getAgents())
@@ -38,8 +38,25 @@ public class Class_Board_Method_LocationStatusUpdater {
 				}
 				if(grid[i][j].getPerson().getRole() == board.getBlueTeam().getAgents())
 				{
+					int a=board.getBlueTeam().getCount();
 					assertTrue(board.LocationStatusUpdater(grid[i][j].getCodename(), board.getBlueTeam()));
-					
+					int b=board.getBlueTeam().getCount();
+					assertEquals(a-1,b);
+					assertTrue(grid[i][j].isRevealed());
+				}
+			}
+	}
+
+	@Test
+	public void CodeNameDoesNotMatchTeamMember_DoesNotDecrementTheCountSetsRevealedTrueReturnsFalse() {
+		board.LocationAssignerAndRedMove("src/GameWords1.txt");	
+
+		for(int i = 0; i < grid.length; i++)
+			for(int j = 0; j < grid.length; j++) {
+				if(grid[i][j].getPerson().getRole() != board.getRedTeam().getAgents())
+				{		
+					assertFalse(board.LocationStatusUpdater(grid[i][j].getCodename(), board.getRedTeam()));	
+					assertTrue(grid[i][j].isRevealed());
 				}
 			}
 	}
