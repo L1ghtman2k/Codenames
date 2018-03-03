@@ -9,7 +9,7 @@ public class Team {
 	private int count;
 	private boolean RevealedAssassin;
 	private Roles agents = Roles.Red;
-	
+	 
 	public Team(String TeamName) {
 		this.setTeamName(TeamName);
 		RevealedAssassin = false;
