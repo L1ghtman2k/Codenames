@@ -53,7 +53,7 @@ public class Class_ShuffleRandomizer_Method_retRandomCodenames {
 		assertNotNull(list);
 		assertEquals(list.size(), 49);
 	}
-
+ 
 	@Test
 	public void CompareTwoDifferentBoards_returnDifferentBoards() {
 		Launcher launcher1 = new Launcher();
