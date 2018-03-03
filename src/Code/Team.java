@@ -43,7 +43,7 @@ public class Team {
 		return TeamName;
 	}
 	/**
-	 * Set's the team's name.
+	 * Sets the team's name.
 	 * @param teamName - String to become the team's name.
 	 */
 	public void setTeamName(String teamName) {

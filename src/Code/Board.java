@@ -49,8 +49,8 @@ public class Board {
 
 	/**
 	 * This method checks whether or not the clue is legal.
-	 * @param clue - String that will be checked 
-	 * @return true if clue is not equal to Codename unless it is revealed, false otherwise
+	 * @param clue - String that will be checked .
+	 * @return true if clue is not equal to Codename unless it is revealed, false otherwise.
 	 */
 	public boolean isClueLegal(String clue){
 		if(clue==null || clue.isEmpty() || clue.trim().length() == 0) {
@@ -73,9 +73,9 @@ public class Board {
 	/**
 	 * This method decrements the count of guesses, updates whether the location is revealed or not,
 	 * and returns if the Location contained the team's agent.
-	 * @param codename - string that reveals content of Location, if associated
-	 * @param team - team that chose the codename
-	 * @return true if Location contained Team's agent, false otherwise
+	 * @param codename - string that reveals content of Location, if associated.
+	 * @param team - team that chose the codename.
+	 * @return true if Location contained Team's agent, false otherwise.
 	 */
 	public boolean LocationStatusUpdater(String codename, Team team) {
 
@@ -100,8 +100,8 @@ public class Board {
 
 	/**
 	 * This method returns true if all of the team's members are revealed, or if at least one assassin is revealed.
-	 * Returns false otherwise
-	 * @return true if one of the teams won, false otherwise
+	 * Returns false otherwise.
+	 * @return true if one of the teams won, false otherwise.
 	 */
 	public boolean isBoardInWinningState() {
 		int bluesum =0, redsum=0;
@@ -125,7 +125,7 @@ public class Board {
 	}
 
 	/**
-	 * This method returns a team that won when assassin was revealed
+	 * This method returns a team that won when assassin was revealed.
 	 * @return A team that did not select the assassin.
 	 */
 	public Team TeamThatWonWhenAssassinRevealed() {
@@ -141,91 +141,91 @@ public class Board {
 
 	/**
 	 * Returns the location grid.
-	 * @return Location[][] grid
+	 * @return Location[][] grid.
 	 */
 	public Location[][] getGrid() {
 		return grid;	
 	}
 	/**
 	 * Sets the location grid.
-	 * @param grid - Location grid
+	 * @param grid - Location grid.
 	 */
 	public void setGrid(Location[][] grid) {
 		this.grid = grid;
 	}
 	/**
 	 * Returns the red team.
-	 * @return Team Red
+	 * @return Team Red.
 	 */
 	public Team getRedTeam() {
 		return Red;
 	}
 	/**
 	 * Returns the blue team.
-	 * @return Team Blue
+	 * @return Team Blue.
 	 */
 	public Team getBlueTeam() {
 		return Blue;
 	}
 	/**
 	 * Returns the amount of locations (size of grid).
-	 * @return total number of Locations
+	 * @return total number of Locations.
 	 */
 	public int getTotalLocations() {
 		return totalLocations;
 	}
 	/**
 	 * Returns the randomizer.
-	 * @return IRandomizer randomizer
+	 * @return IRandomizer randomizer.
 	 */
 	public IRandomizer getRandomizer() {
 		return randomizer;
 	}
 	/**
 	 * Sets the classes randomizer.
-	 * @param randomizer - IRandomizer
+	 * @param randomizer - IRandomizer.
 	 */
 	public void setRandomizer(IRandomizer randomizer) {
 		this.randomizer = randomizer;
 	}
 	/**
 	 * Returns the extension.
-	 * @return IExtension extension
+	 * @return IExtension extension.
 	 */
 	public IExtension getExtension() {
 		return extension;
 	}
 	/**
 	 * Sets the classes extension.
-	 * @param extension - IExtension
+	 * @param extension - IExtension.
 	 */
 	public void setExtension(IExtension extension) {
 		this.extension = extension;
 	}
 	/**
 	 * Returns the number of assassins.
-	 * @return number of Assassins
+	 * @return number of Assassins.
 	 */
 	public int getAssassins() {
 		return Assassins;
 	}
 	/**
 	 * Returns the number of Red Team members.
-	 * @return number of Reds
+	 * @return number of Reds.
 	 */
 	public int getRedsCount() {
 		return Reds;
 	}
 	/**
 	 * Returns the number of Blue Team members.
-	 * @return number of Blues
+	 * @return number of Blues.
 	 */
 	public int getBluesCount() {
 		return Blues;
 	}
 	/**
 	 * Returns the number of bystanders.
-	 * @return number of bystanders
+	 * @return number of bystanders.
 	 */
 	public int getBystanders() {
 		return (getGrid().length*getGrid().length)-(Reds+Blues+Assassins);

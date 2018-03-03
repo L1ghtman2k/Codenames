@@ -9,7 +9,10 @@ import java.util.List;
 public class ShuffleRandomizer implements IRandomizer{
 	Board board;
 
-	
+	/**
+	 * Instantiates the ShuffleRandomizer class.
+	 * @param board - current board being used.
+	 */
 	public ShuffleRandomizer(Board board) {
 		this.board = board;
 	}
@@ -17,8 +20,8 @@ public class ShuffleRandomizer implements IRandomizer{
 	 * This method returns appropriate amount of random words from ArrayList of String 
 	 * wordStorage and stores them in ArrayList of String
 	 * 
-	 * @param wordStorage the ArrayList of String which will provide all words to a method
-	 * @return the ArrayList of string containing  random words
+	 * @param wordStorage - List<String> which will provide all words to the method
+	 * @return the List of string containing random words
 	 */
 	public List<String> retRandomCodenames(List<String> wordStorage){
 		if (wordStorage == null || wordStorage.size() < 	board.getTotalLocations()) {
