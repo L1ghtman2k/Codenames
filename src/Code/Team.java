@@ -3,8 +3,7 @@ package Code;
 /**
  *The Team class is in charge of most of the players/cards, and
  *is able to control the count and agents
- **/
-
+ */
 public class Team {
 	private String TeamName;
 	private int count;

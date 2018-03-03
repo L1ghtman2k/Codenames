@@ -24,31 +24,6 @@ public class Class_ShuffleRandomizer_Method_retRandomizeRoles {
 	}
 	
 	@Test
-	public void CostumeGameStarted_returnListOf36Peson()  {
-		Launcher launcher = new Launcher(); 
-		Board board=launcher.StartTheGame(6, 15, 14, 1, "Greg", "Stony");
-		List<Person> ab=board.getRandomizer().retRandomizeRoles();
-		assertTrue(ab.size()==36);
-	}
-	
-	@Test
-	public void CostumeGameStarted7by7Grid0Assassins0Reds0BluesPassed_returnListOf49Peson() {
-		//Check If there are 49 Persons, and they are all Bystanders
-		Launcher launcher = new Launcher(); 
-		Board board=launcher.StartTheGame(7, 0, 0, 0, "Greg", "Stony");
-		List<Person> ab=board.getRandomizer().retRandomizeRoles();
-		assertTrue(ab.size()==49);
-		int totalBystanders = 0;
-		for(Person i : ab) 
-		{
-			if(i.getRole() == Roles.Bystander) {
-				totalBystanders++;
-			}
-		}
-		assertTrue(totalBystanders == 49);
-	}
-	
-	@Test
 	public void CostumeGameStarted7by7Grid8Assassins20Reds20BluesPassed_returnListOf49Peson() {
 		//Check If there are 49 Persons, and they are all Bystanders
 		Launcher launcher = new Launcher(); 
@@ -80,6 +55,22 @@ public class Class_ShuffleRandomizer_Method_retRandomizeRoles {
 		assertTrue(totalBlues == 19);
 		assertTrue(totalReds == 21);
 		assertTrue(totalAssassins == 8);
+	}
+	
+	@Test
+	public void TwoDefaultBoards_returnsDifferentlyassignedRoles() {
+		Launcher launcher1 = new Launcher();
+		Launcher launcher2 = new Launcher();
+		Board firstBoard = launcher1.StartTheGame("RedTeam", "BlueTeam");
+		Board secondBoard = launcher2.StartTheGame("RedTeam", "BlueTeam");
+		List<Person> a = firstBoard.getRandomizer().retRandomizeRoles();
+		List<Person> a2 = secondBoard.getRandomizer().retRandomizeRoles();;
+		boolean checker = false;
+		
+		for(int i = 0; i < a.size(); i++)
+				if(!(a.get(i).getRole()==a2.get(i).getRole()))
+					checker = true;			
+		assertTrue(checker);
 	}
 
 }
