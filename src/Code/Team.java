@@ -8,7 +8,7 @@ public class Team {
 	private String TeamName;
 	private int count = 0;
 	private boolean RevealedAssassin;
-	private Roles agents = Roles.Red;
+	private Roles agents;
 	
 	public Team(String TeamName) {
 		this.setTeamName(TeamName);
@@ -63,11 +63,17 @@ public class Team {
 	public void setRevealedAssassin(boolean revealedAssassin) {
 		RevealedAssassin = revealedAssassin;
 	}
-	
+	/**
+	 * Gets the roles of the agents.
+	 * @return roles.
+	 */
 	public Roles getAgents() {
 		return agents;
 	}
-	
+	/**
+	 * Sets the agents roles.
+	 * @param agents - Roles to assign to agents.
+	 */
 	public void setAgents(Roles agents) {
 		this.agents = agents;
 	}
