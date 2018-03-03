@@ -1,5 +1,10 @@
 package Code;
 
+/**
+ *The Team class is in charge of most of the players/cards, and
+ *is able to control the count and agents
+ **/
+
 public class Team {
 	private String TeamName;
 	private int count;
@@ -10,11 +15,12 @@ public class Team {
 		this.setTeamName(TeamName);
 		RevealedAssassin = false;
 	}
-	
+	//Lowers the count by 1
 	public void decrementCount() {
 		setCount(getCount() - 1);
 	}
-
+	
+	//Getters and Setters
 	public int getCount() {
 		return count;
 	}

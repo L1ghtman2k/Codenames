@@ -10,7 +10,8 @@ public class Board {
 	private IRandomizer randomizer;
 	private int Reds, Blues, Assassins;
 	private int totalLocations;
-
+	
+	 //Instantiates the Board class with the roles, teams, and grid
 
 	public Board(Location[][] grid, int Reds, int Blues, int Assassins, String RedName, String BlueName) {
 		this.grid=grid;
@@ -25,7 +26,7 @@ public class Board {
  
 	/**
 	 * This methods assigns Codenames and Roles to Locations, and sets them as Not Revealed.
-	 * After that it let's Red Team to move.
+	 * This method also starts the game with the Red Spymaster.
 	 */
 	public void LocationAssignerAndRedMove(String PATH) {
 
@@ -46,9 +47,9 @@ public class Board {
 
 
 	/**
-	 * This method checks weather or not the clue is legal or illegal
-	 * @param clue String that will be checked 
-	 * @return true if clue is not equal Codename unless it is revealed, false otherwise
+	 * This method checks whether or not the clue is legal.
+	 * @param String clue that will be checked 
+	 * @return true if clue is not equal to Codename unless it is revealed, false otherwise
 	 */
 	public boolean isClueLegal(String clue){
 		if(clue==null || clue.isEmpty() || clue.trim().length() == 0) {
@@ -69,11 +70,10 @@ public class Board {
 	}
 
 	/**
-	 * This method decrements the count of guesses, 
-	 * updates Location Revealed Status,
-	 * returns if the Location Contained Team's agent.
-	 * @param codename String that reveals content of Location, if associated
-	 * @param team Team that chose the codename
+	 * This method decrements the count of guesses, updates whether the location is revealed or not,
+	 * and returns if the Location contained the team's agent.
+	 * @param String codename that reveals content of Location, if associated
+	 * @param Team team that chose the codename
 	 * @return true if Location contained Team's agent, false otherwise
 	 */
 	public boolean LocationStatusUpdater(String codename, Team team) {
@@ -98,7 +98,7 @@ public class Board {
 	}
 
 	/**
-	 * This method returns weather or not one of the teams is at winning state
+	 * This method returns whether or not one of the teams is at winning state
 	 * @return true if one of the teams won, false otherwise
 	 */
 	public boolean isBoardInWinningState() {
@@ -138,9 +138,6 @@ public class Board {
 	}
 	//	GETTER AND SETTERS
 
-	/**
-	 * @return the Location[][] also known as grid
-	 */
 	public Location[][] getGrid() {
 		return grid;	
 	}

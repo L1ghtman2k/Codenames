@@ -13,14 +13,15 @@ public class Launcher {
 	
 	/**
 	 * This method returns Costume version of Board that contains n x n grid, with selected amount of Reds
-	 * selected amount of Blues selected amount Assassin and fills up the rest with Bystander, also assigns name to each Team
+	 * selected amount of Blues selected amount Assassin and fills up the rest with Bystander,
+	 * and also assigns name to each Team
 	 * 
-	 * @param n stands for dimensions of a grid(grid[n][n])
-	 * @param Reds stands for amount of Red Agents in a grid
-	 * @param Blues stands for amount of Blue Agents in a grid
-	 * @param Assassins stands for amount of Assassins in a grid
-	 * @param RedName stands for a name of a Red Team
-	 * @param BlueName stands for a name of a Blue Team
+	 * @param int n controls the dimensions of the grid(grid[n][n])
+	 * @param int Reds is the amount of Red Agents on the grid
+	 * @param int Blues is the amount of Blue Agents on the grid
+	 * @param int Assassins is the amount of Assassins on the grid
+	 * @param String RedName is the name of the Red Team
+	 * @param String BlueName is the name of the Blue Team
 	 * @return Returns a customized board
 	 */
 	public Board StartTheGame(int n, int Reds, int Blues, int Assassins, String RedName, String BlueName) {
@@ -37,11 +38,11 @@ public class Launcher {
 		
 	}	
 	/**
-	 * This method returns Default version of Board that contains 5 x 5 grid, with 9 Reds
-	 * 8 Blues 1 Assassin and 1 Bystander, also assigns name to each Team
+	 * This method returns Default version of Board that contains 5 x 5 grid, with 9 Reds,
+	 * 8 Blues, 1 Assassin, and 1 Bystander, and also assigns name to each Team
 	 * 
-	 * @param RedName Name of a Red team	
-	 * @param BlueName Name of a Blue team
+	 * @param String RedName - name of Red team	
+	 * @param String BlueName - name of Blue team
 	 * @return Default board
 	 */
 	public Board StartTheGame(String RedName, String BlueName) {

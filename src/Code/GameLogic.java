@@ -1,5 +1,9 @@
 package Code;
 
+/**
+ * The GameLogic class calls the turns of the
+ * game by using the different move methods.
+  */
 public class GameLogic {
 	Team Red;
 	Team Blue;
@@ -11,6 +15,7 @@ public class GameLogic {
 		this.board = board;
 	}
 	
+	// These have not been implemented yet.
 	public void RedTeamMove() {
 	
 
