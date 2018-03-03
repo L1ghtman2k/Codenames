@@ -20,23 +20,31 @@ public class GameLogic {
 		this.board = board;
 	}
 	
-	// These have not been implemented yet.
+	/**
+	 * This Method Makes Red Team Move
+	 */
 	public void RedTeamMove() {
-	
-
 		 //BlueSpyMasterMove();
 	}
 	
+	/**
+	 * This Method Makes Blue Team Move
+	 */
 	public void BlueTeamMove() {
 		
 		//RedSpyMasterMove();
 	}
 	
+	/**
+	 * This Method Makes Red SpyMaster Move
+	 */
 	public void RedSpyMasterMove() {
 		
 		//RedTeamMove();
 	}
-	
+	/**
+	 * This Method Makes Blue SpyMaster Move
+	 */
 	public void BlueSpyMasterMove() {
 		//BlueTeamMove();
 	}
