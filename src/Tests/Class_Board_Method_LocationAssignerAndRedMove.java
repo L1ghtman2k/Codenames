@@ -10,49 +10,50 @@ import Code.Location;
 import Code.Person;
 import Code.ShuffleRandomizer;
 
+import org.junit.Before;
 import org.junit.Test;
 
-
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
 public class Class_Board_Method_LocationAssignerAndRedMove {
-	
+
 	@Test
-	public void CodeNames_NotRevealed() {
-		
-		Random r = new Random();
-		int i = r.nextInt(20);
-		
+	public void CodeNamesAreTakenFromGameWords1ToDefaultBoard_SetsNotRevealedSetsRolesAndSetsCodenames() {	
 		Launcher launcher = new Launcher();
-		Board board = launcher.StartTheGame(5, 9, 8, 1, "RedTeam", "BlueTeam");
+		Board board = launcher.StartTheGame("RedTeam", "BlueTeam");
 		Location[][] grid = board.getGrid();
-		board.LocationAssignerAndRedMove("src/GameWords1.txt");
-		assertTrue(!grid[i][i].isRevealed());
+		boolean checker = false;	
+		board.LocationAssignerAndRedMove("src/GameWords1.txt");	
+		for(int i = 0; i < grid.length; i++)
+			for(int j = 0; j < grid.length; j++)
+			{
+				if(grid[i][j].isRevealed()==true || grid[i][j].getCodename() == null || grid[i][j].getPerson() == null)
+				{
+					checker = true;
+				}
+			}	
+		assertFalse(checker);		
 	}
-	
+
 	@Test 
-	public void LocationsHasCodeNamesAndRoles() {
-		
+	public void CodeNamesAreTakenFromGameWords2ToCostumeBoard_SetsNotRevealedSetsRolesAndSetsCodenames() {
 		Launcher launcher = new Launcher();
-		Board board = launcher.StartTheGame(5, 9, 8, 1, "RedName", "BlueName");
-		ShuffleRandomizer shuffle = new ShuffleRandomizer(board);
-		
-		Random r = new Random();
-		int i = r.nextInt(5);
-		int j = r.nextInt(5);
-		int k = r.nextInt(25);
-		int ran = r.nextInt(5);
-		
-		
-		List<String> list = shuffle.retRandomCodenames(board.getExtension().retAllCodenames("src/GameWords1.txt"));
-		List<Person> list2 = shuffle.retRandomizeRoles();
-		
+		Board board = launcher.StartTheGame(7,20,20,8,"RedTeam", "BlueTeam");
 		Location[][] grid = board.getGrid();
-		board.LocationAssignerAndRedMove("src/GameWords1.txt");
-		assertTrue(grid[i][j].getCodename().equals(list.get(k)));
-		assertTrue(grid[i][j].getPerson().equals(list2.get(ran)));
-		
+		boolean checker = false;		
+		board.LocationAssignerAndRedMove("src/GameWords2.txt");	
+		for(int i = 0; i < grid.length; i++)
+			for(int j = 0; j < grid.length; j++)
+			{
+				if(grid[i][j].isRevealed()==true || grid[i][j].getCodename() == null || grid[i][j].getPerson() == null)
+				{
+					checker = true;
+				}
+			}
+
+		assertFalse(checker);
 	}
 
 }
