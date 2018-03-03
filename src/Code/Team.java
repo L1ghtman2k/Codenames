@@ -6,7 +6,7 @@ package Code;
  */
 public class Team {
 	private String TeamName;
-	private int count;
+	private int count = 0;
 	private boolean RevealedAssassin;
 	private Roles agents = Roles.Red;
 	

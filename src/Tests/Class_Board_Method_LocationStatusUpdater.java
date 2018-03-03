@@ -33,7 +33,7 @@ public class Class_Board_Method_LocationStatusUpdater {
 					int a=board.getRedTeam().getCount();
 					assertTrue(board.LocationStatusUpdater(grid[i][j].getCodename(), board.getRedTeam()));	
 					int b=board.getRedTeam().getCount();
-					assertEquals(a,b-1);
+					assertEquals(a-1,b);
 					assertTrue(grid[i][j].isRevealed());
 				}
 				if(grid[i][j].getPerson().getRole() == board.getBlueTeam().getAgents())
