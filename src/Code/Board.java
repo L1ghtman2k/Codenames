@@ -22,7 +22,7 @@ public class Board {
 		this.Assassins = Assassins;
 		totalLocations = grid.length * grid.length;
 	}
-
+ 
 	/**
 	 * This methods assigns Codenames and Roles to Locations, and sets them as Not Revealed.
 	 * After that it let's Red Team to move.
