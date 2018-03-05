@@ -1,6 +1,11 @@
 package Code;
 import java.util.List;
 
+/**
+ * Instances of this class are used to create a board - a 2D desk where Location Instances reside
+ * 
+ *
+ */
 public class Board {
 	private Location[][] grid;
 	private Team Red;

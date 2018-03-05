@@ -2,7 +2,7 @@ package Code;
 
  /**
  *The Person class simply controls the role of the players.
- **/
+ */
 
 public class Person {
 	

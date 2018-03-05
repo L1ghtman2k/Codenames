@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * 
+ * Instance of this method helps to Randomize Lists of words using Collections.shuffle
+ *
+ */
 public class ShuffleRandomizer implements IRandomizer{
 	Board board;
 

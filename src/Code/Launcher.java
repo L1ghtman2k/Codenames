@@ -1,5 +1,10 @@
 package Code;
 
+/**
+ * 
+ * Instance of this class is Used to create a board class.
+ *
+ */
 public class Launcher {
 	private Board board;
 	

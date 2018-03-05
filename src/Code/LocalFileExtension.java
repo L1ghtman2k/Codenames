@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.List;
-
+/**
+ * 
+ * Instance of this class makes possible to convert local .txt files to List of String.
+ *
+ */
 public class LocalFileExtension implements IExtension{
 	
 	/**
