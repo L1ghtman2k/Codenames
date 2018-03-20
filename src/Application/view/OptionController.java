@@ -1,8 +1,12 @@
 package Application.view;
 
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class OptionController {
 	@FXML
@@ -17,14 +21,144 @@ public class OptionController {
 	TextField RedTeamName;
 	@FXML
 	TextField BlueTeamName;
+
+	@FXML
+	Label GridSizeWarning;
+	@FXML
+	Label RedTeamMembersWarning;
+	@FXML
+	Label BlueTeamMembersWarning;
+	@FXML
+	Label AssassinsWarning;
+	@FXML
+	Label RedTeamNameWarning;
+	@FXML
+	Label BlueTeamNameWarning;
+
+	@FXML
+	Label AdditionalWarning;
+
 	@FXML
 	Button Start;
 	
-	
-	
+	boolean[] checker = new boolean[6];
 	
 	public OptionController() {
-		// TODO Auto-generated constructor stub
+	}
+	
+	public void GridFieldInputCheck() {
+
+		if (GridSize.getText().matches("[0-9]+") && GridSize.getText().length()<3 && Integer.parseInt(GridSize.getText())>=3 && Integer.parseInt(GridSize.getText())<=10) {
+			lebel_accepted(GridSizeWarning);
+			checker[0] = true;
+		}
+		else {
+			GridSizeWarning.setGraphic(null);
+			GridSizeWarning.setText("This field must contain a number from 3 to 10");
+			checker[0] = false;
+		}
+	}
+	public void RedTeamMembersInputCheck() {
+
+		if (RedTeamMembers.getText().matches("[0-9]+") && RedTeamMembers.getText().length()<4 ) {
+			lebel_accepted(RedTeamMembersWarning);
+			checker[1] = true;
+		}
+		else {
+			RedTeamMembersWarning.setGraphic(null);
+			RedTeamMembersWarning.setText("This field must contain a number that is reasonable");
+			checker[1] = false;
+		}
+		
+	}
+	
+	public void BlueTeamMembersInputCheck() {
+
+		if (BlueTeamMembers.getText().matches("[0-9]+") && BlueTeamMembers.getText().length()<4 ) {
+			lebel_accepted(BlueTeamMembersWarning);
+			checker[2] = true;
+		}
+		else {
+			BlueTeamMembersWarning.setGraphic(null);
+			BlueTeamMembersWarning.setText("This field must contain a number that is reasonable");
+			checker[2] = false;
+		}
+		
+	}
+	
+	public void AssassinsInputCheck() {
+
+		if (Assassins.getText().matches("[0-9]+") && Assassins.getText().length()<4 ) {
+			lebel_accepted(AssassinsWarning);
+			checker[3] = true;
+		}
+		else {
+			AssassinsWarning.setGraphic(null);
+			AssassinsWarning.setText("This field must contain a number that is reasonable");
+			checker[3] = false;
+		}
+	}
+	
+	public void RedTeamNameInputCheck() {
+
+		if (RedTeamName.getText().trim().length()>0 && RedTeamName.getText().length()<=20) {
+			lebel_accepted(RedTeamNameWarning);
+			checker[4] = true;
+		}
+		else {
+			RedTeamNameWarning.setGraphic(null);
+			RedTeamNameWarning.setText("This field must be less than 20 characters");
+			checker[4] = false;
+		}
+	}
+	
+	public void BlueTeamNameInputCheck() {
+
+		if (BlueTeamName.getText().trim().length()>0 && BlueTeamName.getText().length()<=20) {
+			lebel_accepted(BlueTeamNameWarning);
+			checker[5] = true;
+		}
+		else {
+			BlueTeamNameWarning.setGraphic(null);
+			BlueTeamNameWarning.setText("This field must be less than 20 characters");
+			checker[5] = false;
+		}
+	}
+	
+	public ImageView image_creator() {
+		ImageView image = new ImageView(new Image("Media/check-mark.png"));
+		image.setFitWidth(25);
+		image.setFitHeight(25);
+		return image;
+	}
+	
+	public void lebel_accepted(Label label) {
+		label.setText("");
+		label.setGraphic(image_creator());
+	}
+
+	public void StartTheGame() {
+		boolean overall = true;
+		
+		for(int i = 0; i < 6; i++) {
+			if(checker[i]==false) {
+				overall = false;
+				break;
+			}
+		}
+		if(overall==false) {
+			AdditionalWarning.setText("Please satisfy all of the requirements above");
+		}
+		else if((Integer.parseInt(Assassins.getText()) + Integer.parseInt(BlueTeamMembers.getText()) + Integer.parseInt(RedTeamMembers.getText()))> Math.pow(Integer.parseInt(GridSize.getText()),2)){
+			AdditionalWarning.setText("You have more roles than your grid can contain.");
+		}
+		
+		else {
+			//TO BE CONTNUED
+			AdditionalWarning.setText("Well Done!!!");
+		}
+		
+		
 	}
 
 }

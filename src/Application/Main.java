@@ -2,6 +2,7 @@ package Application;
 	
 import java.io.IOException;
 
+import Application.view.OptionController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -16,7 +17,9 @@ public class Main extends Application {
 		primaryStage.setTitle("Board");
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("view/Board.fxml"));
+		loader.setLocation(Main.class.getResource("view/Option.fxml"));
+		OptionController control = (OptionController) loader.getController();
+		
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
