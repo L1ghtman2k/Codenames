@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Employee.view.ChooserViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.view.OptionController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="StartGame" layoutX="471.0" layoutY="361.0" mnemonicParsing="false" onAction="#startTheGame" prefHeight="25.0" prefWidth="91.0" text="Start" />
+            <Button fx:id="Start" layoutX="471.0" layoutY="361.0" mnemonicParsing="false" onAction="#startTheGame" prefHeight="25.0" prefWidth="91.0" text="Start" />
             <Label layoutX="164.0" layoutY="14.0" prefHeight="30.0" prefWidth="273.0" text="Choose your parameters" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Arial Black" size="20.0" />
@@ -37,15 +37,15 @@
                   <Label text="Red Team Members" GridPane.rowIndex="1" />
                   <Label text="Blue Team Members" GridPane.rowIndex="2" />
                   <Label text="Assassins" GridPane.rowIndex="3" />
-                  <Label text="Red Team Members" GridPane.rowIndex="4" />
-                  <Label text="Blue Team Members" GridPane.rowIndex="5" />
-                  <TextField prefHeight="25.0" prefWidth="156.0" GridPane.columnIndex="1" />
+                  <Label text="Red Team Name" GridPane.rowIndex="4" />
+                  <Label text="Blue Team Name" GridPane.rowIndex="5" />
+                  <TextField fx:id="GridSize" prefHeight="25.0" prefWidth="156.0" GridPane.columnIndex="1" />
                   
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="RedTeamMembers" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="BlueTeamMembers" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="Assassins" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="RedTeamName" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="BlueTeamName" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
          </children>

@@ -6,19 +6,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.view.SpyMasterInputController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="226.0" layoutY="125.0" />
-            <Label layoutX="250.0" layoutY="77.0" text="Enter Clue">
+            <TextField fx:id="ClueField" layoutX="226.0" layoutY="125.0" />
+            <Label layoutX="241.0" layoutY="77.0" text="Enter a Clue">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <TextField layoutX="226.0" layoutY="282.0" />
-            <Label layoutX="241.0" layoutY="232.0" text="Enter Count">
+            <TextField fx:id="CountField" layoutX="226.0" layoutY="282.0" />
+            <Label layoutX="233.0" layoutY="233.0" text="Enter a Count">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>

@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane fx:id="ChooserBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Employee.view.ChooserViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.view.GameModeController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="CostumeButton" layoutX="98.0" layoutY="170.0" mnemonicParsing="false" onAction="#ChooseParametrs" prefHeight="61.0" prefWidth="105.0" text="Costume" />
-            <Button fx:id="DefaultButton" layoutX="110.0" layoutY="86.0" mnemonicParsing="false" onAction="#ChooseParametrs" prefHeight="64.0" prefWidth="81.0" text="Default" textAlignment="CENTER" />
+            <Button fx:id="CostumeStart" layoutX="98.0" layoutY="175.0" mnemonicParsing="false" onAction="#ChooseParametrs" prefHeight="61.0" prefWidth="105.0" text="Costume" />
+            <Button fx:id="DefaultStart" layoutX="110.0" layoutY="86.0" mnemonicParsing="false" onAction="#ChooseParametrs" prefHeight="64.0" prefWidth="81.0" text="Default" textAlignment="CENTER" />
             <Label layoutX="41.0" layoutY="30.0" text="Choose Your Game Mode">
                <font>
                   <Font name="Britannic Bold" size="20.0" />
