@@ -1,4 +1,4 @@
-package Application.Controllers;
+package Application.view;
 
 public class WrongImputController {
 
