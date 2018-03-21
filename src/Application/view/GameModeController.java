@@ -24,6 +24,7 @@ public class GameModeController {
 		controller.DefaultOption();
 	}
 	
+	
 	public void ChooseParametrsCostume() throws IOException{
 		
 		((Stage)DefaultStart.getScene().getWindow()).close();
@@ -37,6 +38,7 @@ public class GameModeController {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		controller = (OptionController)loader.getController();
+		controller.CostumeOption();
 	}
 
 }

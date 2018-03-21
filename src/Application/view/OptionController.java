@@ -73,6 +73,19 @@ public class OptionController {
 	}
 	
 	
+	public void CostumeOption() {
+		
+		
+		RedTeamName.setText("Reds");
+		lebel_accepted(RedTeamNameWarning);
+		checker[4] = true;
+		
+		BlueTeamName.setText("Blues");
+		lebel_accepted(BlueTeamNameWarning);
+		checker[5] = true;
+	}
+	
+	
 	public void GridFieldInputCheck() {
 
 		if (GridSize.getText().matches("[0-9]+") && GridSize.getText().length()<3 && Integer.parseInt(GridSize.getText())>=3 && Integer.parseInt(GridSize.getText())<=10) {

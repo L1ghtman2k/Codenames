@@ -140,13 +140,19 @@ public class BoardController {
 		removeRowsAndColumns();
 		for (int i = 0; i < x ; i++) {
 			for (int j = 0; j <  x; j++) {	
+				boolean revealed = board.getGrid()[i][j].isRevealed();
 				String str = "";
-				if(!board.getGrid()[i][j].isRevealed()) {
+				if(!revealed) {
 					str+=board.getGrid()[i][j].getCodename() +"\n";
 				}
 				str+=board.getGrid()[i][j].getPerson().getRole().toString();
 				Button button = new Button(str);
-				button.setStyle("-fx-font-size: 15pt;");
+				if(revealed) {
+					button.setStyle("-fx-font-size: 15pt; -fx-text-fill: green");
+				}
+				else {
+					button.setStyle("-fx-font-size: 15pt;");
+				}
 				button.setPrefSize(400, 200);
 				button.textAlignmentProperty().set(TextAlignment.CENTER);
 				Grid.add(button, j, i);
@@ -174,7 +180,7 @@ public class BoardController {
 					button.setDisable(true);
 				}
 				else {
-				handlerAssigner(button);
+					handlerAssigner(button);
 				}
 				Grid.add(button, j, i);
 			}
@@ -195,7 +201,7 @@ public class BoardController {
 					curentTeam = board.getBlueTeam();
 				boolean bool = board.LocationStatusUpdater(board.getGrid()[internalI][internalJ].getCodename(), curentTeam);
 				internalButton.setText(board.getGrid()[internalI][internalJ].getCodename() +"\n" + board.getGrid()[internalI][internalJ].getPerson().getRole().toString());
-				
+
 				if(bool == true) {
 					String str = Integer.toString(Integer.parseInt(Count.getText())-1);
 					Count.setText(str);
@@ -265,14 +271,14 @@ public class BoardController {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(GameModeController.class.getResource("WinWindow.fxml"));
 
-		
+
 
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
-		
+
 		((WinWindowsController)loader.getController()).setTeam(team);
-		
+
 		((Stage)ContinueButton.getScene().getWindow()).close();
 		primaryStage.show();
 

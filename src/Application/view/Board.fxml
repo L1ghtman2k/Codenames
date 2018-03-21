@@ -35,7 +35,7 @@
                </font></Label>
             <Separator fx:id="separator" layoutX="289.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="29.0" prefWidth="22.0" />
             <Label fx:id="Count" layoutX="415.0" layoutY="5.0" text="Count" />
-            <Button fx:id="ContinueButton" layoutX="488.0" mnemonicParsing="false" onAction="#nextTerm" prefHeight="25.0" prefWidth="112.0" style="-: ;" text="Continue" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="ContinueButton" layoutX="859.0" mnemonicParsing="false" onAction="#nextTerm" prefHeight="25.0" prefWidth="112.0" text="Continue" AnchorPane.rightAnchor="29.0" />
          </children>
       </AnchorPane>
    </bottom>
