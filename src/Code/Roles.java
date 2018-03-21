@@ -6,5 +6,26 @@ package Code;
  *
  */
 public enum Roles{
-		Blue, Red, Assassin, Bystander
+	Blue ("Blue Agent"), 
+	Red ("Red Agent"), 
+	Assassin ("Assassin"), 
+	Bystander ("Bystander");
+	
+	private final String name;     
+	private Roles(String s) {
+	    name = s;
 	}
+	public boolean equalsName(String otherName) {
+	    return name.equals(otherName);
+	}
+
+	public String toString() {
+	   return this.name;
+	}
+}
+
+
+  
+
+
+

@@ -1,12 +1,19 @@
 package Application.view;
 
 
+import java.io.IOException;
+
+import Code.Launcher;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class OptionController {
 	@FXML
@@ -157,7 +164,7 @@ public class OptionController {
 		label.setGraphic(image_creator());
 	}
 
-	public void StartTheGame() {
+	public void StartTheGame() throws IOException {
 		boolean overall = true;
 		
 		for(int i = 0; i < 6; i++) {
@@ -174,8 +181,25 @@ public class OptionController {
 		}
 		
 		else {
-			//TO BE CONTNUED
-			AdditionalWarning.setText("Well Done!!!");
+			((Stage)Start.getScene().getWindow()).close();
+			Stage primaryStage = new Stage();
+			primaryStage.setTitle("Board");
+			primaryStage.getIcons().add(new Image("Media/logo.png"));
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(GameModeController.class.getResource("Board.fxml"));
+			BorderPane mainLayout = loader.load();
+			Scene scene = new Scene(mainLayout);	
+			primaryStage.setScene(scene);
+			BoardController controller = (BoardController)loader.getController();
+			
+			controller.setBoard(new Launcher().StartTheGame(Integer.parseInt(GridSize.getText()), Integer.parseInt(RedTeamMembers.getText()), 
+					Integer.parseInt(BlueTeamMembers.getText()), Integer.parseInt(Assassins.getText()), RedTeamName.getText(), BlueTeamName.getText()));
+			
+			controller.RedSpyMasterTerm();
+			primaryStage.show();
+			
+			
+			
 		}
 		
 		
