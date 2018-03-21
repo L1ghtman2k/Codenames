@@ -160,7 +160,6 @@ public class BoardController {
 		}
 
 	}
-
 	public void addButtonsTeam(){
 		int x = board.getGrid().length;
 		removeRowsAndColumns();
@@ -186,7 +185,6 @@ public class BoardController {
 			}
 		}
 	}
-
 	public void handlerAssigner(Button button) {
 		button.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
@@ -302,7 +300,6 @@ public class BoardController {
 			else {
 				initializeWinningState(board.getBlueTeam());
 			}
-
 		}
 
 		else {
