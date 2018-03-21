@@ -53,7 +53,7 @@ public class SpyMasterInputController {
 				board.RedTeamTerm();
 			}
 			else {
-				board.RedTeamTerm();
+				board.BlueTeamTerm();
 			}
 			board.setCount(CountField.getText());
 			board.setClue(ClueField.getText());

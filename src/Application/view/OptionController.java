@@ -199,6 +199,7 @@ public class OptionController {
 					Integer.parseInt(BlueTeamMembers.getText()), Integer.parseInt(Assassins.getText()), RedTeamName.getText(), BlueTeamName.getText()));
 			
 			controller.RedSpyMasterTerm();
+			primaryStage.setOnCloseRequest(e->System.exit(0));
 			primaryStage.show();
 			
 			

@@ -1,6 +1,9 @@
 package Application.view;
 import java.io.IOException;
 import Code.Board;
+import Code.Team;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
@@ -45,62 +49,102 @@ public class BoardController {
 	private Term term;
 
 	public void RedSpyMasterTerm() throws IOException {
+		term = Term.RedSpyMaster;
+		((Stage)ContinueButton.getScene().getWindow()).hide();
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Term Change Warning");
 		alert.setHeaderText("Warning");
 		alert.setContentText("It is now RedSpyMaster's Move");
 		alert.showAndWait();
-		
+
+		Grid.setDisable(false);
 		Clue.setVisible(false);
 		Count.setVisible(false);
 		separator.setVisible(false);
 		ContinueButton.setVisible(false);
-		term = Term.RedSpyMaster;
 		
 		addButtonsSpyMaster();
 		initializeSpyMastersDialog();
+		((Stage)ContinueButton.getScene().getWindow()).show();
 	}
-	
+
 	public void RedTeamTerm() {
 		((Stage)ContinueButton.getScene().getWindow()).hide();
+		term = Term.RedTeam;
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Term Change Warning");
 		alert.setHeaderText("Warning");
 		alert.setContentText("It is now Red Team's Move");
 		alert.showAndWait();
-		((Stage)ContinueButton.getScene().getWindow()).show();
+		
+		Grid.setDisable(false);
 		Clue.setVisible(true);
 		Count.setVisible(true);
 		separator.setVisible(true);
 		ContinueButton.setVisible(true);
-		term = Term.RedTeam;
 		
-		
+
+		addButtonsTeam();
+		((Stage)ContinueButton.getScene().getWindow()).show();
+
+
 	}
-	public void BlueSpyMasterTerm() {
+	public void BlueSpyMasterTerm() throws IOException {
+		((Stage)ContinueButton.getScene().getWindow()).hide();
 		term = Term.BlueSpyMaster;
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Term Change Warning");
+		alert.setHeaderText("Warning");
+		alert.setContentText("It is now BlueSpyMaster's Move");
+		alert.showAndWait();
+
+		Grid.setDisable(false);
+		Clue.setVisible(false);
+		Count.setVisible(false);
+		separator.setVisible(false);
+		ContinueButton.setVisible(false);
+		
+		addButtonsSpyMaster();
+		initializeSpyMastersDialog();
+		((Stage)ContinueButton.getScene().getWindow()).show();
 	}
-	
+
 	public void BlueTeamTerm() {
+		((Stage)ContinueButton.getScene().getWindow()).hide();
 		term = Term.BlueTeam;
+		
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Term Change Warning");
+		alert.setHeaderText("Warning");
+		alert.setContentText("It is now Blue Team's Move");
+		alert.showAndWait();
+		
+		Grid.setDisable(false);
+		Clue.setVisible(true);
+		Count.setVisible(true);
+		separator.setVisible(true);
+		ContinueButton.setVisible(true);
+		addButtonsTeam();
+
+		((Stage)ContinueButton.getScene().getWindow()).show();
 	}
 
 	public void setBoard(Board board) {
 		this.board = board;
 		board.LocationAssignerAndRedMove("src/GameWords1.txt");
 	}
-	
+
 
 	public void addButtonsSpyMaster(){
-		
 		int x = board.getGrid().length;
 		removeRowsAndColumns();
 		for (int i = 0; i < x ; i++) {
 			for (int j = 0; j <  x; j++) {	
-				String str=board.getGrid()[i][j].getPerson().getRole().toString();
+				String str = "";
 				if(!board.getGrid()[i][j].isRevealed()) {
-					str+="\n" + board.getGrid()[i][j].getCodename();
+					str+=board.getGrid()[i][j].getCodename() +"\n";
 				}
+				str+=board.getGrid()[i][j].getPerson().getRole().toString();
 				Button button = new Button(str);
 				button.setStyle("-fx-font-size: 15pt;");
 				button.setPrefSize(400, 200);
@@ -108,8 +152,55 @@ public class BoardController {
 				Grid.add(button, j, i);
 			}
 		}
-		
+
 	}
+
+	public void addButtonsTeam(){
+		int x = board.getGrid().length;
+		removeRowsAndColumns();
+		for (int i = 0; i < x ; i++) {
+			for (int j = 0; j <  x; j++) {	
+				String str = "";
+				str+=board.getGrid()[i][j].getCodename() +"\n";
+				if(board.getGrid()[i][j].isRevealed())
+					str+=board.getGrid()[i][j].getPerson().getRole().toString();
+				Button button = new Button(str);
+				button.setStyle("-fx-font-size: 15pt;");
+				button.setPrefSize(400, 200);
+				button.textAlignmentProperty().set(TextAlignment.CENTER);
+				Pair<Integer,Integer> pair = new Pair<>(i,j);
+				button.setUserData(pair);
+				button.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent e) {
+						Button internalButton = (Button)e.getSource();
+						Pair<Integer,Integer> internalpair= (Pair<Integer, Integer>)(((Button)e.getSource()).getUserData());
+						int internalI = internalpair.getKey();
+						int internalJ = internalpair.getValue();
+						Team curentTeam = null;
+						if(term == Term.RedTeam)
+							curentTeam = board.getRedTeam();
+						if(term == Term.BlueTeam)
+							curentTeam = board.getBlueTeam();
+						boolean bool = board.LocationStatusUpdater(board.getGrid()[internalI][internalJ].getCodename(), curentTeam);
+						internalButton.setText(board.getGrid()[internalI][internalJ].getCodename() +"\n" + board.getGrid()[internalI][internalJ].getPerson().getRole().toString());
+						if(bool == true) {
+							String str = Integer.toString(Integer.parseInt(Count.getText())-1);
+							Count.setText(str);
+							if(str.equals("0")) {
+								Grid.setDisable(true);
+							}
+						}
+						else{
+							Grid.setDisable(true);
+						}
+
+					}
+				});
+				Grid.add(button, j, i);
+			}
+		}
+	}
+
 	public void removeRowsAndColumns() {
 		Grid.getChildren().clear();
 		while(Grid.getRowConstraints().size() > 0){
@@ -121,11 +212,11 @@ public class BoardController {
 			Grid.getColumnConstraints().remove(0);
 		}
 	}
-	
+
 	public void close() {
 		System.exit(0);
 	}
-	
+
 	public void Start_New_Game() throws IOException {
 		// TO BE OPTIMIZED
 		((Stage)ContinueButton.getScene().getWindow()).close();
@@ -139,7 +230,7 @@ public class BoardController {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	
+
 	public void initializeSpyMastersDialog() throws IOException {
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("SpyMaster's Input");
@@ -156,10 +247,40 @@ public class BoardController {
 		primaryStage.setOnCloseRequest(e->close());
 		primaryStage.setAlwaysOnTop(true);
 	}
+
+	public void initializeWinningState() throws IOException {
+		Stage primaryStage = new Stage();
+		primaryStage.setTitle("You Win!");
+		primaryStage.getIcons().add(new Image("Media/logo.png"));
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(GameModeController.class.getResource("WinWindow.fxml"));
+		BorderPane mainLayout = loader.load();
+		Scene scene = new Scene(mainLayout);	
+		primaryStage.setScene(scene);
+		((Stage)ContinueButton.getScene().getWindow()).close();
+		primaryStage.show();
+
+	}
+
+	public void nextTerm() throws IOException {
+		boolean winningState = board.isBoardInWinningState();
+		if(winningState) {
+			initializeWinningState();
+		}
+
+		else {
+			if(term == Term.RedTeam) {
+				BlueSpyMasterTerm();
+			}
+			else if(term == Term.BlueTeam) {
+				RedSpyMasterTerm();
+			}
+		}
+	}
 	public Board getBoard() {
 		return board;
 	}
-	
+
 	public Term getTerm() {
 		return term;
 	}
@@ -169,5 +290,5 @@ public class BoardController {
 	public void setCount(String str) {
 		Count.setText(str);
 	}
-	
+
 }

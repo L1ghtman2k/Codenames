@@ -21,7 +21,9 @@ public class Board {
 	public Board(Location[][] grid, int Reds, int Blues, int Assassins, String RedName, String BlueName) {
 		this.grid=grid;
 		this.Red = new Team(RedName);
+		this.Red.setAgents(Roles.Red);
 		this.Blue = new Team(BlueName);
+		this.Blue.setAgents(Roles.Blue);
 		this.gameLogic = new GameLogic(Red, Blue, this);
 		this.Reds = Reds;
 		this.Blues = Blues;
@@ -74,7 +76,12 @@ public class Board {
 		}
 		return true;
 	}
-	
+	/**
+	 * This method checks whether or not the Count is legal.
+	 * @param count - int that will be checked .
+	 * @param role - role that this count is related too.
+	 * @return true if count is less that the amount of revealed roles
+	 */
 	public boolean isCountLegal(int count, Roles role){
 		int sum = 0;
 		for(int i = 0; i < grid.length; i++)
@@ -102,14 +109,12 @@ public class Board {
 		for(int i = 0; i < grid.length; i++)
 		{
 			for(int j = 0; j < grid.length; j++) {
-				if(grid[i][j].getCodename().equals(codename)) {				
-
-					if(grid[i][j].getPerson().getRole().equals(team.getAgents())) {
+				if(grid[i][j].getCodename().equals(codename)) {						
+					if(grid[i][j].getPerson().getRole() == (team.getAgents())) {
 						team.decrementCount();
 						grid[i][j].setRevealed(true);
 						return true;
 					}
-					
 					grid[i][j].setRevealed(true);
 					return false;
 				}
