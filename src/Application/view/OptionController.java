@@ -43,8 +43,28 @@ public class OptionController {
 	
 	boolean[] checker = new boolean[6];
 	
-	public OptionController() {
+	public void DefaultOption() {
+		GridSize.setDisable(true);
+		GridSize.setText("5");
+		lebel_accepted(GridSizeWarning);
+		checker[0] = true;
+		
+		RedTeamMembers.setDisable(true);
+		RedTeamMembers.setText("9");
+		lebel_accepted(RedTeamMembersWarning);
+		checker[1] = true;
+		
+		BlueTeamMembers.setDisable(true);
+		BlueTeamMembers.setText("8");
+		lebel_accepted(BlueTeamMembersWarning);
+		checker[2] = true;
+		
+		Assassins.setDisable(true);
+		Assassins.setText("1");
+		lebel_accepted(AssassinsWarning);
+		checker[3] = true;
 	}
+	
 	
 	public void GridFieldInputCheck() {
 
