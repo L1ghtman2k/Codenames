@@ -7,33 +7,46 @@ import org.junit.Before;
 
 import Code.Board;
 import Code.Launcher;
+import Code.Location;
+import Code.Roles;
 
 public class Class_Board_Method_TestTeamThatWonWhenAssassinRevealed {
-	Launcher launcher;
+	Launcher lounch;
 	Board board;
-	
+	Location[][] grid;
 	@Before
 	  public void setUp() {
-		launcher = new Launcher();
-		board = launcher.StartTheGame("Blue", "Red");
+		lounch = new Launcher();
+		board = lounch.StartTheGame("Blue", "Red");
+		grid =  board.getGrid();
+		board.LocationAssignerAndRedMove("src/GameWords1.txt");
 	}
 		
 	@Test
-	public void blueTeamRevealedAssassin_returnRed() {
-		board.getBlueTeam().setRevealedAssassin(true);
-		assertEquals(board.TeamThatWonWhenAssassinRevealed(), board.getRedTeam());
+	public void RevealedAssassin_returnTrue() {
+		scoroller(Roles.Assassin);
+		assertTrue(board.isAssassinRevealed());
 	}
 	
 	@Test
-	public void RedTeamRevealedAssassin_returnBlue() {
-		board.getRedTeam().setRevealedAssassin(true);
-		assertEquals(board.TeamThatWonWhenAssassinRevealed(), board.getBlueTeam());
+	public void NoOneRevealedAssassin_returnFalse() {
+		assertFalse(board.isAssassinRevealed());
 	}
 	
-	@Test
-	public void NoOneRevealedAssassin_returnNull() {
-		assertNull(board.TeamThatWonWhenAssassinRevealed());
-	}
 	
-
+	/**
+	 * Scrolls thru grid and assigns Revealed to specified role
+	 * @param role that is being revealed
+	 */
+	public void scoroller(Roles role) {
+		for(int i = 0; i < grid.length; i++) {
+			for(int j = 0; j < grid.length; j++)
+			{
+				if(grid[i][j].getPerson().getRole()==role){
+					grid[i][j].setRevealed(true);
+				}
+				
+			}
+		}
+	}
 }

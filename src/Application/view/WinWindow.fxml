@@ -11,13 +11,13 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="CongratulationsLabel" alignment="CENTER" layoutY="7.0" prefHeight="90.0" prefWidth="544.0" text="Congratulations &lt;Team Name&gt;" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Label fx:id="CongratulationsLabel" alignment="CENTER" layoutY="7.0" prefHeight="90.0" prefWidth="544.0" text="Congratulations &lt;Team Name&gt;!" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <Button fx:id="StartNewGameButton" layoutX="483.0" layoutY="361.0" mnemonicParsing="false" text="Start New Game" />
-            <Button fx:id="CloseButton" layoutX="425.0" layoutY="361.0" mnemonicParsing="false" text="Close" />
+            <Button fx:id="StartNewGameButton" layoutX="483.0" layoutY="361.0" mnemonicParsing="false" onAction="#Start_New_Game" text="Start New Game" />
+            <Button fx:id="CloseButton" layoutX="425.0" layoutY="361.0" mnemonicParsing="false" onAction="#close" text="Close" />
          </children>
       </AnchorPane>
    </center>

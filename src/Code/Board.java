@@ -94,6 +94,8 @@ public class Board {
 		}
 		if(count > sum)
 			return false;
+		if(count<=0)
+			return false;
 		return true;
 	}
 
@@ -153,15 +155,15 @@ public class Board {
 	 * This method returns a team that won when assassin was revealed.
 	 * @return A team that did not select the assassin.
 	 */
-	public Team TeamThatWonWhenAssassinRevealed() {
-		if(Red.isRevealedAssassin()) {
-			return Blue;
-		}
-		if(Blue.isRevealedAssassin())
+	public boolean isAssassinRevealed() {
+		for(int i = 0; i < grid.length; i++)
 		{
-			return Red;
+			for(int j = 0; j < grid.length; j++) {	
+				if(grid[i][j].isRevealed() && grid[i][j].getPerson().getRole().equals(Roles.Assassin)) 
+					return true;
+			}
 		}
-		return null;
+		return false;
 	}
 
 	/**

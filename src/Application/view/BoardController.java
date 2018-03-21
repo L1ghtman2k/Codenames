@@ -62,7 +62,7 @@ public class BoardController {
 		Count.setVisible(false);
 		separator.setVisible(false);
 		ContinueButton.setVisible(false);
-		
+
 		addButtonsSpyMaster();
 		initializeSpyMastersDialog();
 		((Stage)ContinueButton.getScene().getWindow()).show();
@@ -76,13 +76,13 @@ public class BoardController {
 		alert.setHeaderText("Warning");
 		alert.setContentText("It is now Red Team's Move");
 		alert.showAndWait();
-		
+
 		Grid.setDisable(false);
 		Clue.setVisible(true);
 		Count.setVisible(true);
 		separator.setVisible(true);
 		ContinueButton.setVisible(true);
-		
+
 
 		addButtonsTeam();
 		((Stage)ContinueButton.getScene().getWindow()).show();
@@ -103,7 +103,7 @@ public class BoardController {
 		Count.setVisible(false);
 		separator.setVisible(false);
 		ContinueButton.setVisible(false);
-		
+
 		addButtonsSpyMaster();
 		initializeSpyMastersDialog();
 		((Stage)ContinueButton.getScene().getWindow()).show();
@@ -112,13 +112,13 @@ public class BoardController {
 	public void BlueTeamTerm() {
 		((Stage)ContinueButton.getScene().getWindow()).hide();
 		term = Term.BlueTeam;
-		
+
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Term Change Warning");
 		alert.setHeaderText("Warning");
 		alert.setContentText("It is now Blue Team's Move");
 		alert.showAndWait();
-		
+
 		Grid.setDisable(false);
 		Clue.setVisible(true);
 		Count.setVisible(true);
@@ -170,37 +170,47 @@ public class BoardController {
 				button.textAlignmentProperty().set(TextAlignment.CENTER);
 				Pair<Integer,Integer> pair = new Pair<>(i,j);
 				button.setUserData(pair);
-				button.setOnAction(new EventHandler<ActionEvent>() {
-					public void handle(ActionEvent e) {
-						Button internalButton = (Button)e.getSource();
-						Pair<Integer,Integer> internalpair= (Pair<Integer, Integer>)(((Button)e.getSource()).getUserData());
-						int internalI = internalpair.getKey();
-						int internalJ = internalpair.getValue();
-						Team curentTeam = null;
-						if(term == Term.RedTeam)
-							curentTeam = board.getRedTeam();
-						if(term == Term.BlueTeam)
-							curentTeam = board.getBlueTeam();
-						boolean bool = board.LocationStatusUpdater(board.getGrid()[internalI][internalJ].getCodename(), curentTeam);
-						internalButton.setText(board.getGrid()[internalI][internalJ].getCodename() +"\n" + board.getGrid()[internalI][internalJ].getPerson().getRole().toString());
-						if(bool == true) {
-							String str = Integer.toString(Integer.parseInt(Count.getText())-1);
-							Count.setText(str);
-							if(str.equals("0")) {
-								Grid.setDisable(true);
-							}
-						}
-						else{
-							Grid.setDisable(true);
-						}
-
-					}
-				});
+				if(board.getGrid()[i][j].isRevealed()) {
+					button.setDisable(true);
+				}
+				else {
+				handlerAssigner(button);
+				}
 				Grid.add(button, j, i);
 			}
 		}
 	}
 
+	public void handlerAssigner(Button button) {
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				Button internalButton = (Button)e.getSource();
+				Pair<Integer,Integer> internalpair= (Pair<Integer, Integer>)(((Button)e.getSource()).getUserData());
+				int internalI = internalpair.getKey();
+				int internalJ = internalpair.getValue();
+				Team curentTeam = null;
+				if(term == Term.RedTeam)
+					curentTeam = board.getRedTeam();
+				if(term == Term.BlueTeam)
+					curentTeam = board.getBlueTeam();
+				boolean bool = board.LocationStatusUpdater(board.getGrid()[internalI][internalJ].getCodename(), curentTeam);
+				internalButton.setText(board.getGrid()[internalI][internalJ].getCodename() +"\n" + board.getGrid()[internalI][internalJ].getPerson().getRole().toString());
+				
+				if(bool == true) {
+					String str = Integer.toString(Integer.parseInt(Count.getText())-1);
+					Count.setText(str);
+					if(str.equals("0")) {
+						Grid.setDisable(true);
+					}
+					internalButton.setDisable(true);
+				}
+				else{
+					Grid.setDisable(true);
+				}
+
+			}
+		});
+	}
 	public void removeRowsAndColumns() {
 		Grid.getChildren().clear();
 		while(Grid.getRowConstraints().size() > 0){
@@ -248,15 +258,21 @@ public class BoardController {
 		primaryStage.setAlwaysOnTop(true);
 	}
 
-	public void initializeWinningState() throws IOException {
+	public void initializeWinningState(Team team) throws IOException {
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("You Win!");
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(GameModeController.class.getResource("WinWindow.fxml"));
+
+		
+
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
+		
+		((WinWindowsController)loader.getController()).setTeam(team);
+		
 		((Stage)ContinueButton.getScene().getWindow()).close();
 		primaryStage.show();
 
@@ -265,7 +281,22 @@ public class BoardController {
 	public void nextTerm() throws IOException {
 		boolean winningState = board.isBoardInWinningState();
 		if(winningState) {
-			initializeWinningState();
+			if(board.isAssassinRevealed()) {
+				System.out.println("Test");
+				if(term == Term.RedTeam) {
+					initializeWinningState(board.getBlueTeam());
+				}
+				else {
+					initializeWinningState(board.getRedTeam());
+				}
+			}
+			else if(term == Term.RedTeam) {
+				initializeWinningState(board.getRedTeam());
+			}
+			else {
+				initializeWinningState(board.getBlueTeam());
+			}
+
 		}
 
 		else {
