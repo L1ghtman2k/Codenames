@@ -89,4 +89,8 @@ public class BoardController {
 			Grid.getColumnConstraints().remove(0);
 		}
 	}
+	
+	public void close() {
+		System.exit(0);
+	}
 }
