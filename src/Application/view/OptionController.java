@@ -87,13 +87,13 @@ public class OptionController {
 	}
 	public void RedTeamMembersInputCheck() {
 
-		if (RedTeamMembers.getText().matches("[0-9]+") && RedTeamMembers.getText().length()<4 ) {
+		if (RedTeamMembers.getText().matches("[0-9]+") && RedTeamMembers.getText().length()<4 && Integer.parseInt(RedTeamMembers.getText())>0) {
 			lebel_accepted(RedTeamMembersWarning);
 			checker[1] = true;
 		}
 		else {
 			RedTeamMembersWarning.setGraphic(null);
-			RedTeamMembersWarning.setText("This field must contain a number that is reasonable");
+			RedTeamMembersWarning.setText("This field must contain a number that is reasonable" );
 			checker[1] = false;
 		}
 		
@@ -101,7 +101,7 @@ public class OptionController {
 	
 	public void BlueTeamMembersInputCheck() {
 
-		if (BlueTeamMembers.getText().matches("[0-9]+") && BlueTeamMembers.getText().length()<4 ) {
+		if (BlueTeamMembers.getText().matches("[0-9]+") && BlueTeamMembers.getText().length()<4 && Integer.parseInt(BlueTeamMembers.getText())>0) {
 			lebel_accepted(BlueTeamMembersWarning);
 			checker[2] = true;
 		}
@@ -115,7 +115,7 @@ public class OptionController {
 	
 	public void AssassinsInputCheck() {
 
-		if (Assassins.getText().matches("[0-9]+") && Assassins.getText().length()<4 ) {
+		if (Assassins.getText().matches("[0-9]+") && Assassins.getText().length()<4 && Integer.parseInt(RedTeamMembers.getText())>=0) {
 			lebel_accepted(AssassinsWarning);
 			checker[3] = true;
 		}

@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane fx:id="MainBorderPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.view.BoardController">
+<BorderPane fx:id="MainBorderPane" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.view.BoardController">
    <top>
       <MenuBar fx:id="MainMenuBar" prefHeight="25.0" prefWidth="307.0" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="StartNewGameItem" mnemonicParsing="false" text="Start New Game" />
+                  <MenuItem fx:id="StartNewGameItem" mnemonicParsing="false" onAction="#Start_New_Game" text="Start New Game" />
               <MenuItem fx:id="CloseItem" mnemonicParsing="false" onAction="#close" text="Close" />
             </items>
           </Menu>
@@ -31,14 +31,14 @@
             <Label fx:id="Clue" layoutX="125.0" layoutY="5.0" text="Clue" />
             <Separator fx:id="separator" layoutX="289.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="29.0" prefWidth="22.0" />
             <Label fx:id="Count" layoutX="415.0" layoutY="5.0" text="Count" />
-            <Button fx:id="ContinueButton" layoutX="610.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" style="-: ;" text="Continue" AnchorPane.rightAnchor="30.0" />
+            <Button fx:id="ContinueButton" layoutX="488.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" style="-: ;" text="Continue" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
    </bottom>
    <center>
-      <AnchorPane fx:id="MainAnchor" maxHeight="700.0" maxWidth="700.0" minHeight="700.0" minWidth="700.0" prefHeight="700.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="MainAnchor" BorderPane.alignment="CENTER">
          <children>
-            <GridPane fx:id="Grid" layoutX="209.0" layoutY="121.0" prefHeight="700.0" prefWidth="700.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+            <GridPane fx:id="Grid" layoutX="209.0" layoutY="121.0" prefHeight="700.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

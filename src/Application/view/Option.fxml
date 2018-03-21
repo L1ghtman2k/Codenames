@@ -41,13 +41,13 @@
                   <Label text="Assassins" GridPane.rowIndex="3" />
                   <Label text="Red Team Name" GridPane.rowIndex="4" />
                   <Label text="Blue Team Name" GridPane.rowIndex="5" />
-                  <TextField fx:id="GridSize" onKeyReleased="#GridFieldInputCheck" prefHeight="25.0" prefWidth="156.0" GridPane.columnIndex="2" />
+                  <TextField fx:id="GridSize" onKeyReleased="#GridFieldInputCheck" onKeyTyped="#GridFieldInputCheck" prefHeight="25.0" prefWidth="156.0" GridPane.columnIndex="2" />
                   
-                  <TextField fx:id="RedTeamMembers" onKeyReleased="#RedTeamMembersInputCheck" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <TextField fx:id="BlueTeamMembers" onKeyReleased="#BlueTeamMembersInputCheck" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <TextField fx:id="Assassins" onKeyReleased="#AssassinsInputCheck" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <TextField fx:id="RedTeamName" onKeyReleased="#RedTeamNameInputCheck" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <TextField fx:id="BlueTeamName" onKeyReleased="#BlueTeamNameInputCheck" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <TextField fx:id="RedTeamMembers" onKeyReleased="#RedTeamMembersInputCheck" onKeyTyped="#RedTeamMembersInputCheck" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="BlueTeamMembers" onKeyReleased="#BlueTeamMembersInputCheck" onKeyTyped="#BlueTeamMembersInputCheck" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="Assassins" onKeyReleased="#AssassinsInputCheck" onKeyTyped="#AssassinsInputCheck" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <TextField fx:id="RedTeamName" onKeyReleased="#RedTeamNameInputCheck" onKeyTyped="#RedTeamNameInputCheck" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <TextField fx:id="BlueTeamName" onKeyReleased="#BlueTeamNameInputCheck" onKeyTyped="#BlueTeamNameInputCheck" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                   <Label fx:id="RedTeamMembersWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="40.0" prefWidth="480.0" text="This field must contain a number that is reasonable" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label fx:id="BlueTeamMembersWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="37.0" prefWidth="480.0" text="This field must contain a number that is reasonable" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label fx:id="AssassinsWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="44.0" prefWidth="480.0" text="This field must contain a number that is reasonable" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" />
