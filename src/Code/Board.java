@@ -74,6 +74,21 @@ public class Board {
 		}
 		return true;
 	}
+	
+	public boolean isCountLegal(int count, Roles role){
+		int sum = 0;
+		for(int i = 0; i < grid.length; i++)
+		{
+			for(int j = 0; j < grid.length; j++) {
+				if(grid[i][j].getPerson().getRole() == role && !grid[i][j].isRevealed()) {
+					sum++;
+				}
+			}
+		}
+		if(count > sum)
+			return false;
+		return true;
+	}
 
 	/**
 	 * This method decrements the count of guesses, updates whether the location is revealed or not,

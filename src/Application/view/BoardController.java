@@ -1,29 +1,22 @@
 package Application.view;
-
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-
 import Code.Board;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import sun.tools.jar.Main;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 public class BoardController {
 
 	@FXML
@@ -51,21 +44,43 @@ public class BoardController {
 
 	private Term term;
 
-	public void RedSpyMasterTerm() {
+	public void RedSpyMasterTerm() throws IOException {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Term Change Warning");
+		alert.setHeaderText("Warning");
+		alert.setContentText("It is now RedSpyMaster's Move");
+		alert.showAndWait();
+		
 		Clue.setVisible(false);
 		Count.setVisible(false);
 		separator.setVisible(false);
-		addButtons();
-
+		ContinueButton.setVisible(false);
 		term = Term.RedSpyMaster;
+		
+		addButtonsSpyMaster();
+		initializeSpyMastersDialog();
 	}
-
+	
+	public void RedTeamTerm() {
+		((Stage)ContinueButton.getScene().getWindow()).hide();
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Term Change Warning");
+		alert.setHeaderText("Warning");
+		alert.setContentText("It is now Red Team's Move");
+		alert.showAndWait();
+		((Stage)ContinueButton.getScene().getWindow()).show();
+		Clue.setVisible(true);
+		Count.setVisible(true);
+		separator.setVisible(true);
+		ContinueButton.setVisible(true);
+		term = Term.RedTeam;
+		
+		
+	}
 	public void BlueSpyMasterTerm() {
 		term = Term.BlueSpyMaster;
 	}
-	public void RedTeamTerm() {
-		term = Term.RedTeam;
-	}
+	
 	public void BlueTeamTerm() {
 		term = Term.BlueTeam;
 	}
@@ -74,21 +89,25 @@ public class BoardController {
 		this.board = board;
 		board.LocationAssignerAndRedMove("src/GameWords1.txt");
 	}
+	
 
-	public void addButtons(){
+	public void addButtonsSpyMaster(){
 		
 		int x = board.getGrid().length;
 		removeRowsAndColumns();
 		for (int i = 0; i < x ; i++) {
 			for (int j = 0; j <  x; j++) {	
-				Button button = new Button(board.getGrid()[i][j].getCodename() + "\n" + board.getGrid()[i][j].getPerson().getRole().toString());
+				String str=board.getGrid()[i][j].getPerson().getRole().toString();
+				if(!board.getGrid()[i][j].isRevealed()) {
+					str+="\n" + board.getGrid()[i][j].getCodename();
+				}
+				Button button = new Button(str);
 				button.setStyle("-fx-font-size: 15pt;");
 				button.setPrefSize(400, 200);
 				button.textAlignmentProperty().set(TextAlignment.CENTER);
 				Grid.add(button, j, i);
 			}
 		}
-		Grid.setPrefWidth(100.0/x);
 		
 	}
 	public void removeRowsAndColumns() {
@@ -120,4 +139,35 @@ public class BoardController {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+	
+	public void initializeSpyMastersDialog() throws IOException {
+		Stage primaryStage = new Stage();
+		primaryStage.setTitle("SpyMaster's Input");
+		primaryStage.getIcons().add(new Image("Media/logo.png"));
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(GameModeController.class.getResource("SpyMasterInput.fxml"));
+		BorderPane mainLayout = loader.load();
+		((SpyMasterInputController)loader.getController()).set_BoardController(this);
+		Scene scene = new Scene(mainLayout);	
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		primaryStage.setX(0);
+		primaryStage.setY(0);
+		primaryStage.setOnCloseRequest(e->close());
+		primaryStage.setAlwaysOnTop(true);
+	}
+	public Board getBoard() {
+		return board;
+	}
+	
+	public Term getTerm() {
+		return term;
+	}
+	public void setClue(String str) {
+		Clue.setText(str);
+	}
+	public void setCount(String str) {
+		Count.setText(str);
+	}
+	
 }

@@ -179,6 +179,9 @@ public class OptionController {
 		else if((Integer.parseInt(Assassins.getText()) + Integer.parseInt(BlueTeamMembers.getText()) + Integer.parseInt(RedTeamMembers.getText()))> Math.pow(Integer.parseInt(GridSize.getText()),2)){
 			AdditionalWarning.setText("You have more roles than your grid can contain.");
 		}
+		else if(RedTeamName.getText().equals(BlueTeamName.getText())) {
+			AdditionalWarning.setText("Teams can't have same names");
+		}
 		
 		else {
 			((Stage)Start.getScene().getWindow()).close();
