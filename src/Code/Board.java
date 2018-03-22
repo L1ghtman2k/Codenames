@@ -40,7 +40,7 @@ public class Board {
 
 		List<String> RandomCodenames = randomizer.retRandomCodenames(extension.retAllCodenames(PATH));
 		List<Person> RandomRoles = randomizer.retRandomizeRoles();
-
+		
 		for(int i = 0; i < grid.length; i++)
 		{
 			for(int j = 0; j < grid.length; j++)

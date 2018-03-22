@@ -25,7 +25,7 @@ public class Class_Board_Method_LocationAssignerAndRedMove {
 		Board board = launcher.StartTheGame("RedTeam", "BlueTeam");
 		Location[][] grid = board.getGrid();
 		boolean checker = false;	
-		board.LocationAssignerAndRedMove("src/GameWords1.txt");	
+		board.LocationAssignerAndRedMove("GameWords1.txt");	
 		for(int i = 0; i < grid.length; i++)
 			for(int j = 0; j < grid.length; j++)
 			{
@@ -43,7 +43,7 @@ public class Class_Board_Method_LocationAssignerAndRedMove {
 		Board board = launcher.StartTheGame(7,20,20,8,"RedTeam", "BlueTeam");
 		Location[][] grid = board.getGrid();
 		boolean checker = false;		
-		board.LocationAssignerAndRedMove("src/GameWords2.txt");	
+		board.LocationAssignerAndRedMove("GameWords2.txt");	
 		for(int i = 0; i < grid.length; i++)
 			for(int j = 0; j < grid.length; j++)
 			{

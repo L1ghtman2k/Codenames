@@ -213,10 +213,8 @@ public class OptionController {
 			
 			controller.RedSpyMasterTerm();
 			primaryStage.setOnCloseRequest(e->System.exit(0));
+			
 			primaryStage.show();
-			
-			
-			
 		}
 		
 		

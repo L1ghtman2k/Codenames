@@ -20,16 +20,10 @@ public class Class_LocalFileExtension_Method_retAllCodenames {
 	} 
 	
 	@Test
-	public void FileDoesntExsist_returnsNull() {
-		List<String> assertion = iExtension.retAllCodenames("SomeNonExistentFile");
-		assertNull(assertion);
-	}
-	
-	@Test
 	public void FileExists_ListOfStringContaining() {
-		List<String> assertion = iExtension.retAllCodenames("src/GameWords1.txt");
+		List<String> assertion = iExtension.retAllCodenames("GameWords1.txt");
 		assertEquals(assertion.size(), 400);
-		List<String> assertion2 = iExtension.retAllCodenames("src/GameWords2.txt");
+		List<String> assertion2 = iExtension.retAllCodenames("GameWords2.txt");
 		assertEquals(assertion2.size(), 50);
 	}
 

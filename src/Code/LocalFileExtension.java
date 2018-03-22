@@ -1,10 +1,13 @@
 package Code;
 
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
+
+import Application.view.GameModeController;
 /**
  * 
  * Instance of this class makes possible to convert local .txt files to List of String.
@@ -20,10 +23,16 @@ public class LocalFileExtension implements IExtension{
 	 * @return List that contains all words from filename
 	 */
 	public List<String> retAllCodenames(String filename) {
-		List<String> list = null;
+		List<String> list = new ArrayList<String>();
 		try {
-			list = Files.readAllLines(new File(filename).toPath(), 
-					Charset.defaultCharset() );
+			
+			InputStream in = LocalFileExtension.class.getResourceAsStream(filename);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			String line;
+			while( (line = reader.readLine()) != null)
+			{
+			   list.add(line);
+			}
 		} catch (IOException e) {
 //			JOptionPane.showMessageDialog(new Frame(), "Wrong file selected, please try again");
 			return null;

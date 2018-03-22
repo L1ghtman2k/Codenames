@@ -131,7 +131,7 @@ public class BoardController {
 
 	public void setBoard(Board board) {
 		this.board = board;
-		board.LocationAssignerAndRedMove("src/GameWords1.txt");
+		board.LocationAssignerAndRedMove("GameWords1.txt");
 	}
 
 

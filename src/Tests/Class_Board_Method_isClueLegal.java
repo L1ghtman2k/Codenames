@@ -17,7 +17,7 @@ public class Class_Board_Method_isClueLegal {
 		lounch = new Launcher();
 		board = lounch.StartTheGame("Blue", "Red");
 		grid =  board.getGrid();
-		board.LocationAssignerAndRedMove("src/GameWords1.txt");
+		board.LocationAssignerAndRedMove("GameWords1.txt");
 	}
 	
 	

@@ -24,7 +24,7 @@ public class Class_Board_Method_LocationStatusUpdater {
 
 	@Test
 	public void CodeNameMatchesTeamMember_DecrementsTheCountSetsRevealedTrueReturnsTrue() {
-		board.LocationAssignerAndRedMove("src/GameWords1.txt");	
+		board.LocationAssignerAndRedMove("GameWords1.txt");	
 
 		for(int i = 0; i < grid.length; i++)
 			for(int j = 0; j < grid.length; j++) {
@@ -49,7 +49,7 @@ public class Class_Board_Method_LocationStatusUpdater {
 
 	@Test
 	public void CodeNameDoesNotMatchTeamMember_DoesNotDecrementTheCountSetsRevealedTrueReturnsFalse() {
-		board.LocationAssignerAndRedMove("src/GameWords1.txt");	
+		board.LocationAssignerAndRedMove("GameWords1.txt");	
 
 		for(int i = 0; i < grid.length; i++)
 			for(int j = 0; j < grid.length; j++) {
