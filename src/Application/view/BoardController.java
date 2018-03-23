@@ -49,92 +49,59 @@ public class BoardController {
 	private Term term;
 
 	public void RedSpyMasterTerm() throws IOException {
-		term = Term.RedSpyMaster;
-		((Stage)ContinueButton.getScene().getWindow()).hide();
-		Alert alert = new Alert(AlertType.WARNING);
-		alert.setTitle("Term Change Warning");
-		alert.setHeaderText("Warning");
-		alert.setContentText("It is now RedSpyMaster's Move");
-		alert.showAndWait();
-
-		Grid.setDisable(false);
-		Clue.setVisible(false);
-		Count.setVisible(false);
-		separator.setVisible(false);
-		ContinueButton.setVisible(false);
-
-		addButtonsSpyMaster();
-		initializeSpyMastersDialog();
-		((Stage)ContinueButton.getScene().getWindow()).show();
+		SpyMasterWindowInitializer(Term.RedSpyMaster, "Red SpyMaster");
 	}
 
-	public void RedTeamTerm() {
-		((Stage)ContinueButton.getScene().getWindow()).hide();
-		term = Term.RedTeam;
-		Alert alert = new Alert(AlertType.WARNING);
-		alert.setTitle("Term Change Warning");
-		alert.setHeaderText("Warning");
-		alert.setContentText("It is now Red Team's Move");
-		alert.showAndWait();
-
-		Grid.setDisable(false);
-		Clue.setVisible(true);
-		Count.setVisible(true);
-		separator.setVisible(true);
-		ContinueButton.setVisible(true);
-
-
-		addButtonsTeam();
-		((Stage)ContinueButton.getScene().getWindow()).show();
-
-
-	}
 	public void BlueSpyMasterTerm() throws IOException {
+		SpyMasterWindowInitializer(Term.BlueSpyMaster, "Blue SpyMaster");
+	}
+	
+	public void RedTeamTerm() {
+		TeamWindowInitializer(Term.RedTeam, "Red Team");
+	}
+	public void BlueTeamTerm() {
+		TeamWindowInitializer(Term.BlueTeam, "Blue Team");
+	}
+	public void SpyMasterWindowInitializer(Term term, String move) throws IOException {
+		this.term = term;
 		((Stage)ContinueButton.getScene().getWindow()).hide();
-		term = Term.BlueSpyMaster;
-		Alert alert = new Alert(AlertType.WARNING);
-		alert.setTitle("Term Change Warning");
-		alert.setHeaderText("Warning");
-		alert.setContentText("It is now BlueSpyMaster's Move");
-		alert.showAndWait();
-
+		alertInitializer(move);
 		Grid.setDisable(false);
 		Clue.setVisible(false);
 		Count.setVisible(false);
 		separator.setVisible(false);
 		ContinueButton.setVisible(false);
-
 		addButtonsSpyMaster();
 		initializeSpyMastersDialog();
 		((Stage)ContinueButton.getScene().getWindow()).show();
 	}
-
-	public void BlueTeamTerm() {
+	
+	public void TeamWindowInitializer(Term term, String move) {
+		this.term = term;
 		((Stage)ContinueButton.getScene().getWindow()).hide();
-		term = Term.BlueTeam;
-
-		Alert alert = new Alert(AlertType.WARNING);
-		alert.setTitle("Term Change Warning");
-		alert.setHeaderText("Warning");
-		alert.setContentText("It is now Blue Team's Move");
-		alert.showAndWait();
-
+		alertInitializer(move);
 		Grid.setDisable(false);
 		Clue.setVisible(true);
 		Count.setVisible(true);
 		separator.setVisible(true);
 		ContinueButton.setVisible(true);
 		addButtonsTeam();
-
 		((Stage)ContinueButton.getScene().getWindow()).show();
 	}
+	
+	public void alertInitializer(String move) {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Term Change Warning");
+		alert.setHeaderText("Warning");
+		alert.setContentText("It is now "+move+"'s Move");
+		alert.showAndWait();
+	}
+	
 
 	public void setBoard(Board board) {
 		this.board = board;
 		board.LocationAssignerAndRedMove("GameWords1.txt");
 	}
-
-
 	public void addButtonsSpyMaster(){
 		int x = board.getGrid().length;
 		removeRowsAndColumns();
@@ -220,7 +187,6 @@ public class BoardController {
 		Grid.getChildren().clear();
 		while(Grid.getRowConstraints().size() > 0){
 			Grid.getRowConstraints().remove(0);
-
 		}
 
 		while(Grid.getColumnConstraints().size() > 0){
@@ -287,7 +253,6 @@ public class BoardController {
 		boolean winningState = board.isBoardInWinningState();
 		if(winningState) {
 			if(board.isAssassinRevealed()) {
-				System.out.println("Test");
 				if(term == Term.RedTeam) {
 					initializeWinningState(board.getBlueTeam());
 				}

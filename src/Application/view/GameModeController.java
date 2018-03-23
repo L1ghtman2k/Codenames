@@ -26,7 +26,6 @@ public class GameModeController {
 	
 	
 	public void ChooseParametrsCostume() throws IOException{
-		
 		((Stage)DefaultStart.getScene().getWindow()).close();
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("Option Window");

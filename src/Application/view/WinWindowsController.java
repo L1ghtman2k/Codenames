@@ -22,9 +22,7 @@ public class WinWindowsController {
 	Button CloseButton;
 	public void setTeam(Team team)
 	{
-		CongratulationsLabel.setText("Congratulations "+team.getTeamName()+"!!");
-		ImageView image = new ImageView(new Image("Media/check-mark.png"));
-		
+		CongratulationsLabel.setText("Congratulation "+team.getTeamName()+"!!");	
 	}
 	
 	public void Start_New_Game() throws IOException {
