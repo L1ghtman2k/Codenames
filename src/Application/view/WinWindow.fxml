@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.media.*?>
@@ -11,13 +12,28 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="CongratulationsLabel" alignment="CENTER" layoutY="7.0" prefHeight="90.0" prefWidth="544.0" text="Congratulations &lt;Team Name&gt;!" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Label fx:id="CongratulationsLabel" alignment="CENTER" layoutY="7.0" prefHeight="90.0" prefWidth="544.0" text="Congratulation &lt;Team Name&gt;!" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
             <Button fx:id="StartNewGameButton" layoutX="483.0" layoutY="361.0" mnemonicParsing="false" onAction="#Start_New_Game" text="Start New Game" />
             <Button fx:id="CloseButton" layoutX="425.0" layoutY="361.0" mnemonicParsing="false" onAction="#close" text="Close" />
+            <ImageView fitHeight="293.0" fitWidth="293.0" layoutX="154.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Media/drj1NmK.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Media/giphy.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="370.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" rotate="-48.8">
+               <image>
+                  <Image url="@../../Media/giphy.gif" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>

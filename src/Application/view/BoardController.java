@@ -210,6 +210,7 @@ public class BoardController {
 				}
 				else{
 					Grid.setDisable(true);
+					Count.setVisible(false);
 				}
 
 			}
