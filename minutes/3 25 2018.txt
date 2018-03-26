@@ -6,16 +6,37 @@ Aibek Zhylkaidarov M.
 Kartik Rayavarapu
 Hrishikesh Kautik Ahire
 Shengheng
-
+Cole
 
 	
 Tasks completed since last meeting [1-2 minutes]
-Break, no tasks were assigned
+	Kar. 
+	ShuffleRandomizer(retRandomCodenames)
+	-JUnits 
+	Board(LocationAssignerAndRedMove)
+	-Junits 
+Har.	
+	ShuffleRandomizer(RandomizeRoles)
+	-JUnits 
+	-JavaDocs
+	Board(LocationStatusUpdater)
+	-JUnits
+	-JavaDocs(Check)
+Aib.
+	Help and check everyone's work
+		
+Col.
+	JavaDocs and tests.txt
+Shen
+	Board(isBoardInWinningState)
+	Board(isClueLegal)
+	
+
 Tasks worked upon but not completed since last meeting [2-4 minutes]
 	None.
 
 Goals for the next meeting [20+ minutes]
-	Introduce members to the project, and javaFX, start costumization.
+	Prepare to defend the project
 
 Schedule for the next week's set of pair programming meetings [3-4 minutes]
-	TBD on 3/26/2018
+	Wait for Phase 2 instructions
