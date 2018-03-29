@@ -1,6 +1,7 @@
 package Application.view;
 import java.io.IOException;
 import Code.Board;
+import Code.Roles;
 import Code.Team;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -114,8 +115,17 @@ public class BoardController {
 				}
 				str+=board.getGrid()[i][j].getPerson().getRole().toString();
 				Button button = new Button(str);
-				if(revealed) {
-					button.setStyle("-fx-font-size: 15pt; -fx-text-fill: green");
+				if(revealed && board.getGrid()[i][j].getPerson().getRole() == Roles.Red) {
+					button.setText(button.getText()+"\n"+"Revealed");
+					button.setStyle("-fx-font-size: 15pt; -fx-text-fill: red");
+				}
+				else if(revealed && board.getGrid()[i][j].getPerson().getRole() == Roles.Blue) {
+					button.setText(button.getText()+"\n"+"Revealed");
+					button.setStyle("-fx-font-size: 15pt; -fx-text-fill: Blue");
+				}
+				else if(revealed) {
+					button.setText(button.getText()+"\n"+"Revealed");
+					button.setStyle("-fx-font-size: 15pt; -fx-text-fill: Green");
 				}
 				else {
 					button.setStyle("-fx-font-size: 15pt;");

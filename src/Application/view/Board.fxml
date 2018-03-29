@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -27,22 +30,31 @@
       </MenuBar>
    </top>
    <bottom>
-      <AnchorPane prefHeight="11.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="76.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="Clue" layoutX="125.0" layoutY="5.0" text="Clue" textFill="RED">
+            <Label fx:id="Clue" alignment="CENTER" layoutX="-1.0" layoutY="-1.0" prefHeight="102.0" prefWidth="614.0" text="Clue" textFill="RED">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="37.0" />
                </font></Label>
-            <Separator fx:id="separator" layoutX="289.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="29.0" prefWidth="22.0" />
-            <Label fx:id="Count" layoutX="415.0" layoutY="5.0" text="Count" />
-            <Button fx:id="ContinueButton" layoutX="859.0" mnemonicParsing="false" onAction="#nextTerm" prefHeight="25.0" prefWidth="112.0" text="Continue" AnchorPane.rightAnchor="29.0" />
+            <Separator fx:id="separator" layoutX="603.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="103.0" prefWidth="20.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="603.0" AnchorPane.topAnchor="-1.0" />
+            <Label fx:id="Count" alignment="CENTER" layoutX="667.0" prefHeight="100.0" prefWidth="126.0" text="Count">
+               <font>
+                  <Font size="41.0" />
+               </font></Label>
+            <Button fx:id="ContinueButton" layoutX="874.0" layoutY="27.0" mnemonicParsing="false" onAction="#nextTerm" prefHeight="49.0" prefWidth="112.0" text="Continue" AnchorPane.rightAnchor="14.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <InnerShadow color="#00baff" height="6.055" radius="1.01375" width="0.0" />
+               </effect></Button>
          </children>
       </AnchorPane>
    </bottom>
    <center>
       <AnchorPane fx:id="MainAnchor" BorderPane.alignment="CENTER">
          <children>
-            <GridPane fx:id="Grid" layoutX="209.0" layoutY="121.0" prefHeight="700.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <GridPane fx:id="Grid" layoutY="-21.0" prefHeight="700.0" prefWidth="700.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-21.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
