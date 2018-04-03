@@ -143,9 +143,10 @@ public class BoardController {
 		for (int i = 0; i < x ; i++) {
 			for (int j = 0; j <  x; j++) {	
 				String str = "";
-				str+=board.getGrid()[i][j].getCodename() +"\n";
+				str+=board.getGrid()[i][j].getCodename() /* +"\n"*/;
 				if(board.getGrid()[i][j].isRevealed())
-					str+=board.getGrid()[i][j].getPerson().getRole().toString();
+					str=board.getGrid()[i][j].getPerson().getRole().toString();
+					//str+=board.getGrid()[i][j].getPerson().getRole().toString();
 				Button button = new Button(str);
 				button.setStyle("-fx-font-size: 15pt;");
 				button.setPrefSize(400, 200);
@@ -175,7 +176,7 @@ public class BoardController {
 				if(term == Term.BlueTeam)
 					curentTeam = board.getBlueTeam();
 				boolean bool = board.LocationStatusUpdater(board.getGrid()[internalI][internalJ].getCodename(), curentTeam);
-				internalButton.setText(board.getGrid()[internalI][internalJ].getCodename() +"\n" + board.getGrid()[internalI][internalJ].getPerson().getRole().toString());
+				internalButton.setText(/*board.getGrid()[internalI][internalJ].getCodename() +"\n" + */board.getGrid()[internalI][internalJ].getPerson().getRole().toString());
 
 				if(bool == true) {
 					String str = Integer.toString(Integer.parseInt(Count.getText())-1);
