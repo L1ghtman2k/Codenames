@@ -94,7 +94,7 @@ public class Board {
 		}
 		if(count > sum)
 			return false;
-		if(count<=0)
+		if(count<0)
 			return false;
 		return true;
 	}

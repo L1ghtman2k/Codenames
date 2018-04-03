@@ -181,8 +181,9 @@ public class BoardController {
 				if(bool == true) {
 					String str = Integer.toString(Integer.parseInt(Count.getText())-1);
 					Count.setText(str);
-					if(str.equals("0")) {
+					if(str.equals("-1")) {
 						Grid.setDisable(true);
+						Count.setVisible(false);
 					}
 					internalButton.setDisable(true);
 				}
