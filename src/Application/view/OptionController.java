@@ -128,7 +128,7 @@ public class OptionController {
 	
 	public void AssassinsInputCheck() {
 
-		if (Assassins.getText().matches("[0-9]+") && Assassins.getText().length()<4 && Integer.parseInt(RedTeamMembers.getText())>=0) {
+		if (Assassins.getText().matches("[0-9]+") && Assassins.getText().length()<4 && Integer.parseInt(Assassins.getText())>=0) {
 			lebel_accepted(AssassinsWarning);
 			checker[3] = true;
 		}
@@ -213,7 +213,7 @@ public class OptionController {
 			
 			controller.RedSpyMasterTerm();
 			primaryStage.setOnCloseRequest(e->System.exit(0));
-			
+			 
 			primaryStage.show();
 		}
 		

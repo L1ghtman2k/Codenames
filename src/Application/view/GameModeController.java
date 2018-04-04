@@ -36,6 +36,7 @@ public class GameModeController {
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		primaryStage.setResizable(false);
 		controller = (OptionController)loader.getController();
 		controller.CostumeOption();
 	}

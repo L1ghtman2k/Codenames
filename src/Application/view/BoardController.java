@@ -238,6 +238,7 @@ public class BoardController {
 		primaryStage.setX(0);
 		primaryStage.setY(0);
 		primaryStage.setOnCloseRequest(e->close());
+		primaryStage.setResizable(false);
 		primaryStage.setAlwaysOnTop(true);
 	}
 
@@ -257,6 +258,7 @@ public class BoardController {
 		((WinWindowsController)loader.getController()).setTeam(team);
 
 		((Stage)ContinueButton.getScene().getWindow()).close();
+		primaryStage.setResizable(false);
 		primaryStage.show();
 
 	}
