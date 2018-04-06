@@ -18,16 +18,24 @@ public class GameModeController {
 	Button CostumeStart;
 	
 	OptionController controller;
+	Stage MainStage;
 	
 	public void ChooseParametrsDefault() throws IOException {
-		ChooseParametrsCostume();
+		ChooseParametrs();
 		controller.DefaultOption();
+		MainStage.show();
+	}
+	
+	public void ChooseParametrsCostume() throws IOException {
+		ChooseParametrs();
+		MainStage.show();
 	}
 	
 	
-	public void ChooseParametrsCostume() throws IOException{
+	public void ChooseParametrs() throws IOException{
 		((Stage)DefaultStart.getScene().getWindow()).close();
 		Stage primaryStage = new Stage();
+		MainStage = primaryStage;
 		primaryStage.setTitle("Option Window");
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
@@ -35,7 +43,7 @@ public class GameModeController {
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
-		primaryStage.show();
+		
 		primaryStage.setResizable(false);
 		controller = (OptionController)loader.getController();
 		controller.CostumeOption();

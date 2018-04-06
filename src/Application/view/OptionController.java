@@ -85,7 +85,14 @@ public class OptionController {
 		checker[5] = true;
 	}
 	
-	
+	public void MainFieldCheck() {
+		GridFieldInputCheck();
+		RedTeamMembersInputCheck();
+		BlueTeamMembersInputCheck();
+		AssassinsInputCheck();
+		RedTeamNameInputCheck();
+		BlueTeamNameInputCheck();
+	}
 	public void GridFieldInputCheck() {
 
 		if (GridSize.getText().matches("[0-9]+") && GridSize.getText().length()<3 && Integer.parseInt(GridSize.getText())>=3 && Integer.parseInt(GridSize.getText())<=10) {

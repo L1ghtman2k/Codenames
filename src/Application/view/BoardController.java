@@ -20,6 +20,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 public class BoardController {
@@ -43,11 +44,13 @@ public class BoardController {
 	@FXML
 	GridPane Grid;
 	@FXML
-	Separator separator;
+	ScrollPane separator;
 
 	private Board board;
 
 	private Term term;
+	
+	private Stage SpyStage;
 
 	public void RedSpyMasterTerm() throws IOException {
 		SpyMasterWindowInitializer(Term.RedSpyMaster, "Red SpyMaster");
@@ -213,6 +216,7 @@ public class BoardController {
 	public void Start_New_Game() throws IOException {
 		// TO BE OPTIMIZED
 		((Stage)ContinueButton.getScene().getWindow()).close();
+		SpyStage.close();
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("Board");
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
@@ -221,12 +225,14 @@ public class BoardController {
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
+		
 		primaryStage.show();
 	}
 
 	public void initializeSpyMastersDialog() throws IOException {
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("SpyMaster's Input");
+		SpyStage = primaryStage;
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(GameModeController.class.getResource("SpyMasterInput.fxml"));
@@ -299,7 +305,7 @@ public class BoardController {
 		return term;
 	}
 	public void setClue(String str) {
-		Clue.setText(str);
+		Clue.setText("Clue: "+str);
 	}
 	public void setCount(String str) {
 		Count.setText(str);
