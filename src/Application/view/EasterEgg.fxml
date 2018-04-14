@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmins="http://javafx.com/javafx/8"
+	xmins:fx="http://javafx.com/fxml" fx:controller="Application.view.EasterEgg">
+	<ImageView fitWidth="400" preserveRatio="true" smooth="true">
+		<image>
+			<Image url="Easter_Egg_Pic.jpeg" />
+		</image>
+	</ImageView>
+	<Label text="Good Job, that was a FAIR game" />
+	<Button text="Exit Game" fx:id="closeButton" onAction="#handleCloseButton" />
+	<Button text="New Game" fx:id="returnButton" onAction="#startNewGame" />
+
+</VBox>
