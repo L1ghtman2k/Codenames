@@ -10,6 +10,9 @@ import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
+	/**
+	 * This method starts a game when project is started.
+	 */
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("Game Mode");
