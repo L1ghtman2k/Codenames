@@ -1,0 +1,28 @@
+package Application.view;
+
+import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+public class EasterEggController {
+	
+	@FXML
+	ImageView img;
+	
+	private MediaPlayer mediaPlayer;
+	public EasterEggController() {
+		Media hit = new Media(getClass().getResource("oof.mp3").toExternalForm());
+		mediaPlayer = new MediaPlayer(hit);
+	}
+	public void image_activator() {
+		img.setImage(new Image("Media/Assassin.png"));
+	}
+	
+	public void slower() {
+
+		mediaPlayer.play();
+	}
+
+}

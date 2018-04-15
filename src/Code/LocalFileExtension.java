@@ -34,7 +34,6 @@ public class LocalFileExtension implements IExtension{
 			   list.add(line);
 			}
 		} catch (IOException e) {
-//			JOptionPane.showMessageDialog(new Frame(), "Wrong file selected, please try again");
 			return null;
 		}
 		return list;

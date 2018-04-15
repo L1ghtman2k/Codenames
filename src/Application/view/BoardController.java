@@ -1,8 +1,11 @@
 package Application.view;
 import java.io.IOException;
+
+import Application.Main;
 import Code.Board;
 import Code.Roles;
 import Code.Team;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,7 +24,6 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 public class BoardController {
 
@@ -46,11 +48,20 @@ public class BoardController {
 	@FXML
 	ScrollPane separator;
 
+	@FXML
+    public void initialize() throws IOException {
+		EasterEgg_Initializer();
+    }
+	
 	private Board board;
 
 	private Term term;
 	
 	private Stage SpyStage;
+	
+	private Stage EggStage;
+	
+	private FXMLLoader EggLoader;
 
 	public void RedSpyMasterTerm() throws IOException {
 		SpyMasterWindowInitializer(Term.RedSpyMaster, "Red SpyMaster");
@@ -191,6 +202,9 @@ public class BoardController {
 					internalButton.setDisable(true);
 				}
 				else{
+					if(board.getGrid()[internalI][internalJ].getPerson().getRole() == Roles.Assassin) {
+						asyncServiceMethod();
+					}
 					Grid.setDisable(true);
 					Count.setVisible(false);
 				}
@@ -225,7 +239,6 @@ public class BoardController {
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
-		
 		primaryStage.show();
 	}
 
@@ -254,15 +267,10 @@ public class BoardController {
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(GameModeController.class.getResource("WinWindow.fxml"));
-
-
-
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
-
 		((WinWindowsController)loader.getController()).setTeam(team);
-
 		((Stage)ContinueButton.getScene().getWindow()).close();
 		primaryStage.setResizable(false);
 		primaryStage.show();
@@ -273,8 +281,9 @@ public class BoardController {
 		boolean winningState = board.isBoardInWinningState();
 		if(winningState) {
 			if(board.isAssassinRevealed()) {
-				if(term == Term.RedTeam) {
+				if(term == Term.RedTeam) {			
 					initializeWinningState(board.getBlueTeam());
+					
 				}
 				else {
 					initializeWinningState(board.getRedTeam());
@@ -309,6 +318,32 @@ public class BoardController {
 	}
 	public void setCount(String str) {
 		Count.setText(str);
+	}
+	
+	public void initializeEasterEggStage() throws IOException {
+		
+		
+
+	}
+	
+	public void asyncServiceMethod(){ 
+		Platform.runLater(() -> {
+            ((EasterEggController)EggLoader.getController()).slower();
+			EggStage.show();
+        });
+    }
+	public void EasterEgg_Initializer() throws IOException {
+		EggStage = new Stage();
+		EggStage.setTitle("Easter Egg");
+		EggStage.getIcons().add(new Image("Media/logo.png"));
+		EggLoader = new FXMLLoader();
+		EggLoader.setLocation(GameModeController.class.getResource("EasterEgg.fxml"));
+		AnchorPane mainLayout = EggLoader.load();
+		Scene scene = new Scene(mainLayout);	
+		EggStage.setScene(scene);
+		EggStage.setResizable(false);
+	    ((EasterEggController)EggLoader.getController()).image_activator();
+	    
 	}
 
 }

@@ -24,7 +24,7 @@
                      <GridPane.margin>
                         <Insets left="60.0" right="60.0" />
                      </GridPane.margin></Button>
-                  <Button fx:id="CostumeStart" mnemonicParsing="false" onAction="#ChooseParametrsCostume" prefHeight="61.0" prefWidth="180.0" text="Costume" GridPane.rowIndex="1">
+                  <Button fx:id="CostumeStart" mnemonicParsing="false" onAction="#ChooseParametrsCostume" prefHeight="61.0" prefWidth="180.0" text="Custom" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="60.0" right="60.0" />
                      </GridPane.margin></Button>
