@@ -10,7 +10,6 @@ public class Board {
 	private Location[][] grid;
 	private Team Red;
 	private Team Blue;
-	private GameLogic gameLogic;
 	private IExtension extension;
 	private IRandomizer randomizer;
 	private int Reds, Blues, Assassins;
@@ -24,7 +23,6 @@ public class Board {
 		this.Red.setAgents(Roles.Red);
 		this.Blue = new Team(BlueName);
 		this.Blue.setAgents(Roles.Blue);
-		this.gameLogic = new GameLogic(Red, Blue, this);
 		this.Reds = Reds;
 		this.Blues = Blues;
 		this.Assassins = Assassins;
@@ -50,7 +48,6 @@ public class Board {
 				grid[i][j].setRevealed(false);
 			}
 		}
-		gameLogic.RedSpyMasterMove();
 	}
 
 

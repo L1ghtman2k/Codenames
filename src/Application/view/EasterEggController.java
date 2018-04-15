@@ -16,12 +16,16 @@ public class EasterEggController {
 		Media hit = new Media(getClass().getResource("oof.mp3").toExternalForm());
 		mediaPlayer = new MediaPlayer(hit);
 	}
+	/**
+	 * This method is responsible for setting a dope image of our professor
+	 */
 	public void image_activator() {
 		img.setImage(new Image("Media/Assassin.png"));
 	}
-	
+	/**
+	 * This method is responsible for playing oof.mp3 file
+	 */
 	public void slower() {
-
 		mediaPlayer.play();
 	}
 

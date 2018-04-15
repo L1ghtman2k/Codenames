@@ -49,7 +49,11 @@ public class OptionController {
 	Button Start;
 	
 	boolean[] checker = new boolean[6];
-	
+	/**
+	 * This method is responsible for setting appropriate parameters for a default game,
+	 * 5 by 5 Grid
+	 * 9 Reds, 8 blues, 1 assassin, and 7 bystanders
+	 */
 	public void DefaultOption() {
 		GridSize.setDisable(true);
 		GridSize.setText("5");
@@ -72,7 +76,10 @@ public class OptionController {
 		checker[3] = true;
 	}
 	
-	
+	/**
+	 * This method is responsible for setting appropriate parameters for a custome game,
+	 * Which is leaving blank spaces for user to enter
+	 */
 	public void CostumeOption() {
 		
 		
@@ -85,6 +92,9 @@ public class OptionController {
 		checker[5] = true;
 	}
 	
+	/**
+	 * This method is a Collection of all possible checks
+	 */
 	public void MainFieldCheck() {
 		GridFieldInputCheck();
 		RedTeamMembersInputCheck();
@@ -93,6 +103,10 @@ public class OptionController {
 		RedTeamNameInputCheck();
 		BlueTeamNameInputCheck();
 	}
+	/**
+	 * This method checks weather or not gridSize contains an appropriate inputs
+	 * which is a number in a range from 3 to 10
+	 */
 	public void GridFieldInputCheck() {
 
 		if (GridSize.getText().matches("[0-9]+") && GridSize.getText().length()<3 && Integer.parseInt(GridSize.getText())>=3 && Integer.parseInt(GridSize.getText())<=10) {
@@ -105,6 +119,10 @@ public class OptionController {
 			checker[0] = false;
 		}
 	}
+	/**
+	 * This method checks weather or not Red Team member field contains an appropriate inputs
+	 * which has to be a number of a reasonable length more than 0
+	 */
 	public void RedTeamMembersInputCheck() {
 
 		if (RedTeamMembers.getText().matches("[0-9]+") && RedTeamMembers.getText().length()<4 && Integer.parseInt(RedTeamMembers.getText())>0) {
@@ -118,7 +136,10 @@ public class OptionController {
 		}
 		
 	}
-	
+	/**
+	 * This method checks weather or not Blue Team member field contains an appropriate inputs
+	 * which has to be a number of a reasonable length more than 0
+	 */
 	public void BlueTeamMembersInputCheck() {
 
 		if (BlueTeamMembers.getText().matches("[0-9]+") && BlueTeamMembers.getText().length()<4 && Integer.parseInt(BlueTeamMembers.getText())>0) {
@@ -132,7 +153,10 @@ public class OptionController {
 		}
 		
 	}
-	
+	/**
+	 * This method checks weather or not Assassins Input field contains an appropriate inputs
+	 * which has to be a number of a reasonable length more or equal to 0
+	 */
 	public void AssassinsInputCheck() {
 
 		if (Assassins.getText().matches("[0-9]+") && Assassins.getText().length()<4 && Integer.parseInt(Assassins.getText())>=0) {
@@ -145,7 +169,10 @@ public class OptionController {
 			checker[3] = false;
 		}
 	}
-	
+	/**
+	 * This method checks weather or not Red Team Name field contains an appropriate inputs
+	 * which has to be a String of a reasonable length more or equal to 0
+	 */
 	public void RedTeamNameInputCheck() {
 
 		if (RedTeamName.getText().trim().length()>0 && RedTeamName.getText().length()<=20) {
@@ -158,7 +185,10 @@ public class OptionController {
 			checker[4] = false;
 		}
 	}
-	
+	/**
+	 * This method checks weather or not Blue Team Name field contains an appropriate inputs
+	 * which has to be a String of a reasonable length more or equal to 0
+	 */
 	public void BlueTeamNameInputCheck() {
 
 		if (BlueTeamName.getText().trim().length()>0 && BlueTeamName.getText().length()<=20) {
@@ -171,19 +201,31 @@ public class OptionController {
 			checker[5] = false;
 		}
 	}
-	
+	/**
+	 * This method returns an image of a check mark and sets it an appropriate size of 25 by 25 pixels
+	 * @return image created
+	 */
 	public ImageView image_creator() {
 		ImageView image = new ImageView(new Image("Media/check-mark.png"));
 		image.setFitWidth(25);
 		image.setFitHeight(25);
 		return image;
 	}
-	
+	/**
+	 * This method sets a label to an image, and deles a warning text
+	 * @param label
+	 */
 	public void lebel_accepted(Label label) {
 		label.setText("");
 		label.setGraphic(image_creator());
 	}
-
+	
+	/**
+	 * This method is called when continue button is pressed
+	 * It creates a new Board if all the requirements are satisfied and there are no
+	 * violations of grid size and members relation
+	 * @throws IOException if loader of a new board fails
+	 */
 	public void StartTheGame() throws IOException {
 		boolean overall = true;
 		

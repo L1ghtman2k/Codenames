@@ -1,7 +1,5 @@
 package Application.view;
 import java.io.IOException;
-
-import Application.Main;
 import Code.Board;
 import Code.Roles;
 import Code.Team;
@@ -48,6 +46,11 @@ public class BoardController {
 	@FXML
 	ScrollPane separator;
 
+	/**
+	 * This method calls EasterEgg_Initializers before the game starts, so that running it later
+	 * wouldn't cause any troubles
+	 * @throws IOException if EasterEgg_Initializer fails
+	 */
 	@FXML
 	public void initialize() throws IOException {
 		EasterEgg_Initializer();
@@ -63,24 +66,45 @@ public class BoardController {
 
 	private FXMLLoader EggLoader;
 
+	/**
+	 * calls RedSpyMasterTerm with parameters Term.RedSpyMaster, "Red SpyMaster"
+	 * @throws IOException if SpyMasterWindowInitializer fails
+	 */
 	public void RedSpyMasterTerm() throws IOException {
 		SpyMasterWindowInitializer(Term.RedSpyMaster, "Red SpyMaster");
 	}
-
+	/**
+	 * calls BlueSpyMasterTerm with parameters Term.BlueSpyMaster, "Blue SpyMaster"
+	 * @throws IOException if SpyMasterWindowInitializer fails
+	 */
 	public void BlueSpyMasterTerm() throws IOException {
 		SpyMasterWindowInitializer(Term.BlueSpyMaster, "Blue SpyMaster");
 	}
-
+	/**
+	 * Calls TeamWindowInitializer with parameters Term.RedTeam and "Red Team"
+	 */
 	public void RedTeamTerm() {
 		TeamWindowInitializer(Term.RedTeam, "Red Team");
 	}
+	/**
+	 * Calls TeamWindowInitializer with parameters Term.BlueTeam and "Blue Team"
+	 */
 	public void BlueTeamTerm() {
 		TeamWindowInitializer(Term.BlueTeam, "Blue Team");
 	}
-	public void SpyMasterWindowInitializer(Term term, String move) throws IOException {
+	/**
+	 * This method sets board for spymaster, creates an allert
+	 * Makes Grid interactive, makes clue, count separator, continue button invisible.
+	 * calls addButtonsSpyMaster, and initialize spymaster dialogue by calling initializeSpyMasterDialog
+	 * 
+	 * @param term Enum which represents the term
+	 * @param team String that represents the team
+	 * @throws IOException if initializeSpyMastersDialog fails
+	 */
+	public void SpyMasterWindowInitializer(Term term, String team) throws IOException {
 		this.term = term;
 		((Stage)ContinueButton.getScene().getWindow()).hide();
-		alertInitializer(move);
+		alertInitializer(team);
 		Grid.setDisable(false);
 		Clue.setVisible(false);
 		Count.setVisible(false);
@@ -90,11 +114,17 @@ public class BoardController {
 		initializeSpyMastersDialog();
 		((Stage)ContinueButton.getScene().getWindow()).show();
 	}
-
-	public void TeamWindowInitializer(Term term, String move) {
+	/**
+	 * Initialized window for the team, calls alertInitializer,
+	 * Sets Grid to be disabled, makes clue, count, separator, continue button visible,
+	 * calls addButtonsTeam method
+	 * @param term Enum which represents the term
+	 * @param team String that represents the team
+	 */
+	public void TeamWindowInitializer(Term term, String team) {
 		this.term = term;
 		((Stage)ContinueButton.getScene().getWindow()).hide();
-		alertInitializer(move);
+		alertInitializer(team);
 		Grid.setDisable(false);
 		Clue.setVisible(true);
 		Count.setVisible(true);
@@ -117,15 +147,7 @@ public class BoardController {
 		alert.showAndWait();
 	}
 
-	/**
-	 * This method is responsible for providing a GameWords1 txt file to location 
-	 * assigner method, in addition it sets the board
-	 * @param board is a board that is being assigned to a main board
-	 */
-	public void setBoard(Board board) {
-		this.board = board;
-		board.LocationAssignerAndRedMove("GameWords1.txt");
-	}
+
 	/**
 	 * This method is responsible for creating SpyMaster's Board
 	 * which has buttons that include information on weather or not the button
@@ -169,7 +191,9 @@ public class BoardController {
 	 * This method is responsible for assigning actions to the buttons,
 	 * setting proper sizes and styles, putting them into board, 
 	 * creating an internal data for the button,
-	 * and also responsible for naming them
+	 * and also responsible for naming them.
+	 * 
+	 * Adds internal information to the button
 	 */
 	private void addButtonsTeam(){
 		int x = board.getGrid().length;
@@ -256,7 +280,9 @@ public class BoardController {
 			Grid.getColumnConstraints().remove(0);
 		}
 	}
-
+	/**
+	 * This Method is responsible for closing an application
+	 */
 	public void close() {
 		System.exit(0);
 	}
@@ -269,7 +295,7 @@ public class BoardController {
 		((Stage)ContinueButton.getScene().getWindow()).close();
 		SpyStage.close();
 		Stage primaryStage = new Stage();
-		primaryStage.setTitle("Board");
+		primaryStage.setTitle("Game Mode");
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(GameModeController.class.getResource("GameMode.fxml"));
@@ -325,15 +351,14 @@ public class BoardController {
 	/**
 	 * This method is responsible for deciding weather or net stage will 
 	 * continue the game in a proper flow, or end it. Read Diagram.pdf for more. 
+	 * And is called when contue button is pressed
 	 * @throws IOException in case any State initializers fail
 	 */
 	public void nextTerm() throws IOException {
-		boolean winningState = board.isBoardInWinningState();
-		if(winningState) {
+		if(board.isBoardInWinningState()) {
 			if(board.isAssassinRevealed()) {
 				if(term == Term.RedTeam) {			
 					initializeWinningState(board.getBlueTeam());
-
 				}
 				else {
 					initializeWinningState(board.getRedTeam());
@@ -355,6 +380,36 @@ public class BoardController {
 				RedSpyMasterTerm();
 			}
 		}
+	}
+
+
+	/**
+	 * This method asynchronously runs EasterEgg Initializer so that it wouldn't
+	 * interfere with updates of fields
+	 */
+	private void asyncServiceMethod(){ 
+		Platform.runLater(() -> {
+			((EasterEggController)EggLoader.getController()).slower();
+			EggStage.show();
+		});
+	}
+	/**
+	 * This method initialized window of Easter Egg
+	 * @throws IOException in case EggLoader doesn't provide a proper Anchor Pane.
+	 */
+
+	private void EasterEgg_Initializer() throws IOException {
+		EggStage = new Stage();
+		EggStage.setTitle("Easter Egg");
+		EggStage.getIcons().add(new Image("Media/logo.png"));
+		EggLoader = new FXMLLoader();
+		EggLoader.setLocation(GameModeController.class.getResource("EasterEgg.fxml"));
+		AnchorPane mainLayout = EggLoader.load();
+		Scene scene = new Scene(mainLayout);	
+		EggStage.setScene(scene);
+		EggStage.setResizable(false);
+		((EasterEggController)EggLoader.getController()).image_activator();
+
 	}
 
 	/**
@@ -389,32 +444,14 @@ public class BoardController {
 	}
 
 	/**
-	 * This method asynchronously runs EasterEgg Initializer so that it wouldn't
-	 * interfere with updates of fields
+	 * This method is responsible for providing a GameWords1 txt file to location 
+	 * assigner method, in addition it sets the board
+	 * @param board is a board that is being assigned to a main board
 	 */
-	private void asyncServiceMethod(){ 
-		Platform.runLater(() -> {
-			((EasterEggController)EggLoader.getController()).slower();
-			EggStage.show();
-		});
+	public void setBoard(Board board) {
+		this.board = board;
+		board.LocationAssignerAndRedMove("GameWords1.txt");
 	}
-	/**
-	 * This method initialized window of Easter Egg
-	 * @throws IOException in case EggLoader doesn't provide a proper Anchor Pane.
-	 */
 
-	private void EasterEgg_Initializer() throws IOException {
-		EggStage = new Stage();
-		EggStage.setTitle("Easter Egg");
-		EggStage.getIcons().add(new Image("Media/logo.png"));
-		EggLoader = new FXMLLoader();
-		EggLoader.setLocation(GameModeController.class.getResource("EasterEgg.fxml"));
-		AnchorPane mainLayout = EggLoader.load();
-		Scene scene = new Scene(mainLayout);	
-		EggStage.setScene(scene);
-		EggStage.setResizable(false);
-		((EasterEggController)EggLoader.getController()).image_activator();
-
-	}
 
 }

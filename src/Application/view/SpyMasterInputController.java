@@ -22,18 +22,31 @@ public class SpyMasterInputController {
 	Button Continuebtn;
 
 	BoardController board;
+	/**
+	 * This method returns clueField TextField
+	 * @return ClueField
+	 */
 	public TextField getClueField() {
 		return ClueField;
 	}
-
+	/**
+	 * This method returns CountField TextField
+	 * @return CountField
+	 */
 	public TextField CountField() {
 		return CountField;
 	}
-
+	/**
+	 * This method sets a board parameter Board Controller
+	 * @param board that is being set
+	 */
 	public void set_BoardController(BoardController board) {
 		this.board = board;
 	}
-
+	/**
+	 * This method is called when Continue Button is pressed, it checks if inputs a proper
+	 * and Changes labels if count or a clue are not properly entered
+	 */
 	public void EnterAClueAndCount() {
 		boolean clue =false;
 		boolean count =false;

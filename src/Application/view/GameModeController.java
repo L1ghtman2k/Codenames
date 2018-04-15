@@ -20,18 +20,30 @@ public class GameModeController {
 	OptionController controller;
 	Stage MainStage;
 	
+	/**
+	 * This method is responsible for setting next window as Default Game Option Window
+	 * @throws IOException
+	 */
 	public void ChooseParametrsDefault() throws IOException {
 		ChooseParametrs();
 		controller.DefaultOption();
 		MainStage.show();
 	}
 	
+	/**
+	 * This method is responsible for setting next window as  Custom Game Option Window
+	 * @throws IOException if ChooseParametrs fails to load
+	 */
 	public void ChooseParametrsCostume() throws IOException {
 		ChooseParametrs();
 		MainStage.show();
 	}
 	
-	
+	/**
+	 * This method is responsible for creating a new Board window that later on will be
+	 * costumized by ChooseParametrsCostume or ChooseParametrsDefault
+	 * @throws IOException if loader is not avialiable
+	 */
 	public void ChooseParametrs() throws IOException{
 		((Stage)DefaultStart.getScene().getWindow()).close();
 		Stage primaryStage = new Stage();
