@@ -104,19 +104,33 @@ public class BoardController {
 		((Stage)ContinueButton.getScene().getWindow()).show();
 	}
 
-	public void alertInitializer(String move) {
+	/**
+	 * This method is responsible for creating a warning window 
+	 * indicating which player's move it is
+	 * @param player indicates an upcoming player
+	 */
+	private void alertInitializer(String player) {
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Term Change Warning");
 		alert.setHeaderText("Warning");
-		alert.setContentText("It is now "+move+"'s Move");
+		alert.setContentText("It is now "+player+"'s Move");
 		alert.showAndWait();
 	}
 
-
+	/**
+	 * This method is responsible for providing a GameWords1 txt file to location 
+	 * assigner method, in addition it sets the board
+	 * @param board is a board that is being assigned to a main board
+	 */
 	public void setBoard(Board board) {
 		this.board = board;
 		board.LocationAssignerAndRedMove("GameWords1.txt");
 	}
+	/**
+	 * This method is responsible for creating SpyMaster's Board
+	 * which has buttons that include information on weather or not the button
+	 * is revealed, the codename of a button, and for a player on a button
+	 */
 	public void addButtonsSpyMaster(){
 		int x = board.getGrid().length;
 		removeRowsAndColumns();
@@ -151,7 +165,13 @@ public class BoardController {
 		}
 
 	}
-	public void addButtonsTeam(){
+	/**
+	 * This method is responsible for assigning actions to the buttons,
+	 * setting proper sizes and styles, putting them into board, 
+	 * creating an internal data for the button,
+	 * and also responsible for naming them
+	 */
+	private void addButtonsTeam(){
 		int x = board.getGrid().length;
 		removeRowsAndColumns();
 		for (int i = 0; i < x ; i++) {
@@ -177,7 +197,16 @@ public class BoardController {
 			}
 		}
 	}
-	public void handlerAssigner(Button button) {
+	/**
+	 * This method takes internal parameters of a button and
+	 * is responsible for assigning actions if the button is pressed
+	 * Assassin case: blends the stage, ends term, creates a new window
+	 * Same Team case: blends the button, continues to play if enough clues are left
+	 * Different Team case: blends the stage, ends the term, waits for preceding of a term
+	 * Bystander case: blends the stage, ends the term, waits for preceding of a term
+	 * @param button the button which is being pressed
+	 */
+	private void handlerAssigner(Button button) {
 		button.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				Button internalButton = (Button)e.getSource();
