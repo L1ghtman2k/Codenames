@@ -201,13 +201,14 @@ public class BoardController {
 					}
 					internalButton.setDisable(true);
 				}
-				else{
-					if(board.getGrid()[internalI][internalJ].getPerson().getRole() == Roles.Assassin) {
-						asyncServiceMethod();
-					}
-					Grid.setDisable(true);
-					Count.setVisible(false);
+
+
+				if(board.getGrid()[internalI][internalJ].getPerson().getRole() == Roles.Assassin) {
+					asyncServiceMethod();
 				}
+				
+				Grid.setDisable(true);
+				Count.setVisible(false);
 
 			}
 		});
