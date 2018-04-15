@@ -49,18 +49,18 @@ public class BoardController {
 	ScrollPane separator;
 
 	@FXML
-    public void initialize() throws IOException {
+	public void initialize() throws IOException {
 		EasterEgg_Initializer();
-    }
-	
+	}
+
 	private Board board;
 
 	private Term term;
-	
+
 	private Stage SpyStage;
-	
+
 	private Stage EggStage;
-	
+
 	private FXMLLoader EggLoader;
 
 	public void RedSpyMasterTerm() throws IOException {
@@ -70,7 +70,7 @@ public class BoardController {
 	public void BlueSpyMasterTerm() throws IOException {
 		SpyMasterWindowInitializer(Term.BlueSpyMaster, "Blue SpyMaster");
 	}
-	
+
 	public void RedTeamTerm() {
 		TeamWindowInitializer(Term.RedTeam, "Red Team");
 	}
@@ -90,7 +90,7 @@ public class BoardController {
 		initializeSpyMastersDialog();
 		((Stage)ContinueButton.getScene().getWindow()).show();
 	}
-	
+
 	public void TeamWindowInitializer(Term term, String move) {
 		this.term = term;
 		((Stage)ContinueButton.getScene().getWindow()).hide();
@@ -103,7 +103,7 @@ public class BoardController {
 		addButtonsTeam();
 		((Stage)ContinueButton.getScene().getWindow()).show();
 	}
-	
+
 	public void alertInitializer(String move) {
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Term Change Warning");
@@ -111,7 +111,7 @@ public class BoardController {
 		alert.setContentText("It is now "+move+"'s Move");
 		alert.showAndWait();
 	}
-	
+
 
 	public void setBoard(Board board) {
 		this.board = board;
@@ -160,7 +160,7 @@ public class BoardController {
 				str+=board.getGrid()[i][j].getCodename() /* +"\n"*/;
 				if(board.getGrid()[i][j].isRevealed())
 					str=board.getGrid()[i][j].getPerson().getRole().toString();
-					//str+=board.getGrid()[i][j].getPerson().getRole().toString();
+				//str+=board.getGrid()[i][j].getPerson().getRole().toString();
 				Button button = new Button(str);
 				button.setStyle("-fx-font-size: 15pt;");
 				button.setPrefSize(400, 200);
@@ -192,28 +192,32 @@ public class BoardController {
 				boolean bool = board.LocationStatusUpdater(board.getGrid()[internalI][internalJ].getCodename(), curentTeam);
 				internalButton.setText(/*board.getGrid()[internalI][internalJ].getCodename() +"\n" + */board.getGrid()[internalI][internalJ].getPerson().getRole().toString());
 
-				if(bool == true) {
+				if(bool == true && !board.isBoardInWinningState()) {
 					String str = Integer.toString(Integer.parseInt(Count.getText())-1);
 					Count.setText(str);
-					if(str.equals("-1")) {
+					if(str.equals("-1") ) {
 						Grid.setDisable(true);
 						Count.setVisible(false);
 					}
 					internalButton.setDisable(true);
 				}
 
+				else {
+					if(board.getGrid()[internalI][internalJ].getPerson().getRole() == Roles.Assassin) {
+						asyncServiceMethod();
+					}
 
-				if(board.getGrid()[internalI][internalJ].getPerson().getRole() == Roles.Assassin) {
-					asyncServiceMethod();
+					Grid.setDisable(true);
+					Count.setVisible(false);
 				}
-				
-				Grid.setDisable(true);
-				Count.setVisible(false);
-
 			}
 		});
 	}
-	public void removeRowsAndColumns() {
+	/**
+	 * This method is responsible for clearing out rows and columns when 
+	 * terms shift from spymaster to a team.
+	 */
+	private void removeRowsAndColumns() {
 		Grid.getChildren().clear();
 		while(Grid.getRowConstraints().size() > 0){
 			Grid.getRowConstraints().remove(0);
@@ -227,7 +231,10 @@ public class BoardController {
 	public void close() {
 		System.exit(0);
 	}
-
+	/**
+	 * This method starts a new game when New Game Button is pressed from a menu
+	 * @throws IOException when fails to load a proper layout
+	 */
 	public void Start_New_Game() throws IOException {
 		// TO BE OPTIMIZED
 		((Stage)ContinueButton.getScene().getWindow()).close();
@@ -242,7 +249,11 @@ public class BoardController {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	/**
+	 * Initializes Spy master dialogue window where spymaster can put proper values
+	 * for clue and count fields
+	 * @throws IOException when fails to load borderpane for the spymaster window
+	 */
 	public void initializeSpyMastersDialog() throws IOException {
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("SpyMaster's Input");
@@ -261,7 +272,11 @@ public class BoardController {
 		primaryStage.setResizable(false);
 		primaryStage.setAlwaysOnTop(true);
 	}
-
+	/**
+	 * Initializes a final Winning window with a name of a parameter team
+	 * @param team is a team whose winning state is initialized
+	 * @throws IOException when fails to load BorderPane
+	 */
 	public void initializeWinningState(Team team) throws IOException {
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("You Win!");
@@ -278,13 +293,18 @@ public class BoardController {
 
 	}
 
+	/**
+	 * This method is responsible for deciding weather or net stage will 
+	 * continue the game in a proper flow, or end it. Read Diagram.pdf for more. 
+	 * @throws IOException in case any State initializers fail
+	 */
 	public void nextTerm() throws IOException {
 		boolean winningState = board.isBoardInWinningState();
 		if(winningState) {
 			if(board.isAssassinRevealed()) {
 				if(term == Term.RedTeam) {			
 					initializeWinningState(board.getBlueTeam());
-					
+
 				}
 				else {
 					initializeWinningState(board.getRedTeam());
@@ -307,33 +327,54 @@ public class BoardController {
 			}
 		}
 	}
+
+	/**
+	 * This method returns main board class
+	 * @return board
+	 */
 	public Board getBoard() {
 		return board;
 	}
 
+	/**
+	 * This method returns term of a current team
+	 * @return current team
+	 */
 	public Term getTerm() {
 		return term;
 	}
+	/**
+	 * This method sets Clue field
+	 * @param str is a string to which clue field is equal to
+	 */
 	public void setClue(String str) {
 		Clue.setText("Clue: "+str);
 	}
+
+	/**
+	 * This method allows to set text of a Count Field
+	 * @param str is a value to which Count field is set to
+	 */
 	public void setCount(String str) {
 		Count.setText(str);
 	}
-	
-	public void initializeEasterEggStage() throws IOException {
-		
-		
 
-	}
-	
-	public void asyncServiceMethod(){ 
+	/**
+	 * This method asynchronously runs EasterEgg Initializer so that it wouldn't
+	 * interfere with updates of fields
+	 */
+	private void asyncServiceMethod(){ 
 		Platform.runLater(() -> {
-            ((EasterEggController)EggLoader.getController()).slower();
+			((EasterEggController)EggLoader.getController()).slower();
 			EggStage.show();
-        });
-    }
-	public void EasterEgg_Initializer() throws IOException {
+		});
+	}
+	/**
+	 * This method initialized window of Easter Egg
+	 * @throws IOException in case EggLoader doesn't provide a proper Anchor Pane.
+	 */
+
+	private void EasterEgg_Initializer() throws IOException {
 		EggStage = new Stage();
 		EggStage.setTitle("Easter Egg");
 		EggStage.getIcons().add(new Image("Media/logo.png"));
@@ -343,8 +384,8 @@ public class BoardController {
 		Scene scene = new Scene(mainLayout);	
 		EggStage.setScene(scene);
 		EggStage.setResizable(false);
-	    ((EasterEggController)EggLoader.getController()).image_activator();
-	    
+		((EasterEggController)EggLoader.getController()).image_activator();
+
 	}
 
 }
