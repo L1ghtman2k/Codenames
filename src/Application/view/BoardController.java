@@ -364,7 +364,7 @@ public class BoardController {
 					initializeWinningState(board.getRedTeam());
 				}
 			}
-			else if(term == Term.RedTeam) {
+			else if(board.Winning_Team().getAgents() == Roles.Red) {
 				initializeWinningState(board.getRedTeam());
 			}
 			else {

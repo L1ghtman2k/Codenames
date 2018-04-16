@@ -147,6 +147,27 @@ public class Board {
 			return true;
 		return false;
 	}
+	
+	/**
+	 * This method returns true if all of the team's members are revealed, or if at least one assassin is revealed.
+	 * Returns false otherwise.
+	 * @return true if one of the teams won, false otherwise.
+	 */
+	public Team Winning_Team() {
+		int bluesum =0, redsum=0;
+
+		for(int i = 0; i < grid.length; i++)
+		{
+			for(int j = 0; j < grid.length; j++) {	
+				if(grid[i][j].isRevealed() && grid[i][j].getPerson().getRole().equals(Roles.Blue)) 
+					bluesum++;
+			}
+		}
+		if(bluesum == Blues)
+			return Blue;
+		return Red;
+	}
+
 
 	/**
 	 * This method returns a team that won when assassin was revealed.
