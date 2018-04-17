@@ -18,7 +18,7 @@ public class Main extends Application {
 		primaryStage.setTitle("Game Mode");
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("view/GameMode.fxml"));
+		loader.setLocation(Main.class.getResource("TeamChooser.fxml"));
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
