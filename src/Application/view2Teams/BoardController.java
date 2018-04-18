@@ -176,7 +176,7 @@ public class BoardController {
 				}
 				else if(revealed) {
 					button.setText(button.getText()+"\n"+"Revealed");
-					button.setStyle("-fx-font-size: 15pt; -fx-text-fill: Green");
+					button.setStyle("-fx-font-size: 15pt; -fx-text-fill: Yellow");
 				}
 				else {
 					button.setStyle("-fx-font-size: 15pt;");

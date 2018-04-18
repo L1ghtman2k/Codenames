@@ -23,11 +23,16 @@ public class OptionController {
 	@FXML
 	TextField BlueTeamMembers;
 	@FXML
+	TextField GreenTeamMembers;
+	@FXML
 	TextField Assassins;
+	
 	@FXML
 	TextField RedTeamName;
 	@FXML
 	TextField BlueTeamName;
+	@FXML
+	TextField GreenTeamName;
 
 	@FXML
 	Label GridSizeWarning;
@@ -36,11 +41,16 @@ public class OptionController {
 	@FXML
 	Label BlueTeamMembersWarning;
 	@FXML
+	Label GreenTeamMembersWarning;
+	
+	@FXML
 	Label AssassinsWarning;
 	@FXML
 	Label RedTeamNameWarning;
 	@FXML
 	Label BlueTeamNameWarning;
+	@FXML
+	Label GreenTeamNameWarning;
 
 	@FXML
 	Label AdditionalWarning;
@@ -48,7 +58,7 @@ public class OptionController {
 	@FXML
 	Button Start;
 	
-	boolean[] checker = new boolean[6];
+	boolean[] checker = new boolean[8];
 	/**
 	 * This method is responsible for setting appropriate parameters for a default game,
 	 * 5 by 5 Grid
@@ -61,19 +71,24 @@ public class OptionController {
 		checker[0] = true;
 		
 		RedTeamMembers.setDisable(true);
-		RedTeamMembers.setText("9");
+		RedTeamMembers.setText("6");
 		lebel_accepted(RedTeamMembersWarning);
 		checker[1] = true;
 		
 		BlueTeamMembers.setDisable(true);
-		BlueTeamMembers.setText("8");
+		BlueTeamMembers.setText("5");
 		lebel_accepted(BlueTeamMembersWarning);
 		checker[2] = true;
 		
-		Assassins.setDisable(true);
-		Assassins.setText("1");
-		lebel_accepted(AssassinsWarning);
+		GreenTeamMembers.setDisable(true);
+		GreenTeamMembers.setText("5");
+		lebel_accepted(GreenTeamMembersWarning);
 		checker[3] = true;
+		
+		Assassins.setDisable(true);
+		Assassins.setText("2");
+		lebel_accepted(AssassinsWarning);
+		checker[4] = true;
 	}
 	
 	/**
@@ -85,11 +100,15 @@ public class OptionController {
 		
 		RedTeamName.setText("Reds");
 		lebel_accepted(RedTeamNameWarning);
-		checker[4] = true;
+		checker[5] = true;
 		
 		BlueTeamName.setText("Blues");
 		lebel_accepted(BlueTeamNameWarning);
-		checker[5] = true;
+		checker[6] = true;
+		
+		GreenTeamName.setText("Greens");
+		lebel_accepted(GreenTeamNameWarning);
+		checker[7] = true;
 	}
 	
 	/**
@@ -102,6 +121,8 @@ public class OptionController {
 		AssassinsInputCheck();
 		RedTeamNameInputCheck();
 		BlueTeamNameInputCheck();
+		GreenTeamMembersInputCheck();
+		GreenTeamNameInputCheck();
 	}
 	/**
 	 * This method checks weather or not gridSize contains an appropriate inputs
@@ -153,6 +174,25 @@ public class OptionController {
 		}
 		
 	}
+	
+	/**
+	 * This method checks weather or not Green Team member field contains an appropriate inputs
+	 * which has to be a number of a reasonable length more than 0
+	 */
+	public void GreenTeamMembersInputCheck() {
+
+		if (GreenTeamMembers.getText().matches("[0-9]+") && GreenTeamMembers.getText().length()<4 && Integer.parseInt(GreenTeamMembers.getText())>0) {
+			lebel_accepted(GreenTeamMembersWarning);
+			checker[3] = true;
+		}
+		else {
+			GreenTeamMembersWarning.setGraphic(null);
+			GreenTeamMembersWarning.setText("This field must contain a number that is reasonable");
+			checker[3] = false;
+		}
+		
+	}
+	
 	/**
 	 * This method checks weather or not Assassins Input field contains an appropriate inputs
 	 * which has to be a number of a reasonable length more or equal to 0
@@ -161,12 +201,12 @@ public class OptionController {
 
 		if (Assassins.getText().matches("[0-9]+") && Assassins.getText().length()<4 && Integer.parseInt(Assassins.getText())>=0) {
 			lebel_accepted(AssassinsWarning);
-			checker[3] = true;
+			checker[4] = true;
 		}
 		else {
 			AssassinsWarning.setGraphic(null);
 			AssassinsWarning.setText("This field must contain a number that is reasonable");
-			checker[3] = false;
+			checker[4] = false;
 		}
 	}
 	/**
@@ -177,12 +217,12 @@ public class OptionController {
 
 		if (RedTeamName.getText().trim().length()>0 && RedTeamName.getText().length()<=20) {
 			lebel_accepted(RedTeamNameWarning);
-			checker[4] = true;
+			checker[5] = true;
 		}
 		else {
 			RedTeamNameWarning.setGraphic(null);
 			RedTeamNameWarning.setText("This field must be less than 20 characters");
-			checker[4] = false;
+			checker[5] = false;
 		}
 	}
 	/**
@@ -193,12 +233,29 @@ public class OptionController {
 
 		if (BlueTeamName.getText().trim().length()>0 && BlueTeamName.getText().length()<=20) {
 			lebel_accepted(BlueTeamNameWarning);
-			checker[5] = true;
+			checker[6] = true;
 		}
 		else {
 			BlueTeamNameWarning.setGraphic(null);
 			BlueTeamNameWarning.setText("This field must be less than 20 characters");
-			checker[5] = false;
+			checker[6] = false;
+		}
+	}
+	
+	/**
+	 * This method checks weather or not Blue Team Name field contains an appropriate inputs
+	 * which has to be a String of a reasonable length more or equal to 0
+	 */
+	public void GreenTeamNameInputCheck() {
+
+		if (GreenTeamName.getText().trim().length()>0 && GreenTeamName.getText().length()<=20) {
+			lebel_accepted(GreenTeamNameWarning);
+			checker[7] = true;
+		}
+		else {
+			GreenTeamNameWarning.setGraphic(null);
+			GreenTeamNameWarning.setText("This field must be less than 20 characters");
+			checker[7] = false;
 		}
 	}
 	/**
@@ -229,7 +286,7 @@ public class OptionController {
 	public void StartTheGame() throws IOException {
 		boolean overall = true;
 		
-		for(int i = 0; i < 6; i++) {
+		for(int i = 0; i < checker.length; i++) {
 			if(checker[i]==false) {
 				overall = false;
 				break;
@@ -238,13 +295,12 @@ public class OptionController {
 		if(overall==false) {
 			AdditionalWarning.setText("Please satisfy all of the requirements above");
 		}
-		else if((Integer.parseInt(Assassins.getText()) + Integer.parseInt(BlueTeamMembers.getText()) + Integer.parseInt(RedTeamMembers.getText()))> Math.pow(Integer.parseInt(GridSize.getText()),2)){
+		else if((Integer.parseInt(Assassins.getText()) + Integer.parseInt(BlueTeamMembers.getText()) + Integer.parseInt(RedTeamMembers.getText()) + Integer.parseInt(GreenTeamMembers.getText()))> Math.pow(Integer.parseInt(GridSize.getText()),2)){
 			AdditionalWarning.setText("You have more roles than your grid can contain.");
 		}
-		else if(RedTeamName.getText().equals(BlueTeamName.getText())) {
+		else if(RedTeamName.getText().equals(BlueTeamName.getText()) || RedTeamName.getText().contentEquals(GreenTeamName.getText()) || BlueTeamName.getText().equals(GreenTeamName.getText())) {
 			AdditionalWarning.setText("Teams can't have same names");
 		}
-		
 		else {
 			((Stage)Start.getScene().getWindow()).close();
 			Stage primaryStage = new Stage();
@@ -258,8 +314,7 @@ public class OptionController {
 			BoardController controller = (BoardController)loader.getController();
 			
 			controller.setBoard(new Launcher().StartTheGame(Integer.parseInt(GridSize.getText()), Integer.parseInt(RedTeamMembers.getText()), 
-					Integer.parseInt(BlueTeamMembers.getText()), Integer.parseInt(Assassins.getText()), RedTeamName.getText(), BlueTeamName.getText()));
-			
+					Integer.parseInt(BlueTeamMembers.getText()),Integer.parseInt(GreenTeamMembers.getText()) ,Integer.parseInt(Assassins.getText()), RedTeamName.getText(), BlueTeamName.getText(),GreenTeamName.getText()));
 			controller.RedSpyMasterTerm();
 			primaryStage.setOnCloseRequest(e->System.exit(0));
 			 

@@ -82,6 +82,13 @@ public class BoardController {
 		SpyMasterWindowInitializer(Term.BlueSpyMaster, "Blue SpyMaster");
 	}
 	/**
+	 * calls BlueSpyMasterTerm with parameters Term.BlueSpyMaster, "Blue SpyMaster"
+	 * @throws IOException if SpyMasterWindowInitializer fails
+	 */
+	public void GreenSpyMasterTerm() throws IOException {
+		SpyMasterWindowInitializer(Term.GreenSpyMaster, "Green SpyMaster");
+	}
+	/**
 	 * Calls TeamWindowInitializer with parameters Term.RedTeam and "Red Team"
 	 */
 	public void RedTeamTerm() {
@@ -92,6 +99,13 @@ public class BoardController {
 	 */
 	public void BlueTeamTerm() {
 		TeamWindowInitializer(Term.BlueTeam, "Blue Team");
+	}
+	
+	/**
+	 * Calls TeamWindowInitializer with parameters Term.GreenTeam and "Green Team"
+	 */
+	public void GreenTeamTerm() {
+		TeamWindowInitializer(Term.GreenTeam, "Green Team");
 	}
 	/**
 	 * This method sets board for spymaster, creates an allert
@@ -174,9 +188,13 @@ public class BoardController {
 					button.setText(button.getText()+"\n"+"Revealed");
 					button.setStyle("-fx-font-size: 15pt; -fx-text-fill: Blue");
 				}
-				else if(revealed) {
+				else if(revealed && board.getGrid()[i][j].getPerson().getRole() == Roles.Green) {
 					button.setText(button.getText()+"\n"+"Revealed");
 					button.setStyle("-fx-font-size: 15pt; -fx-text-fill: Green");
+				}
+				else if(revealed) {
+					button.setText(button.getText()+"\n"+"Revealed");
+					button.setStyle("-fx-font-size: 15pt; -fx-text-fill: Yellow");
 				}
 				else {
 					button.setStyle("-fx-font-size: 15pt;");
@@ -243,6 +261,8 @@ public class BoardController {
 					curentTeam = board.getRedTeam();
 				if(term == Term.BlueTeam)
 					curentTeam = board.getBlueTeam();
+				if(term == Term.GreenTeam)
+					curentTeam = board.getGreenTeam();
 				boolean bool = board.LocationStatusUpdater(board.getGrid()[internalI][internalJ].getCodename(), curentTeam);
 				internalButton.setText(/*board.getGrid()[internalI][internalJ].getCodename() +"\n" + */board.getGrid()[internalI][internalJ].getPerson().getRole().toString());
 
@@ -259,6 +279,7 @@ public class BoardController {
 				else {
 					if(board.getGrid()[internalI][internalJ].getPerson().getRole() == Roles.Assassin) {
 						asyncServiceMethod();
+						curentTeam.setRevealedAssassin(true);
 					}
 
 					Grid.setDisable(true);

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.view3Teams.OptionController">
-   <center>
+   <bottom>
       <AnchorPane onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" prefHeight="490.0" prefWidth="753.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="Start" layoutX="853.0" layoutY="361.0" mnemonicParsing="false" onAction="#StartTheGame" prefHeight="25.0" prefWidth="91.0" text="Start" />
@@ -33,31 +33,39 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label text="Grid Size" />
                   <Label text="Red Team Members" GridPane.rowIndex="1" />
                   <Label text="Blue Team Members" GridPane.rowIndex="2" />
-                  <Label text="Assassins" GridPane.rowIndex="3" />
-                  <Label text="Red Team Name" GridPane.rowIndex="4" />
-                  <Label text="Blue Team Name" GridPane.rowIndex="5" />
+                  <Label text="Assassins" GridPane.rowIndex="4" />
+                  <Label text="Red Team Name" GridPane.rowIndex="5" />
+                  <Label text="Blue Team Name" GridPane.rowIndex="6" />
                   <TextField fx:id="GridSize" onKeyReleased="#GridFieldInputCheck" onKeyTyped="#GridFieldInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" prefHeight="25.0" prefWidth="156.0" GridPane.columnIndex="2" />
                   
                   <TextField fx:id="RedTeamMembers" onKeyReleased="#RedTeamMembersInputCheck" onKeyTyped="#RedTeamMembersInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <TextField fx:id="BlueTeamMembers" onKeyReleased="#BlueTeamMembersInputCheck" onKeyTyped="#BlueTeamMembersInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <TextField fx:id="Assassins" onKeyReleased="#AssassinsInputCheck" onKeyTyped="#AssassinsInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <TextField fx:id="RedTeamName" onKeyReleased="#RedTeamNameInputCheck" onKeyTyped="#RedTeamNameInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <TextField fx:id="BlueTeamName" onKeyReleased="#BlueTeamNameInputCheck" onKeyTyped="#BlueTeamNameInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <TextField fx:id="GreenTeamMembers" onKeyReleased="#GreenTeamMembersInputCheck" onKeyTyped="#GreenTeamMembersInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <TextField fx:id="Assassins" onKeyReleased="#AssassinsInputCheck" onKeyTyped="#AssassinsInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <TextField fx:id="RedTeamName" onKeyReleased="#RedTeamNameInputCheck" onKeyTyped="#RedTeamNameInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <TextField fx:id="BlueTeamName" onKeyReleased="#BlueTeamNameInputCheck" onKeyTyped="#BlueTeamNameInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <TextField fx:id="GreenTeamName" onKeyReleased="#GreenTeamNameInputCheck" onKeyTyped="#GreenTeamNameInputCheck" onMouseClicked="#MainFieldCheck" onMouseReleased="#MainFieldCheck" GridPane.columnIndex="2" GridPane.rowIndex="7" />
                   <Label fx:id="RedTeamMembersWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="40.0" prefWidth="480.0" text="This field must contain a number that is reasonable" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label fx:id="BlueTeamMembersWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="37.0" prefWidth="480.0" text="This field must contain a number that is reasonable" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="AssassinsWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="44.0" prefWidth="480.0" text="This field must contain a number that is reasonable" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label fx:id="RedTeamNameWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="37.0" prefWidth="480.0" text="This field must be less than 20 characters" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label fx:id="BlueTeamNameWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="37.0" prefWidth="480.0" text="This field must be less than 20 characters" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="AssassinsWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="44.0" prefWidth="480.0" text="This field must contain a number that is reasonable" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="RedTeamNameWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="37.0" prefWidth="480.0" text="This field must be less than 20 characters" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="BlueTeamNameWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="37.0" prefWidth="480.0" text="This field must be less than 20 characters" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <Label fx:id="GridSizeWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="40.0" prefWidth="480.0" text="This field must contain a number from 3 to 10" textFill="RED" GridPane.columnIndex="1" />
+                  <Label text="Green Team Members" GridPane.rowIndex="3" />
+                  <Label fx:id="GreenTeamMembersWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="37.0" prefWidth="480.0" text="This field must contain a number that is reasonable" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Green Team Name" GridPane.rowIndex="7" />
+                  <Label fx:id="GreenTeamNameWarning" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="37.0" prefWidth="480.0" text="This field must be less than 20 characters" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
             </GridPane>
             <Label fx:id="AdditionalWarning" layoutX="38.0" layoutY="362.0" prefHeight="26.0" prefWidth="779.0" textFill="RED" />
          </children>
       </AnchorPane>
-   </center>
+   </bottom>
 </BorderPane>
