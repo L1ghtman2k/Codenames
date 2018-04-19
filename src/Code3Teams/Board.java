@@ -94,6 +94,7 @@ public class Board {
 				}
 			}
 		}
+		System.out.println("Count:" + count + "Sum:" + sum);
 		if(count > sum)
 			return false;
 		if(count<0)
@@ -133,13 +134,13 @@ public class Board {
 	 * @return true if one of the teams won, false otherwise.
 	 */
 	public boolean isBoardInWinningState() {
-		int bluesum =0, redsum=0, greensum=0;
+		int bluesum =0, redsum=0, greensum=0, asssum=0;
 
 		for(int i = 0; i < grid.length; i++)
 		{
 			for(int j = 0; j < grid.length; j++) {	
 				if(grid[i][j].isRevealed() && grid[i][j].getPerson().getRole().equals(Roles.Assassin)) 
-					return true;
+					asssum++;
 				
 				if(grid[i][j].isRevealed() && grid[i][j].getPerson().getRole().equals(Roles.Blue)) 
 					bluesum++;
@@ -150,7 +151,7 @@ public class Board {
 					greensum++;
 			}
 		}
-		if(bluesum == Blues || redsum == Reds || greensum == Greens)
+		if((bluesum == Blues && !Blue.isRevealedAssassin()) || (redsum == Reds && !Red.isRevealedAssassin()) || (greensum == Greens&&  !Green.isRevealedAssassin()) || asssum==2)
 			return true;
 		return false;
 	}

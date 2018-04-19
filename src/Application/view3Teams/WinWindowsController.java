@@ -39,7 +39,7 @@ public class WinWindowsController {
 		primaryStage.setTitle("Game Mode");
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(WinWindowsController.class.getResource("GameMode.fxml"));
+		loader.setLocation(WinWindowsController.class.getResource("../TeamChooser.fxml"));
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);

@@ -1,6 +1,7 @@
 package Application.view3Teams;
 import java.io.IOException;
 
+import Application.view3Teams.Term;
 import Code3Teams.Board;
 import Code3Teams.Roles;
 import Code3Teams.Team;
@@ -72,21 +73,30 @@ public class BoardController {
 	 * @throws IOException if SpyMasterWindowInitializer fails
 	 */
 	public void RedSpyMasterTerm() throws IOException {
-		SpyMasterWindowInitializer(Term.RedSpyMaster, "Red SpyMaster");
+		if(board.getRedTeam().isRevealedAssassin()) {
+			BlueSpyMasterTerm();
+		}
+		else {SpyMasterWindowInitializer(Term.RedSpyMaster, "Red SpyMaster");}
 	}
 	/**
 	 * calls BlueSpyMasterTerm with parameters Term.BlueSpyMaster, "Blue SpyMaster"
 	 * @throws IOException if SpyMasterWindowInitializer fails
 	 */
 	public void BlueSpyMasterTerm() throws IOException {
-		SpyMasterWindowInitializer(Term.BlueSpyMaster, "Blue SpyMaster");
+		if(board.getBlueTeam().isRevealedAssassin()) {
+			GreenSpyMasterTerm();
+		}
+		else {SpyMasterWindowInitializer(Term.BlueSpyMaster, "Blue SpyMaster");}
 	}
 	/**
-	 * calls BlueSpyMasterTerm with parameters Term.BlueSpyMaster, "Blue SpyMaster"
+	 * calls GreenSpyMasterTerm with parameters Term.BlueSpyMaster, "Green SpyMaster"
 	 * @throws IOException if SpyMasterWindowInitializer fails
 	 */
 	public void GreenSpyMasterTerm() throws IOException {
-		SpyMasterWindowInitializer(Term.GreenSpyMaster, "Green SpyMaster");
+		if(board.getGreenTeam().isRevealedAssassin()) {
+			RedSpyMasterTerm();
+		}
+		else {SpyMasterWindowInitializer(Term.GreenSpyMaster, "Green SpyMaster");}
 	}
 	/**
 	 * Calls TeamWindowInitializer with parameters Term.RedTeam and "Red Team"
@@ -100,7 +110,7 @@ public class BoardController {
 	public void BlueTeamTerm() {
 		TeamWindowInitializer(Term.BlueTeam, "Blue Team");
 	}
-	
+
 	/**
 	 * Calls TeamWindowInitializer with parameters Term.GreenTeam and "Green Team"
 	 */
@@ -265,7 +275,7 @@ public class BoardController {
 					curentTeam = board.getGreenTeam();
 				boolean bool = board.LocationStatusUpdater(board.getGrid()[internalI][internalJ].getCodename(), curentTeam);
 				internalButton.setText(/*board.getGrid()[internalI][internalJ].getCodename() +"\n" + */board.getGrid()[internalI][internalJ].getPerson().getRole().toString());
-
+				System.out.println(bool);
 				if(bool == true && !board.isBoardInWinningState()) {
 					String str = Integer.toString(Integer.parseInt(Count.getText())-1);
 					Count.setText(str);
@@ -377,7 +387,52 @@ public class BoardController {
 	 * @throws IOException in case any State initializers fail
 	 */
 	public void nextTerm() throws IOException {
-		
+		System.out.println(term);
+		if(board.isBoardInWinningState()) {
+			if(board.isAssassinRevealed()==2) {
+				if(!board.getBlueTeam().isRevealedAssassin()) {			
+					initializeWinningState(board.getBlueTeam());
+				}
+				if(!board.getRedTeam().isRevealedAssassin()) {
+					initializeWinningState(board.getRedTeam());
+				}
+				else {
+					initializeWinningState(board.getGreenTeam());
+				}
+			}
+			else if(board.Winning_Team().getAgents() == Roles.Red && !board.getRedTeam().isRevealedAssassin()) {
+				initializeWinningState(board.getRedTeam());
+			}
+			else if(board.Winning_Team().getAgents() == Roles.Blue && !board.getBlueTeam().isRevealedAssassin()){
+				initializeWinningState(board.getBlueTeam());
+			}
+			else if(board.Winning_Team().getAgents() == Roles.Green && !board.getGreenTeam().isRevealedAssassin()){
+				initializeWinningState(board.getGreenTeam());
+			}
+			else {
+				if(term == Term.RedTeam) {
+					BlueSpyMasterTerm();
+				}
+				else if(term == Term.BlueTeam) {
+					GreenSpyMasterTerm();
+				}
+				else if(term == Term.GreenTeam) {
+					RedSpyMasterTerm();
+				}
+			}
+		}
+
+		else {
+			if(term == Term.RedTeam) {
+				BlueSpyMasterTerm();
+			}
+			else if(term == Term.BlueTeam) {
+				GreenSpyMasterTerm();
+			}
+			else if(term == Term.GreenTeam) {
+				RedSpyMasterTerm();
+			}
+		}
 	}
 
 

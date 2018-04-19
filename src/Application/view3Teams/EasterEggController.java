@@ -26,6 +26,7 @@ public class EasterEggController {
 	 * This method is responsible for playing oof.mp3 file
 	 */
 	public void slower() {
+		mediaPlayer.stop();
 		mediaPlayer.play();
 	}
 

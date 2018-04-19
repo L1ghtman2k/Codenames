@@ -6,8 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import Application.view2Teams.GameModeController;
 /**
  * 
  * Instance of this class makes possible to convert local .txt files to List of String.
