@@ -275,7 +275,7 @@ public class BoardController {
 					curentTeam = board.getGreenTeam();
 				boolean bool = board.LocationStatusUpdater(board.getGrid()[internalI][internalJ].getCodename(), curentTeam);
 				internalButton.setText(/*board.getGrid()[internalI][internalJ].getCodename() +"\n" + */board.getGrid()[internalI][internalJ].getPerson().getRole().toString());
-				System.out.println(bool);
+				
 				if(bool == true && !board.isBoardInWinningState()) {
 					String str = Integer.toString(Integer.parseInt(Count.getText())-1);
 					Count.setText(str);
@@ -387,38 +387,27 @@ public class BoardController {
 	 * @throws IOException in case any State initializers fail
 	 */
 	public void nextTerm() throws IOException {
-		System.out.println(term);
+		
 		if(board.isBoardInWinningState()) {
 			if(board.isAssassinRevealed()==2) {
 				if(!board.getBlueTeam().isRevealedAssassin()) {			
 					initializeWinningState(board.getBlueTeam());
 				}
-				if(!board.getRedTeam().isRevealedAssassin()) {
+				else if(!board.getRedTeam().isRevealedAssassin()) {
 					initializeWinningState(board.getRedTeam());
 				}
 				else {
 					initializeWinningState(board.getGreenTeam());
 				}
 			}
-			else if(board.Winning_Team().getAgents() == Roles.Red && !board.getRedTeam().isRevealedAssassin()) {
+			else if(board.Winning_Team().getAgents() == Roles.Red ) {
 				initializeWinningState(board.getRedTeam());
 			}
-			else if(board.Winning_Team().getAgents() == Roles.Blue && !board.getBlueTeam().isRevealedAssassin()){
+			else if(board.Winning_Team().getAgents() == Roles.Blue){
 				initializeWinningState(board.getBlueTeam());
 			}
-			else if(board.Winning_Team().getAgents() == Roles.Green && !board.getGreenTeam().isRevealedAssassin()){
+			else if(board.Winning_Team().getAgents() == Roles.Green){
 				initializeWinningState(board.getGreenTeam());
-			}
-			else {
-				if(term == Term.RedTeam) {
-					BlueSpyMasterTerm();
-				}
-				else if(term == Term.BlueTeam) {
-					GreenSpyMasterTerm();
-				}
-				else if(term == Term.GreenTeam) {
-					RedSpyMasterTerm();
-				}
 			}
 		}
 

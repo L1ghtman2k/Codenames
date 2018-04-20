@@ -53,7 +53,6 @@ public class SpyMasterInputController {
 		if(board.getBoard().isClueLegal(ClueField.getText())) {
 			clue = true;
 		}
-		System.out.println(board.getTerm());
 		if(board.getTerm() == Term.RedSpyMaster && CountField.getText().matches("[0-9]+") && CountField.getLength()<5 && board.getBoard().isCountLegal(Integer.parseInt(CountField.getText()), Roles.Red)) {
 			count = true;
 		}
@@ -64,9 +63,6 @@ public class SpyMasterInputController {
 		else if(board.getTerm() == Term.GreenSpyMaster && CountField.getText().matches("[0-9]+") && CountField.getLength()<5 && board.getBoard().isCountLegal(Integer.parseInt(CountField.getText()), Roles.Green)) {
 			count = true;
 		}
-		System.out.println(board.getBoard().isCountLegal(Integer.parseInt(CountField.getText()), Roles.Red));
-		System.out.println(board.getBoard().isCountLegal(Integer.parseInt(CountField.getText()), Roles.Blue));
-		System.out.println(board.getBoard().isCountLegal(Integer.parseInt(CountField.getText()), Roles.Green));
 		
 		
 		if(count && clue) {

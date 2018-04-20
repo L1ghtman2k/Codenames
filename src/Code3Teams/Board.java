@@ -94,7 +94,6 @@ public class Board {
 				}
 			}
 		}
-		System.out.println("Count:" + count + "Sum:" + sum);
 		if(count > sum)
 			return false;
 		if(count<0)
@@ -174,12 +173,12 @@ public class Board {
 					redsum++;
 			}
 		}
-		if(bluesum == Blues)
+		if(bluesum == Blues && !Blue.isRevealedAssassin())
 			return Blue;
 		
-		if(redsum == Reds)
+		else {if(redsum == Reds && !Red.isRevealedAssassin())
 			return Red;
-		
+		}
 		return Green;
 	}
 
