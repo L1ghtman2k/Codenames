@@ -291,7 +291,7 @@ public class BoardController {
 	 * This method starts a new game when New Game Button is pressed from a menu
 	 * @throws IOException when fails to load a proper layout
 	 */
-	public void Start_New_Game() throws IOException {
+	public void Start_New_Game2() throws IOException {
 		// TO BE OPTIMIZED
 		((Stage)ContinueButton.getScene().getWindow()).close();
 		SpyStage.close();
@@ -300,6 +300,24 @@ public class BoardController {
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(GameModeController.class.getResource("GameMode.fxml"));
+		BorderPane mainLayout = loader.load();
+		Scene scene = new Scene(mainLayout);	
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	/**
+	 * This method starts a new game when New Game Button is pressed from a menu
+	 * @throws IOException when fails to load a proper layout
+	 */
+	public void Start_New_Game3() throws IOException {
+		// TO BE OPTIMIZED
+		((Stage)ContinueButton.getScene().getWindow()).close();
+		SpyStage.close();
+		Stage primaryStage = new Stage();
+		primaryStage.setTitle("Game Mode");
+		primaryStage.getIcons().add(new Image("Media/logo.png"));
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(GameModeController.class.getResource("../view3Teams/GameMode.fxml"));
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
