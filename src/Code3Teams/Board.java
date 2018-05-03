@@ -85,6 +85,7 @@ public class Board {
 	 * @return true if count is less that the amount of revealed roles
 	 */
 	public boolean isCountLegal(int count, Roles role){
+		if (count <=0) return false;
 		int sum = 0;
 		for(int i = 0; i < grid.length; i++)
 		{
