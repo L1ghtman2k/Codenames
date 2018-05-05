@@ -1,5 +1,8 @@
 package Application.view3Teams;
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import Application.view3Teams.Term;
 import Code3Teams.Board;
@@ -42,6 +45,8 @@ public class BoardController {
 	@FXML
 	MenuItem StartNewGameItem;
 	@FXML
+	MenuItem AJoke;
+	@FXML
 	MenuItem CloseItem;
 	@FXML
 	GridPane Grid;
@@ -67,7 +72,17 @@ public class BoardController {
 	private Stage EggStage;
 
 	private FXMLLoader EggLoader;
-
+	
+	/**
+	 * This method opens a browser page with a meme
+	 * @throws IOException In case of bad Input
+	 * @throws URISyntaxException In case of Bad URI
+	 */
+	public void OpenBrowser() throws IOException, URISyntaxException {
+		if (Desktop.isDesktopSupported()) {
+		    Desktop.getDesktop().browse(new URI("https://www.cse.buffalo.edu/~mhertz/courses/cse116/"));
+		}
+	}
 	/**
 	 * calls RedSpyMasterTerm with parameters Term.RedSpyMaster, "Red SpyMaster"
 	 * @throws IOException if SpyMasterWindowInitializer fails

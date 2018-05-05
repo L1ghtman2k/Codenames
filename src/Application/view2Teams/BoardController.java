@@ -1,5 +1,8 @@
 package Application.view2Teams;
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import Code2Teams.Board;
 import Code2Teams.Roles;
@@ -46,6 +49,8 @@ public class BoardController {
 	GridPane Grid;
 	@FXML
 	ScrollPane separator;
+	@FXML
+	MenuItem AJoke;
 
 	/**
 	 * This method calls EasterEgg_Initializers before the game starts, so that running it later
@@ -56,7 +61,7 @@ public class BoardController {
 	public void initialize() throws IOException {
 		EasterEgg_Initializer();
 	}
-
+	
 	private Board board;
 
 	private Term term;
@@ -66,7 +71,18 @@ public class BoardController {
 	private Stage EggStage;
 
 	private FXMLLoader EggLoader;
-
+	
+	/**
+	 * This method opens a browser page with a meme
+	 * @throws IOException In case of bad Input
+	 * @throws URISyntaxException In case of Bad URI
+	 */
+	public void OpenBrowser() throws IOException, URISyntaxException {
+		if (Desktop.isDesktopSupported()) {
+		    Desktop.getDesktop().browse(new URI("https://www.cse.buffalo.edu/~mhertz/courses/cse116/"));
+		}
+	}
+	
 	/**
 	 * calls RedSpyMasterTerm with parameters Term.RedSpyMaster, "Red SpyMaster"
 	 * @throws IOException if SpyMasterWindowInitializer fails

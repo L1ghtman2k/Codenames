@@ -1,0 +1,39 @@
+Functionality:						Method:										        Test:
+Defines a Board class that 			Code3Teams.Launcher.StartTheGame					Tests3Teams.Class_Launcher_Method_StartTheGame.TwoTeamNamesPassed_ReturnsBoardWith25LocationInstances
+contains 25 (or custom)
+Location instances
+
+Reads codenames from a file 		Code3Teams.LocalFileExtension.retAllCodenames		Tests3Teams.Class_LocalFileExtension_Method_retAllCodenames.FileExists_ListOfStringContaining
+named GameWords.txt and stores 
+them in a List
+
+Creates List containing 25			Code3Teams.ShuffleRandomizer.retRandomCodenames	    Tests3Teams.Class_ShuffleRandomizer_Method_retRandomCodenames.ProperWordStorage_returnListOfString_GameWords1
+(or custom) distinct codenames 
+selected at random
+
+Creates List containing randomly 	Code3Teams.ShuffleRandomizer.retRandomizeRoles	    Tests3Teams.Class_ShuffleRandomizer_Method_retRandomizeRoles.DefaultGameStarted_returnListOf25Peson
+generated assignments for 
+each of the players
+
+When game started, it's Red team's	Code3Teams.Board.LocationAssignerAndRedMove			Tests3Teams.Class_Board_Method_LocationAssignerAndRedMove.CodeNamesAreTakenFromGameWords1ToDefaultBoard_SetsNotRevealedSetsRolesAndSetsCodenames
+move and each of Board's Location
+instances is assigned a codename,
+Person, and status of revealed
+
+Method defined which 				Code3Teams.Board.isClueLegal						Tests3Teams.Class_Board_Method_isClueLegal.ClueIsLegal_returnsTrue
+correctly returns if a clue is 
+legal or illegal
+
+Method defined which decrements 	Code3Teams.Board.LocationStatusUpdater				Tests3Teams.Class_Board_Method_LocationStatusUpdater.CodeNameMatchesTeamMember_DecrementsTheCountSetsRevealedTrueReturnsTrue
+the count, updates a Location when 
+the Location's codename was selected, 
+and returns if the Location
+contained the current team's Agent
+
+Method defined which correctly 		Code3Teams.Board.isBoardInWinningState				Tests3Teams.Class_Board_Method_isBoardInWinningState.TeamBlueRevealedAllAgents_returnsTrue
+returns whether or not the Board 
+is in one of the winning states
+
+Method defined which correctly 		Code3Teams.Board.TeamThatWonWhenAssassinRevealed    Tests3Teams.Class_Board_Method_TestTeamThatWonWhenAssassinRevealed.RedTeamRevealedAssassin_returnBlue
+returns which team did not lose 
+when the Assassin was revealed
