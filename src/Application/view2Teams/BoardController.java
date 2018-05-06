@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import Application.view2Teams.EasterEggController;
+import Application.view2Teams.GameModeController;
 import Code2Teams.Board;
 import Code2Teams.Roles;
 import Code2Teams.Team;
@@ -72,16 +74,6 @@ public class BoardController {
 
 	private FXMLLoader EggLoader;
 	
-	/**
-	 * This method opens a browser page with a meme
-	 * @throws IOException In case of bad Input
-	 * @throws URISyntaxException In case of Bad URI
-	 */
-	public void OpenBrowser() throws IOException, URISyntaxException {
-		if (Desktop.isDesktopSupported()) {
-		    Desktop.getDesktop().browse(new URI("https://www.cse.buffalo.edu/~mhertz/courses/cse116/"));
-		}
-	}
 	
 	/**
 	 * calls RedSpyMasterTerm with parameters Term.RedSpyMaster, "Red SpyMaster"
@@ -333,7 +325,7 @@ public class BoardController {
 		primaryStage.setTitle("Game Mode");
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(GameModeController.class.getResource("../view3Teams/GameMode.fxml"));
+		loader.setLocation(GameModeController.class.getResource("../view2Teams/GameMode.fxml"));
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
@@ -446,7 +438,22 @@ public class BoardController {
 		((EasterEggController)EggLoader.getController()).image_activator();
 
 	}
-
+	/**
+	 * Opens a Joke Window
+	 * @throws IOException
+	 */
+	public void PressForAJokeWindow() throws IOException {
+		EggStage = new Stage();
+		EggStage.setTitle("Easter Egg");
+		EggStage.getIcons().add(new Image("Media/logo.png"));
+		EggLoader = new FXMLLoader();
+		EggLoader.setLocation(GameModeController.class.getResource("EasterEgg2.fxml"));
+		AnchorPane mainLayout = EggLoader.load();
+		Scene scene = new Scene(mainLayout);	
+		EggStage.setScene(scene);
+		EggStage.setResizable(false);
+		EggStage.show();
+	}
 	/**
 	 * This method returns main board class
 	 * @return board

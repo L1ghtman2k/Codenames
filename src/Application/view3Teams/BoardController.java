@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import Application.view3Teams.GameModeController;
 import Application.view3Teams.Term;
 import Code3Teams.Board;
 import Code3Teams.Roles;
@@ -73,16 +74,7 @@ public class BoardController {
 
 	private FXMLLoader EggLoader;
 	
-	/**
-	 * This method opens a browser page with a meme
-	 * @throws IOException In case of bad Input
-	 * @throws URISyntaxException In case of Bad URI
-	 */
-	public void OpenBrowser() throws IOException, URISyntaxException {
-		if (Desktop.isDesktopSupported()) {
-		    Desktop.getDesktop().browse(new URI("https://www.cse.buffalo.edu/~mhertz/courses/cse116/"));
-		}
-	}
+	
 	/**
 	 * calls RedSpyMasterTerm with parameters Term.RedSpyMaster, "Red SpyMaster"
 	 * @throws IOException if SpyMasterWindowInitializer fails
@@ -485,6 +477,22 @@ public class BoardController {
 		EggStage.setResizable(false);
 		((EasterEggController)EggLoader.getController()).image_activator();
 
+	}
+	/**
+	 * Opens a Joke Window
+	 * @throws IOException
+	 */
+	public void PressForAJokeWindow() throws IOException {
+		EggStage = new Stage();
+		EggStage.setTitle("Easter Egg");
+		EggStage.getIcons().add(new Image("Media/logo.png"));
+		EggLoader = new FXMLLoader();
+		EggLoader.setLocation(GameModeController.class.getResource("EasterEgg2.fxml"));
+		AnchorPane mainLayout = EggLoader.load();
+		Scene scene = new Scene(mainLayout);	
+		EggStage.setScene(scene);
+		EggStage.setResizable(false);
+		EggStage.show();
 	}
 
 	/**

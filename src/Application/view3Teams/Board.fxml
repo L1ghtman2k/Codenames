@@ -25,7 +25,7 @@
                   <MenuItem fx:id="StartNewGameItem" mnemonicParsing="false" onAction="#Start_New_Game2" text="Start New 2 Team Game " />
                   <MenuItem mnemonicParsing="false" onAction="#Start_New_Game3" text="Start New 3 Team Game" />
               <MenuItem fx:id="CloseItem" mnemonicParsing="false" onAction="#close" text="Close" />
-                  <MenuItem fx:id="AJoke" mnemonicParsing="false" onAction="#OpenBrowser" text="A joke" />
+                  <MenuItem fx:id="AJoke" mnemonicParsing="false" onAction="#PressForAJokeWindow" />
             </items>
           </Menu>
         </menus>
