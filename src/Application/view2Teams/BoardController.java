@@ -325,7 +325,7 @@ public class BoardController {
 		primaryStage.setTitle("Game Mode");
 		primaryStage.getIcons().add(new Image("Media/logo.png"));
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(GameModeController.class.getResource("../view2Teams/GameMode.fxml"));
+		loader.setLocation(GameModeController.class.getResource("../view3Teams/GameMode.fxml"));
 		BorderPane mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);	
 		primaryStage.setScene(scene);
